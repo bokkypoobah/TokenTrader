@@ -6,7 +6,7 @@ Decentralised trustless exchange contract on the Ethereum blockchain.
 ### TokenTraderFactory
 This repository contains the REP [TokenTraderFactory](https://github.com/bokkypoobah/TokenTrader/blob/master/contracts/TokenTraderFactory.sol) that was originally written by [/u/JonnyLatte](https://www.reddit.com/user/JonnyLatte) at [0x3398080b81a1cff1429af347ce2b17fc28de3937](https://etherscan.io/address/0x3398080b81a1cff1429af347ce2b17fc28de3937#code). 
 
-**Note that there is a bug in the original version in the `sell(...)` method that could lead to some losses in ethers.**. Use of this contract has been discontinued. See [TokenTrader error found in sell logic (unsafe to sell tokens to my trade contracts)](https://www.reddit.com/r/reptrader/comments/5i3wrt/tokentrader_error_found_in_sell_logic_unsafe_to/).
+**Note that there is a bug in the original version in the `sell(...)` method that could lead to some losses in ethers.** Use of this contract has been / should be discontinued. See [TokenTrader error found in sell logic (unsafe to sell tokens to my trade contracts)](https://www.reddit.com/r/reptrader/comments/5i3wrt/tokentrader_error_found_in_sell_logic_unsafe_to/).
 
 Some further information on this contract can be found at [Live testing ETH <-> Token, Atomic swap market](https://www.reddit.com/r/ethtrader/comments/56ajll/live_testing_eth_token_atomic_swap_market/).
 
