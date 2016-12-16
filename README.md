@@ -52,6 +52,8 @@ Once I have completed my testing and deployed these contracts onto Mainnet, I'll
 
 * Rewrite https://cryptoderivatives.market to use the new contracts
 
+* Rewrite https://github.com/bokkypoobah/FindGNTTokenTrader to list the new contracts
+
 <br />
 
 Enjoy. (c) JonnyLatte, Cintix &amp; BokkyPooBah 2016. The MIT licence.
