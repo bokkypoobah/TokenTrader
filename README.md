@@ -23,7 +23,7 @@ Some further information on this contract can be found at [Live testing ETH <-> 
 
 ---
 
-## TokenSellerFactory (Renamed SellOnly GNT TokenTraderFactory)
+## TokenSellerFactory (Renamed From The SellOnly GNT TokenTraderFactory)
 
 This repository also contains the SellOnly GNT TokenTraderFactory, renamed to [TokenSellerFactory](https://github.com/bokkypoobah/TokenTrader/blob/master/contracts/TokenSellerFactory.sol) that was the original REP TokenTraderFactory modified by [/u/Cintix](https://www.reddit.com/user/cintix) at [0xc4af56cd5254aef959d4bce2f75874007808b701](https://etherscan.io/address/0xc4af56cd5254aef959d4bce2f75874007808b701#code). The bug from the original REP TokenTraderFactory does not exist in this TokenSellerFactory. 
 
