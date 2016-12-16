@@ -4,7 +4,7 @@ Decentralised trustless exchange contract on the Ethereum blockchain.
 ## Original TokenTraderFactory Source
 
 ### TokenTraderFactory
-This repository contains the REP [TokenTraderFactory](https://github.com/bokkypoobah/TokenTrader/blob/master/contracts/TokenTraderFactory.sol) that was originally written by [/u/JonnyLatte](https://www.reddit.com/user/JonnyLatte) at [0x3398080b81a1cff1429af347ce2b17fc28de3937](https://etherscan.io/address/0x3398080b81a1cff1429af347ce2b17fc28de3937#code). 
+This repository contains the excellent REP [TokenTraderFactory](https://github.com/bokkypoobah/TokenTrader/blob/master/contracts/TokenTraderFactory.sol) that was originally written by [/u/JonnyLatte](https://www.reddit.com/user/JonnyLatte) at [0x3398080b81a1cff1429af347ce2b17fc28de3937](https://etherscan.io/address/0x3398080b81a1cff1429af347ce2b17fc28de3937#code). 
 
 **Note that there is a bug in the original version in the `sell(...)` method that could lead to some losses in ethers.** Use of this contract has been / should be discontinued. See [TokenTrader error found in sell logic (unsafe to sell tokens to my trade contracts)](https://www.reddit.com/r/reptrader/comments/5i3wrt/tokentrader_error_found_in_sell_logic_unsafe_to/).
 
@@ -17,4 +17,4 @@ Some further information can be found at [The Decentralized GNT/ETH Market](http
 
 
 
-Enjoy. (c) JonnyLatte, Cintix &amp; BokkyPooBah 2016. The MIT licence (I am still checking with the other authors on this).
+Enjoy. (c) JonnyLatte, Cintix &amp; BokkyPooBah 2016. The MIT licence.
