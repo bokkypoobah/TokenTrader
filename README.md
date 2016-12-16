@@ -25,7 +25,9 @@ Some further information on this contract can be found at [Live testing ETH <-> 
 
 ## TokenSellerFactory (Renamed From The SellOnly GNT TokenTraderFactory)
 
-This repository also contains the SellOnly GNT TokenTraderFactory, renamed to [TokenSellerFactory](https://github.com/bokkypoobah/TokenTrader/blob/master/contracts/TokenSellerFactory.sol) that was the original REP TokenTraderFactory modified by [/u/Cintix](https://www.reddit.com/user/cintix) at [0xc4af56cd5254aef959d4bce2f75874007808b701](https://etherscan.io/address/0xc4af56cd5254aef959d4bce2f75874007808b701#code). The bug from the original REP TokenTraderFactory does not exist in this TokenSellerFactory. 
+This repository also contains the SellOnly GNT TokenTraderFactory, renamed to [TokenSellerFactory](https://github.com/bokkypoobah/TokenTrader/blob/master/contracts/TokenSellerFactory.sol) that was the original REP TokenTraderFactory modified by [/u/Cintix](https://www.reddit.com/user/cintix) at [0xc4af56cd5254aef959d4bce2f75874007808b701](https://etherscan.io/address/0xc4af56cd5254aef959d4bce2f75874007808b701#code). The difference in this contract from the original REP TokenTraderFactory is that the `sell(...)` method has been removed as the partial ERC20 compliance of the GNT Token does not support the selling of these tokens. 
+
+The bug from the original REP TokenTraderFactory does not exist in this TokenSellerFactory. 
 
 Some further information can be found at [The Decentralized GNT/ETH Market](https://www.reddit.com/r/ethtrader/comments/5d455f/the_decentralized_gnteth_market/) and [Trustless Golem Network Token (GNT) Selling Contract](https://www.bokconsulting.com.au/blog/trustless-token-selling-contract/).
 
