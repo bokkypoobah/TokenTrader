@@ -50,10 +50,10 @@ contract TokenTrader is Owned {
     uint256 public sellPrice;   // contract sells lots at this price
     uint256 public units;       // lot size (token-wei)
 
-    bool public sellsTokens;    // is contract selling
     bool public buysTokens;     // is contract buying
+    bool public sellsTokens;    // is contract selling
 
-    event ActivatedEvent(bool sells, bool buys);
+    event ActivatedEvent(bool buys, bool sells);
     event EtherDeposited(uint256 amount);
     event AssetWithdrawn(uint256 value);
     event TokenWithdrawn(address token, uint256 value);
@@ -67,26 +67,26 @@ contract TokenTrader is Owned {
         uint256 _buyPrice,
         uint256 _sellPrice,
         uint256 _units,
-        bool    _sellsTokens,
-        bool    _buysTokens
+        bool    _buysTokens,
+        bool    _sellsTokens
     ) {
         asset       = _asset;
         buyPrice    = _buyPrice;
         sellPrice   = _sellPrice;
         units       = _units;
-        sellsTokens = _sellsTokens;
         buysTokens  = _buysTokens;
-        ActivatedEvent(sellsTokens, buysTokens);
+        sellsTokens = _sellsTokens;
+        ActivatedEvent(buysTokens, sellsTokens);
     }
 
     // modify trading behavior
     function activate (
-        bool _sellsTokens,
-        bool _buysTokens
+        bool _buysTokens,
+        bool _sellsTokens
     ) onlyOwner {
-        sellsTokens = _sellsTokens;
         buysTokens  = _buysTokens;
-        ActivatedEvent(sellsTokens, buysTokens);
+        sellsTokens = _sellsTokens;
+        ActivatedEvent(buysTokens, sellsTokens);
     }
 
     // allows owner to deposit ETH
@@ -153,7 +153,7 @@ contract TokenTrader is Owned {
         }
     }
 
-    // sending ETH to contract sells ETH to user
+    // sending ETH to contract sells tokens to user
     function () payable {
         buy();
     }
@@ -173,8 +173,8 @@ contract TokenTraderFactory is Owned {
         uint256 buyPrice,
         uint256 sellPrice,
         uint256 units,
-        bool    sellsTokens,
-        bool    buysTokens
+        bool    buysTokens,
+        bool    sellsTokens
     ) {
         valid = _verify[tradeContract];
         if (valid) {
@@ -183,8 +183,8 @@ contract TokenTraderFactory is Owned {
             buyPrice    = t.buyPrice();
             sellPrice   = t.sellPrice();
             units       = t.units();
-            sellsTokens = t.sellsTokens();
             buysTokens  = t.buysTokens();
+            sellsTokens = t.sellsTokens();
         }
     }
 
@@ -193,8 +193,8 @@ contract TokenTraderFactory is Owned {
         uint256 _buyPrice,
         uint256 _sellPrice,
         uint256 _units,
-        bool    _sellsTokens,
-        bool    _buysTokens
+        bool    _buysTokens,
+        bool    _sellsTokens
     ) returns (address) {
         if (_buyPrice > _sellPrice) throw; // must make profit on spread
         if (_units == 0) throw;            // can't sell zero units
@@ -203,8 +203,8 @@ contract TokenTraderFactory is Owned {
             _buyPrice,
             _sellPrice,
             _units,
-            _sellsTokens,
-            _buysTokens);
+            _buysTokens,
+            _sellsTokens);
         _verify[trader] = true; // record that this factory created the trader
         TokenTrader(trader).transferOwnership(msg.sender); // set the owner to whoever called the function
         TradeListing(msg.sender, trader);
