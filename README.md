@@ -46,6 +46,8 @@ Once I have completed my testing and deployed these contracts onto Mainnet, I'll
 
 * Complete my testing
 
+* Document usage
+
 * Deploy on Mainnet, announce the bounty program
 
 * Rewrite https://cryptoderivatives.market to use the new contracts
