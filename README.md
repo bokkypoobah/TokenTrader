@@ -3,9 +3,9 @@ Decentralised trustless ERC20-compliant token to ETH exchange contract on the Et
 
 There are two types of these contracts:
 
-* The original REP TokenTraderFactory that will work generally with ERC20 tokens
+* **TokenTraderFactory** - The original REP TokenTraderFactory that will work generally with ERC20 tokens
 
-* A modified TokenTraderFactory customised to handle the partial ERC20 compliance of the Golem Network Token where the `approve(...)`, `transferFrom(...)` and `allowance(...)` methods are not implemented.
+* **TokenSellerFactory** - A modified TokenTraderFactory customised to handle the partial ERC20 compliance of the Golem Network Token where the `approve(...)`, `transferFrom(...)` and `allowance(...)` methods are not implemented.
 
 ---
 
