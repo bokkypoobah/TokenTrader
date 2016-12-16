@@ -59,18 +59,15 @@ contract TokenSeller is Owned {
     event TokenWithdrawn(address token, uint256 value);
     event EtherWithdrawn(uint256 value);
     event AssetBought(address indexed buyer, uint256 amount, uint256 value, uint256 change);
-    event AssetSold(address indexed seller, uint256 amount, uint256 value);
 
     // Constructor
     function TokenSeller (
         address _asset,
         uint256 _sellPrice,
         uint256 _units,
-        bool    _sellsTokens,
-        bool    _buysTokens
+        bool    _sellsTokens
     ) {
         asset       = _asset;
-        buyPrice    = _buyPrice;
         sellPrice   = _sellPrice;
         units       = _units;
         sellsTokens = _sellsTokens;
