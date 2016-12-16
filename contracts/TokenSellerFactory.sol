@@ -1,22 +1,34 @@
-pragma solidity ^0.4.0;
+pragma solidity ^0.4.4;
 
-//https://github.com/nexusdev/erc20/blob/master/contracts/erc20.sol
+// ------------------------------------------------------------------------
+// TokenSellerFactory
+//
+// Decentralised trustless ERC20-partially-compliant token to ETH exchange
+// contract on the Ethereum blockchain.
+//
+// This caters for the Golem Network Token which does not implement the
+// transferFrom(...), approve(...) and allowance(...) methods
+//
+// Enjoy. (c) JonnyLatte, Cintix & BokkyPooBah 2016. The MIT licence.
+// ------------------------------------------------------------------------
 
-contract ERC20Constant {
-    function balanceOf( address who ) constant returns (uint value);
+// https://github.com/ethereum/EIPs/issues/20
+contract ERC20Partial {
+    function totalSupply() constant returns (uint totalSupply);
+    function balanceOf(address _owner) constant returns (uint balance);
+    function transfer(address _to, uint _value) returns (bool success);
+    // function transferFrom(address _from, address _to, uint _value) returns (bool success);
+    // function approve(address _spender, uint _value) returns (bool success);
+    // function allowance(address _owner, address _spender) constant returns (uint remaining);
+    event Transfer(address indexed _from, address indexed _to, uint _value);
+    // event Approval(address indexed _owner, address indexed _spender, uint _value);
 }
-contract ERC20Stateful {
-    function transfer( address to, uint value) returns (bool ok);
-}
-contract ERC20Events {
-    event Transfer(address indexed from, address indexed to, uint value);
-}
-contract ERC20 is ERC20Constant, ERC20Stateful, ERC20Events {}
 
-contract owned {
+contract Owned {
     address public owner;
+    event OwnershipTransferred(address indexed _from, address indexed _to);
 
-    function owned() {
+    function Owned() {
         owner = msg.sender;
     }
 
@@ -26,6 +38,7 @@ contract owned {
     }
 
     function transferOwnership(address newOwner) onlyOwner {
+        OwnershipTransferred(owner, newOwner);
         owner = newOwner;
     }
 }
@@ -33,7 +46,7 @@ contract owned {
 // contract can sell tokens for ETH
 // prices are in amount of wei per batch of token units
 
-contract TokenTrader is owned {
+contract TokenSeller is Owned {
 
     address public asset;       // address of token
     uint256 public sellPrice;   // contract sells lots of tokens at this price
@@ -42,144 +55,129 @@ contract TokenTrader is owned {
     bool public sellsTokens;    // is contract selling
 
     event ActivatedEvent(bool sells);
-    event UpdateEvent();
+    event AssetWithdrawn(uint256 value);
+    event TokenWithdrawn(address token, uint256 value);
+    event EtherWithdrawn(uint256 value);
+    event AssetBought(address indexed buyer, uint256 amount, uint256 value, uint256 change);
+    event AssetSold(address indexed seller, uint256 amount, uint256 value);
 
-    function TokenTrader (
-        address _asset, 
-        uint256 _sellPrice, 
+    // Constructor
+    function TokenSeller (
+        address _asset,
+        uint256 _sellPrice,
         uint256 _units,
-        bool    _sellsTokens
-        )
-    {
-          asset         = _asset; 
-          sellPrice    = _sellPrice;
-          units         = _units; 
-          sellsTokens   = _sellsTokens;
-
-          ActivatedEvent(sellsTokens);
+        bool    _sellsTokens,
+        bool    _buysTokens
+    ) {
+        asset       = _asset;
+        buyPrice    = _buyPrice;
+        sellPrice   = _sellPrice;
+        units       = _units;
+        sellsTokens = _sellsTokens;
+        ActivatedEvent(sellsTokens);
     }
 
     // modify trading behavior
     function activate (
-        bool    _sellsTokens
-        ) onlyOwner
-    {
-          sellsTokens   = _sellsTokens;
-
-          ActivatedEvent(sellsTokens);
+        bool _sellsTokens
+    ) onlyOwner {
+        sellsTokens = _sellsTokens;
+        ActivatedEvent(sellsTokens);
     }
 
     // allow owner to remove trade token
-    function withdrawAsset(uint256 _value) onlyOwner returns (bool ok)
-    {
-        return ERC20(asset).transfer(owner,_value);
-        UpdateEvent();
+    function withdrawAsset(uint256 _value) onlyOwner returns (bool ok) {
+        AssetWithdrawn(_value);
+        return ERC20Partial(asset).transfer(owner, _value);
     }
 
     // allow owner to remove arbitrary tokens
     // included just in case contract receives wrong token
-    function withdrawToken(address _token, uint256 _value) onlyOwner returns (bool ok)
-    {
-        return ERC20(_token).transfer(owner,_value);
-        UpdateEvent();
+    function withdrawToken(address _token, uint256 _value) onlyOwner returns (bool ok) {
+        TokenWithdrawn(_token, _value);
+        return ERC20Partial(_token).transfer(owner, _value);
     }
 
     // allow owner to remove ETH
-    function withdraw(uint256 _value) onlyOwner returns (bool ok)
-    {
-        if(this.balance >= _value) {
+    function withdraw(uint256 _value) onlyOwner returns (bool ok) {
+        if (this.balance >= _value) {
+            EtherWithdrawn(_value);
             return owner.send(_value);
         }
-        UpdateEvent();
     }
 
-    //user buys token with ETH
+    // user buys token with ETH
     function buy() payable {
-        if(sellsTokens || msg.sender == owner) 
-        {
-            uint order   = msg.value / sellPrice; 
-            uint can_sell = ERC20(asset).balanceOf(address(this)) / units;
-
-            if(order > can_sell)
-            {
-                uint256 change = msg.value - (can_sell * sellPrice);
+        if (sellsTokens || msg.sender == owner) {
+            uint order    = msg.value / sellPrice;
+            uint can_sell = ERC20Partial(asset).balanceOf(address(this)) / units;
+            uint256 change = 0;
+            if (order > can_sell) {
+                change = msg.value - (can_sell * sellPrice);
                 order = can_sell;
-                if(!msg.sender.send(change)) throw;
+                if (!msg.sender.send(change)) throw;
             }
-
-            if(order > 0) {
-                if(!ERC20(asset).transfer(msg.sender,order * units)) throw;
+            if (order > 0) {
+                if(!ERC20Partial(asset).transfer(msg.sender, order * units)) throw;
             }
-            UpdateEvent();
+            AssetBought(msg.sender, msg.value, order * units, change);
         }
-        else if(!msg.sender.send(msg.value)) throw;  // return user funds if the contract is not selling
+        else if (!msg.sender.send(msg.value)) throw;  // return user funds if the contract is not selling
     }
 
-    // sending ETH to contract sells GNT to user
+    // sending ETH to contract sells tokens to user
     function () payable {
         buy();
     }
 }
 
-// This contract deploys TokenTrader contracts and logs the event
-// trade pairs are identified with sha3(asset,units)
+// This contract deploys TokenSeller contracts and logs the event
+contract TokenSellerFactory is Owned {
 
-contract TokenTraderFactory {
+    event TradeListing(address owner, address addr);
+    event TokenWithdrawn(address token, uint256 value);
 
-    event TradeListing(bytes32 bookid, address owner, address addr);
-    event NewBook(bytes32 bookid, address asset, uint256 units);
+    mapping(address => bool) _verify;
 
-    mapping( address => bool ) _verify;
-    mapping( bytes32 => bool ) pairExits;
-    
-    function verify(address tradeContract)  constant returns (
+    function verify(address tradeContract) constant returns (
         bool valid,
-        address asset, 
-        uint256 sellPrice, 
+        address asset,
+        uint256 sellPrice,
         uint256 units,
         bool    sellsTokens
-        ) {
-            
-            valid = _verify[tradeContract];
-            
-            if(valid) {
-                TokenTrader t = TokenTrader(tradeContract);
-                
-                asset = t.asset();
-                sellPrice = t.sellPrice();
-                units = t.units();
-                sellsTokens = t.sellsTokens();
-            }
-        
+    ) {
+        valid = _verify[tradeContract];
+        if (valid) {
+            TokenSeller t = TokenSeller(tradeContract);
+            asset       = t.asset();
+            sellPrice   = t.sellPrice();
+            units       = t.units();
+            sellsTokens = t.sellsTokens();
+        }
     }
 
-    function createTradeContract(       
-        address _asset, 
-        uint256 _sellPrice, 
+    function createTradeContract(
+        address _asset,
+        uint256 _sellPrice,
         uint256 _units,
         bool    _sellsTokens
-        ) returns (address) 
-    {
-        if(_units == 0) throw;              // can't sell zero units
-
-        address trader = new TokenTrader (
-                     _asset, 
-                     _sellPrice, 
-                     _units,
-                     _sellsTokens);
-
-        var bookid = sha3(_asset,_units);
-
+    ) returns (address) {
+        if (_units == 0) throw;            // can't sell zero units
+        address trader = new TokenSeller(
+            _asset,
+            _sellPrice,
+            _units,
+            _sellsTokens);
         _verify[trader] = true; // record that this factory created the trader
+        TokenSeller(trader).transferOwnership(msg.sender); // set the owner to whoever called the function
+        TradeListing(msg.sender, trader);
+    }
 
-        TokenTrader(trader).transferOwnership(msg.sender); // set the owner to whoever called the function
-
-        if(pairExits[bookid] == false) {
-            pairExits[bookid] = true;
-            NewBook(bookid, _asset, _units);
-        }
-
-        TradeListing(bookid,msg.sender,trader);
+    // allow owner to remove arbitrary tokens
+    // included just in case contract receives some tokens
+    function withdrawToken(address _token, uint256 _value) onlyOwner returns (bool ok) {
+        TokenWithdrawn(_token, _value);
+        return ERC20Partial(_token).transfer(owner, _value);
     }
 
     function () {
