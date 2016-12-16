@@ -44,15 +44,15 @@ Once I have completed my testing and deployed these contracts onto Mainnet, I'll
 
 ## Outstanding Actions
 
-* Complete my testing
+* Complete my testing.
 
-* Document usage
+* Document usage of the contracts on the [Wiki](https://github.com/bokkypoobah/TokenTrader/wiki).
 
-* Deploy on Mainnet, announce the bounty program
+* Deploy on Mainnet, announce the bounty program.
 
-* Rewrite https://cryptoderivatives.market to use the new contracts
+* Rewrite https://cryptoderivatives.market to use the new contracts.
 
-* Rewrite https://github.com/bokkypoobah/FindGNTTokenTrader to list the new contracts
+* Rewrite https://github.com/bokkypoobah/FindGNTTokenTrader to list the new contracts.
 
 <br />
 
