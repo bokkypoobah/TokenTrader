@@ -3,13 +3,15 @@ Decentralised trustless ERC20-compliant token to ETH exchange contract on the Et
 
 There are two types of these contracts:
 
-* **TokenTraderFactory** - The original REP TokenTraderFactory that will allow users to buy or sell ERC20-compliant tokens
+* **TokenTrader** - The original REP TokenTrader that allows users to buy or sell ERC20-compliant tokens
 
-* **TokenSellerFactory** - A modified TokenTraderFactory customised to handle the partial ERC20 compliance of the Golem Network Token where the `approve(...)`, `transferFrom(...)` and `allowance(...)` methods are not implemented.
+* **TokenSeller** - A modified TokenTrader customised to handle the partial ERC20 compliance of the Golem Network Token where the `approve(...)`, `transferFrom(...)` and `allowance(...)` methods are not implemented.
+
+See the [wiki](https://github.com/bokkypoobah/TokenTrader/wiki) for further information.
 
 ---
 
-## TokenTraderFactory
+## TokenTrader
 
 This repository contains the excellent REP [TokenTraderFactory](https://github.com/bokkypoobah/TokenTrader/blob/master/contracts/TokenTraderFactory.sol) that was originally written by [/u/JonnyLatte](https://www.reddit.com/user/JonnyLatte) and deployed at [0x3398080b81a1cff1429af347ce2b17fc28de3937](https://etherscan.io/address/0x3398080b81a1cff1429af347ce2b17fc28de3937#code). 
 
@@ -23,7 +25,7 @@ Some further information on this contract can be found at [Live testing ETH <-> 
 
 ---
 
-## TokenSellerFactory (Renamed From The SellOnly GNT TokenTraderFactory)
+## TokenSeller (Renamed From The SellOnly GNT TokenTrader)
 
 This repository also contains the SellOnly GNT TokenTraderFactory, renamed to [TokenSellerFactory](https://github.com/bokkypoobah/TokenTrader/blob/master/contracts/TokenSellerFactory.sol) that was the original REP TokenTraderFactory modified by [/u/Cintix](https://www.reddit.com/user/cintix) at [0xc4af56cd5254aef959d4bce2f75874007808b701](https://etherscan.io/address/0xc4af56cd5254aef959d4bce2f75874007808b701#code). The difference in this contract from the original REP TokenTraderFactory is that the `sell(...)` method has been removed as the partial ERC20 compliance of the GNT Token does not support the selling of these tokens. 
 
