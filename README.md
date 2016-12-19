@@ -48,9 +48,9 @@ Once I have completed my testing and deployed these contracts onto Mainnet, I'll
 
 ## Outstanding Actions
 
-* Complete my testing.
+* COMPLETED - Complete my testing. See [Testing Results ‐ Dec 19 2016 15:51](https://github.com/bokkypoobah/TokenTrader/wiki/Testing-Results-%E2%80%90-Dec-19-2016-15:51)
 
-* Document usage of the contracts on the [Wiki](https://github.com/bokkypoobah/TokenTrader/wiki).
+* IN PROGRESS - Document usage of the contracts on the [Wiki](https://github.com/bokkypoobah/TokenTrader/wiki).
 
 * Deploy on Mainnet, announce the bounty program.
 
