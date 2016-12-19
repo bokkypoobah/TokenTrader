@@ -1,0 +1,91 @@
+# Account                                                   EtherBalance                TokenBalance Name
+0 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e   154755.111502480000000000      800.000000000000000000 Account #0
+1 0x0014060ff383c9b21c6840a3b14aab06741e5c49    71654.172880247272460000     1000.000000000000000000 Account #1
+2 0xc56e789115db8755725e08c4c7fb844142748b8f     2000.000000000000000000        0.000000000000000000 Token
+3 0x3c56a3ac6ffe58b236db8bab408aec23f85a0c9f      100.000000000000000000      100.000000000000000000 TokenTrader
+4 0x3cbc545d03c7958a8f343f58ea60d01e4d3ecd09        0.000000000000000000      100.000000000000000000 TokenSeller
+tokenTraderDeactivateBuyTxId gas=300000 gasUsed=28583
+Approving 200 tokens from eth.accounts[1] to contract 0x3c56a3ac6ffe58b236db8bab408aec23f85a0c9f
+tokenApproveTxId gas=300000 gasUsed=45476
+Sending 90 tokens from eth.accounts[1] to contract 0x3c56a3ac6ffe58b236db8bab408aec23f85a0c9f
+tokenTraderSellTokenTxId gas=300000 gasUsed=22417
+Expecting no change in balances except for a bit of gas from eth.accounts[1]
+# Account                                                   EtherBalance                TokenBalance Name
+0 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e   154790.112860340000000000      800.000000000000000000 Account #0
+1 0x0014060ff383c9b21c6840a3b14aab06741e5c49    71654.171522387272460000     1000.000000000000000000 Account #1
+2 0xc56e789115db8755725e08c4c7fb844142748b8f     2000.000000000000000000        0.000000000000000000 Token
+3 0x3c56a3ac6ffe58b236db8bab408aec23f85a0c9f      100.000000000000000000      100.000000000000000000 TokenTrader
+4 0x3cbc545d03c7958a8f343f58ea60d01e4d3ecd09        0.000000000000000000      100.000000000000000000 TokenSeller
+tokenTraderActivateBuyTxId gas=300000 gasUsed=28647
+Sending 90 tokens from eth.accounts[1] to contract 0x3c56a3ac6ffe58b236db8bab408aec23f85a0c9f
+tokenTraderSellTokenTxId gas=300000 gasUsed=22417
+Expecting change in eth.accounts[1] and TokenTrader balances
+# Account                                                   EtherBalance                TokenBalance Name
+0 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e   154800.112860340000000000      800.000000000000000000 Account #0
+1 0x0014060ff383c9b21c6840a3b14aab06741e5c49    71654.171522387272460000     1000.000000000000000000 Account #1
+2 0xc56e789115db8755725e08c4c7fb844142748b8f     2000.000000000000000000        0.000000000000000000 Token
+3 0x3c56a3ac6ffe58b236db8bab408aec23f85a0c9f      100.000000000000000000      100.000000000000000000 TokenTrader
+4 0x3cbc545d03c7958a8f343f58ea60d01e4d3ecd09        0.000000000000000000      100.000000000000000000 TokenSeller
+Sending 90 tokens from eth.accounts[1] to contract 0x3c56a3ac6ffe58b236db8bab408aec23f85a0c9f but only 1 ETH remaining to pay for tokens
+tokenTraderSellTokenTxId gas=300000 gasUsed=50319
+Expecting change in eth.accounts[1] and TokenTrader balances
+# Account                                                   EtherBalance                TokenBalance Name
+0 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e   154810.113866720000000000      800.000000000000000000 Account #0
+1 0x0014060ff383c9b21c6840a3b14aab06741e5c49    71753.170516007272460000      910.000000000000000000 Account #1
+2 0xc56e789115db8755725e08c4c7fb844142748b8f     2000.000000000000000000        0.000000000000000000 Token
+3 0x3c56a3ac6ffe58b236db8bab408aec23f85a0c9f        1.000000000000000000      190.000000000000000000 TokenTrader
+4 0x3cbc545d03c7958a8f343f58ea60d01e4d3ecd09        0.000000000000000000      100.000000000000000000 TokenSeller
+tokenTraderDeactivateSellTxId gas=300000 gasUsed=28583
+tokenSellerDeactivateSellTxId gas=300000 gasUsed=14020
+tokenTraderBuyTokenTxId gas=100000 gasUsed=28185
+tokenSellerBuyTokenTxId gas=100000 gasUsed=28154
+Expecting no change in balances except for a bit of gas from eth.accounts[1]
+# Account                                                   EtherBalance                TokenBalance Name
+0 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e   154835.114993500000000000      800.000000000000000000 Account #0
+1 0x0014060ff383c9b21c6840a3b14aab06741e5c49    71753.169389227272460000      910.000000000000000000 Account #1
+2 0xc56e789115db8755725e08c4c7fb844142748b8f     2000.000000000000000000        0.000000000000000000 Token
+3 0x3c56a3ac6ffe58b236db8bab408aec23f85a0c9f        1.000000000000000000      190.000000000000000000 TokenTrader
+4 0x3cbc545d03c7958a8f343f58ea60d01e4d3ecd09        0.000000000000000000      100.000000000000000000 TokenSeller
+tokenTraderActivateSellTxId gas=300000 gasUsed=28647
+tokenSellerActivateSellTxId gas=300000 gasUsed=43103
+tokenTraderBuyTokenTxId gas=100000 gasUsed=37568
+tokenSellerBuyTokenTxId gas=100000 gasUsed=37474
+Expecting change in eth.accounts[1] plus decrease in TokenTrader and TokenSeller balances
+# Account                                                   EtherBalance                TokenBalance Name
+0 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e   154855.116494340000000000      800.000000000000000000 Account #0
+1 0x0014060ff383c9b21c6840a3b14aab06741e5c49    71553.167888387272460000     1076.666666666666600000 Account #1
+2 0xc56e789115db8755725e08c4c7fb844142748b8f     2000.000000000000000000        0.000000000000000000 Token
+3 0x3c56a3ac6ffe58b236db8bab408aec23f85a0c9f      101.000000000000000000      106.666666666666700000 TokenTrader
+4 0x3cbc545d03c7958a8f343f58ea60d01e4d3ecd09      100.000000000000000000       16.666666666666700000 TokenSeller
+tokenTraderBuyTokenTxId gas=100000 gasUsed=29516
+tokenSellerBuyTokenTxId gas=100000 gasUsed=29422
+Expecting change in eth.accounts[1] plus decrease in TokenTrader and TokenSeller balances, but limited tokens left
+# Account                                                   EtherBalance                TokenBalance Name
+0 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e   154865.117673100000000000      800.000000000000000000 Account #0
+1 0x0014060ff383c9b21c6840a3b14aab06741e5c49    71405.166709627272380000     1200.000000000000000000 Account #1
+2 0xc56e789115db8755725e08c4c7fb844142748b8f     2000.000000000000000000        0.000000000000000000 Token
+3 0x3c56a3ac6ffe58b236db8bab408aec23f85a0c9f      229.000000000000040000        0.000000000000000000 TokenTrader
+4 0x3cbc545d03c7958a8f343f58ea60d01e4d3ecd09      120.000000000000040000        0.000000000000000000 TokenSeller
+Transferring 30 ETH and 30 tokens to tokenTrader and tokenSeller
+tokenTraderAddEtherTxId gas=100000 gasUsed=31313
+tokenSellerAddEtherTxId gas=100000 gasUsed=31282
+traderTransferTokenTxId gas=100000 gasUsed=50921
+sellerTransferTokenTxId gas=100000 gasUsed=50921
+Expecting change in eth.accounts[0] tokens plus 30 tokens in TokenTrader and TokenSeller
+# Account                                                   EtherBalance                TokenBalance Name
+0 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e   154875.117673100000000000      740.000000000000000000 Account #0
+1 0x0014060ff383c9b21c6840a3b14aab06741e5c49    71405.166709627272380000     1200.000000000000000000 Account #1
+2 0xc56e789115db8755725e08c4c7fb844142748b8f     2000.000000000000000000        0.000000000000000000 Token
+3 0x3c56a3ac6ffe58b236db8bab408aec23f85a0c9f      229.000000000000040000       30.000000000000000000 TokenTrader
+4 0x3cbc545d03c7958a8f343f58ea60d01e4d3ecd09      120.000000000000040000       30.000000000000000000 TokenSeller
+tokenTraderWithdrawEtherTxId gas=300000 gasUsed=30125
+tokenTraderWithdrawAssetTxId gas=300000 gasUsed=36549
+tokenSellerWithdrawEtherTxId gas=300000 gasUsed=30125
+tokenSellerWithdrawAssetTxId gas=300000 gasUsed=36461
+Expecting increase of 10 ETH and 10 tokens in eth.accounts[0] tokens and decrease of 5 ETH and 5 tokens in TokenTrader and TokenSeller
+# Account                                                   EtherBalance                TokenBalance Name
+0 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e   154895.117673100000000000      750.000000000000000000 Account #0
+1 0x0014060ff383c9b21c6840a3b14aab06741e5c49    71405.166709627272380000     1200.000000000000000000 Account #1
+2 0xc56e789115db8755725e08c4c7fb844142748b8f     2000.000000000000000000        0.000000000000000000 Token
+3 0x3c56a3ac6ffe58b236db8bab408aec23f85a0c9f      224.000000000000040000       25.000000000000000000 TokenTrader
+4 0x3cbc545d03c7958a8f343f58ea60d01e4d3ecd09      115.000000000000040000       25.000000000000000000 TokenSeller

@@ -1,0 +1,9 @@
+Creating ERC20 Token @ Mon, 19 Dec 2016 15:37:32 AEDT
+tokenAddress=0xc56e789115db8755725e08c4c7fb844142748b8f gas=400000 gasUsed=304527
+Sent 1000 ETH from eth.accounts[0] to token 0xc56e789115db8755725e08c4c7fb844142748b8f gas=100000 gasUsed=46318
+Sent 1000 ETH from eth.accounts[1] to token 0xc56e789115db8755725e08c4c7fb844142748b8f gas=100000 gasUsed=61318
+Expecting 1000 TokenBalance in accounts 0 and 1, 2 x 1000 in token EtherBalance
+# Account                                                   EtherBalance                TokenBalance
+1 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e   154820.111502480000000000     1000.000000000000000000
+2 0x0014060ff383c9b21c6840a3b14aab06741e5c49    71654.172880247272460000     1000.000000000000000000
+3 0xc56e789115db8755725e08c4c7fb844142748b8f     2000.000000000000000000        0.000000000000000000
