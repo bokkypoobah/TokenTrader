@@ -56,7 +56,11 @@ Once I have completed my testing and deployed these contracts onto Mainnet, I'll
 
 * IN PROGRESS - Document usage of the contracts on the [Wiki](https://github.com/bokkypoobah/TokenTrader/wiki).
 
-* Deploy on Mainnet, announce the bounty program.
+* COMPLETED - Deploy on Mainnet with verified source:
+  * TokenTraderFactory at [0x5a4fc44325aa235b81ad60c60444f515fd418436](https://etherscan.io/address/0x5a4fc44325aa235b81ad60c60444f515fd418436#code). 
+  * TokenSellerFactory at [0x74c2a14172cf17e8e9afcb32bb1517c4d8f3bb43](https://etherscan.io/address/0x74c2a14172cf17e8e9afcb32bb1517c4d8f3bb43#code).
+
+* Announce the bounty program.
 
 * Rewrite https://cryptoderivatives.market to use the new contracts.
 
