@@ -1,5 +1,5 @@
 IPCFILE=ipc://Users/bok/ESE/gethgenesis/geth.ipc
-PASSWORD=testtest
+PASSWORD=secretpasswordone
 
 TYPE=Trader
 INITIALETH=1000
