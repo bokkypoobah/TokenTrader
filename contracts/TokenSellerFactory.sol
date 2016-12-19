@@ -7,7 +7,7 @@ pragma solidity ^0.4.4;
 // contract on the Ethereum blockchain.
 //
 // This caters for the Golem Network Token which does not implement the
-// transferFrom(...), approve(...) and allowance(...) methods
+// ERC20 transferFrom(...), approve(...) and allowance(...) methods
 //
 // Enjoy. (c) JonnyLatte, Cintix & BokkyPooBah 2016. The MIT licence.
 // ------------------------------------------------------------------------
@@ -55,18 +55,19 @@ contract TokenSeller is Owned {
     bool public sellsTokens;    // is contract selling
 
     event ActivatedEvent(bool sells);
-    event AssetWithdrawn(uint256 value);
-    event TokenWithdrawn(address token, uint256 value);
-    event EtherWithdrawn(uint256 value);
-    event AssetBought(address indexed buyer, uint256 amount, uint256 value, uint256 change);
+    event MakerWithdrewAsset(uint256 tokens);
+    event MakerWithdrewERC20Token(address tokenAddress, uint256 tokens);
+    event MakerWithdrewEther(uint256 ethers);
+    event TakerBoughtAsset(address indexed buyer, uint256 ethersSent,
+        uint256 ethersReturned, uint256 tokensBought);
 
-    // Constructor
+    // Constructor - only to be called by the TokenSellerFactory contract
     function TokenSeller (
         address _asset,
         uint256 _sellPrice,
         uint256 _units,
         bool    _sellsTokens
-    ) {
+    ) internal {
         asset       = _asset;
         sellPrice   = _sellPrice;
         units       = _units;
@@ -74,7 +75,12 @@ contract TokenSeller is Owned {
         ActivatedEvent(sellsTokens);
     }
 
-    // modify trading behavior
+    // Maker can activate or deactivate this contract's
+    // selling status
+    //
+    // The ActivatedEvent() event is logged with the following
+    // parameter:
+    //   sellsTokens  this contract can sell asset tokens
     function activate (
         bool _sellsTokens
     ) onlyOwner {
@@ -82,29 +88,63 @@ contract TokenSeller is Owned {
         ActivatedEvent(sellsTokens);
     }
 
-    // allow owner to remove trade token
-    function withdrawAsset(uint256 _value) onlyOwner returns (bool ok) {
-        AssetWithdrawn(_value);
-        return ERC20Partial(asset).transfer(owner, _value);
+    // Maker can withdraw asset tokens from this contract, with the
+    // following parameter:
+    //   tokens  is the number of asset tokens to be withdrawn
+    //
+    // The MakerWithdrewAsset() event is logged with the following
+    // parameter:
+    //   tokens  is the number of tokens withdrawn by the maker
+    //
+    // This method was called withdrawAsset() in the old version
+    function makerWithdrawAsset(uint256 tokens) onlyOwner returns (bool ok) {
+        MakerWithdrewAsset(tokens);
+        return ERC20Partial(asset).transfer(owner, tokens);
     }
 
-    // allow owner to remove arbitrary tokens
-    // included just in case contract receives wrong token
-    function withdrawToken(address _token, uint256 _value) onlyOwner returns (bool ok) {
-        TokenWithdrawn(_token, _value);
-        return ERC20Partial(_token).transfer(owner, _value);
+    // Maker can withdraw any ERC20 asset tokens from this contract
+    //
+    // This method is included in the case where this contract receives
+    // the wrong tokens
+    //
+    // The MakerWithdrewERC20Token() event is logged with the following
+    // parameter:
+    //   tokenAddress  is the address of the tokens withdrawn by the maker
+    //   tokens        is the number of tokens withdrawn by the maker
+    //
+    // This method was called withdrawToken() in the old version
+    function makerWithdrawERC20Token(
+        address tokenAddress,
+        uint256 tokens
+    ) onlyOwner returns (bool ok) {
+        MakerWithdrewERC20Token(tokenAddress, tokens);
+        return ERC20Partial(tokenAddress).transfer(owner, tokens);
     }
 
-    // allow owner to remove ETH
-    function withdraw(uint256 _value) onlyOwner returns (bool ok) {
-        if (this.balance >= _value) {
-            EtherWithdrawn(_value);
-            return owner.send(_value);
+    // Maker withdraws ethers from this contract
+    //
+    // The MakerWithdrewEther() event is logged with the following parameter
+    //   ethers  is the number of ethers withdrawn by the maker
+    //
+    // This method was called withdraw() in the old version
+    function makerWithdrawEther(uint256 ethers) onlyOwner returns (bool ok) {
+        if (this.balance >= ethers) {
+            MakerWithdrewEther(ethers);
+            return owner.send(ethers);
         }
     }
 
-    // user buys token with ETH
-    function buy() payable {
+    // Taker buys asset tokens by sending ethers
+    //
+    // The TakerBoughtAsset() event is logged with the following parameters
+    //   buyer           is the buyer's address
+    //   ethersSent      is the number of ethers sent by the buyer
+    //   ethersReturned  is the number of ethers sent back to the buyer as
+    //                   change
+    //   tokensBought    is the number of asset tokens sent to the buyer
+    //
+    // This method was called buy() in the old version
+    function takerBuyAsset() payable {
         if (sellsTokens || msg.sender == owner) {
             uint order    = msg.value / sellPrice;
             uint can_sell = ERC20Partial(asset).balanceOf(address(this)) / units;
@@ -117,27 +157,42 @@ contract TokenSeller is Owned {
             if (order > 0) {
                 if(!ERC20Partial(asset).transfer(msg.sender, order * units)) throw;
             }
-            AssetBought(msg.sender, msg.value, order * units, change);
+            TakerBoughtAsset(msg.sender, msg.value, order * units, change);
         }
-        else if (!msg.sender.send(msg.value)) throw;  // return user funds if the contract is not selling
+        // Return user funds if the contract is not selling
+        else if (!msg.sender.send(msg.value)) throw;
     }
 
-    // sending ETH to contract sells tokens to user
+    // Taker buys tokens by sending ethers
     function () payable {
-        buy();
+        takerBuyAsset();
     }
 }
 
 // This contract deploys TokenSeller contracts and logs the event
 contract TokenSellerFactory is Owned {
 
-    event TradeListing(address owner, address addr);
-    event TokenWithdrawn(address token, uint256 value);
+    event TradeListing(address ownerAddress, address tokenSellerAddress, address asset,
+        uint256 sellPrice, uint256 units, bool sellsTokens);
+    event OwnerWithdrewERC20Token(address tokenAddress, uint256 tokens);
 
     mapping(address => bool) _verify;
 
+    // Anyone can call this method to verify the settings of a
+    // TokenSeller contract. The parameters are:
+    //   tradeContract  is the address of a TokenSeller contract
+    //
+    // Return values:
+    //   valid        did this TokenTraderFactory create the TokenTrader contract?
+    //   owner        is the owner of the TokenTrader contract
+    //   asset        is the ERC20 asset address
+    //   sellPrice    is the sell price in ethers per `units` of asset tokens
+    //   units        is the number of units of asset tokens
+    //   sellsTokens  is the TokenTrader contract selling tokens?
+    //
     function verify(address tradeContract) constant returns (
-        bool valid,
+        bool    valid,
+        address owner,
         address asset,
         uint256 sellPrice,
         uint256 units,
@@ -146,38 +201,79 @@ contract TokenSellerFactory is Owned {
         valid = _verify[tradeContract];
         if (valid) {
             TokenSeller t = TokenSeller(tradeContract);
-            asset       = t.asset();
-            sellPrice   = t.sellPrice();
-            units       = t.units();
-            sellsTokens = t.sellsTokens();
+            owner         = t.owner();
+            asset         = t.asset();
+            sellPrice     = t.sellPrice();
+            units         = t.units();
+            sellsTokens   = t.sellsTokens();
         }
     }
 
-    function createTradeContract(
-        address _asset,
-        uint256 _sellPrice,
-        uint256 _units,
-        bool    _sellsTokens
-    ) returns (address) {
-        if (_units == 0) throw;            // can't sell zero units
-        address trader = new TokenSeller(
-            _asset,
-            _sellPrice,
-            _units,
-            _sellsTokens);
-        _verify[trader] = true; // record that this factory created the trader
-        TokenSeller(trader).transferOwnership(msg.sender); // set the owner to whoever called the function
-        TradeListing(msg.sender, trader);
+    // Maker can call this method to create a new TokenSeller contract
+    // with the maker being the owner of this new contract
+    //
+    // Parameters:
+    //   asset        is the ERC20 asset address
+    //   sellPrice    is the sell price in ethers per `units` of asset tokens
+    //   units        is the number of units of asset tokens
+    //   sellsTokens  is the TokenSeller contract selling tokens?
+    //
+    // For example, listing a TokenSeller contract on the GNT Golem Network Token
+    // where the contract will sell GNT tokens at a rate of 170/100000 = 0.0017 ETH
+    // per GNT token:
+    //   asset        0xa74476443119a942de498590fe1f2454d7d4ac0d
+    //   sellPrice    170
+    //   units        100000
+    //   sellsTokens  true
+    //
+    // The TradeListing() event is logged with the following parameters
+    //   ownerAddress        is the Maker's address
+    //   tokenSellerAddress  is the address of the newly created TokenSeller contract
+    //   asset               is the ERC20 asset address
+    //   sellPrice           is the sell price in ethers per `units` of asset tokens
+    //   unit                is the number of units of asset tokens
+    //   sellsTokens         is the TokenSeller contract selling tokens?
+    //
+    // This method was called createTradeContract() in the old version
+    //
+    function createSaleContract(
+        address asset,
+        uint256 sellPrice,
+        uint256 units,
+        bool    sellsTokens
+    ) returns (address seller) {
+        // Cannot set negative price
+        if (sellPrice < 0) throw;
+        // Cannot sell zero or negative units
+        if (units <= 0) throw;
+        seller = new TokenSeller(
+            asset,
+            sellPrice,
+            units,
+            sellsTokens);
+        // Record that this factory created the trader
+        _verify[seller] = true;
+        // Set the owner to whoever called the function
+        TokenSeller(seller).transferOwnership(msg.sender);
+        TradeListing(msg.sender, seller, asset, sellPrice, units, sellsTokens);
     }
 
-    // allow owner to remove arbitrary tokens
-    // included just in case contract receives some tokens
-    function withdrawToken(address _token, uint256 _value) onlyOwner returns (bool ok) {
-        TokenWithdrawn(_token, _value);
-        return ERC20Partial(_token).transfer(owner, _value);
+    // Factory owner can withdraw any ERC20 asset tokens from this contract
+    //
+    // This method is included in the case where this contract receives
+    // the wrong tokens
+    //
+    // The OwnerWithdrewERC20Token() event is logged with the following
+    // parameter:
+    //   tokenAddress  is the address of the tokens withdrawn by the maker
+    //   tokens        is the number of tokens withdrawn by the maker
+    function ownerWithdrawERC20Token(address tokenAddress, uint256 tokens) onlyOwner returns (bool ok) {
+        OwnerWithdrewERC20Token(tokenAddress, tokens);
+        return ERC20Partial(tokenAddress).transfer(owner, tokens);
     }
 
+    // Prevents accidental sending of ether to the factory
     function () {
-        throw;     // Prevents accidental sending of ether to the factory
+        throw;
     }
 }
