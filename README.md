@@ -60,6 +60,11 @@ Once I have completed my testing and deployed these contracts onto Mainnet, I'll
   * TokenTraderFactory at [0x5a4fc44325aa235b81ad60c60444f515fd418436](https://etherscan.io/address/0x5a4fc44325aa235b81ad60c60444f515fd418436#code). 
   * TokenSellerFactory at [0x74c2a14172cf17e8e9afcb32bb1517c4d8f3bb43](https://etherscan.io/address/0x74c2a14172cf17e8e9afcb32bb1517c4d8f3bb43#code).
 
+* COMPLETED - Deploy on Testnet with verified source:
+  * [ERC20Token.sol](https://github.com/bokkypoobah/TokenTrader/blob/master/testing/test_20161219_1551/ERC20Token.sol) from account [0xa34b7cba6e3cefe2ebde6f1968c7cc4a7336b702](https://testnet.etherscan.io/address/0xa34b7cba6e3cefe2ebde6f1968c7cc4a7336b702) to [0x04afa8d058beffce172843827ac0106408b7c3bf](https://testnet.etherscan.io/address/0x04afa8d058beffce172843827ac0106408b7c3bf#code).
+  * [TokenTraderFactory.sol](https://github.com/bokkypoobah/TokenTrader/blob/master/testing/test_20161219_1551/TokenTraderFactory.sol) to [0x0495634a8f22a6f321ab39ef05060a075542287e](https://testnet.etherscan.io/address/0x0495634a8f22a6f321ab39ef05060a075542287e#code).
+  * [TokenSellerFactory.sol](https://github.com/bokkypoobah/TokenTrader/blob/master/testing/test_20161219_1551/TokenSellerFactory.sol) to [0x0afacbd203b89acbae9271a71a06530bea68646c](https://testnet.etherscan.io/address/0x0afacbd203b89acbae9271a71a06530bea68646c#code).
+
 * Announce the bounty program.
 
 * Rewrite https://cryptoderivatives.market to use the new contracts.
