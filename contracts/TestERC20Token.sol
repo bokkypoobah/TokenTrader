@@ -41,7 +41,7 @@ contract ERC20Interface {
     event Approval(address indexed _owner, address indexed _spender, uint256 _value);
 }
 
-contract ERC20Token is ERC20Interface {
+contract TestERC20Token is ERC20Interface {
 
     // Owner of this contract
     address public owner;
@@ -64,7 +64,7 @@ contract ERC20Token is ERC20Interface {
     }
 
     // Constructor
-    function ERC20Token(address _owner) {
+    function TestERC20Token(address _owner) {
         owner = _owner;
     }
 
