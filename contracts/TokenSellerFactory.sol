@@ -172,9 +172,9 @@ contract TokenSeller is Owned {
 // This contract deploys TokenSeller contracts and logs the event
 contract TokenSellerFactory is Owned {
 
-    event TradeListing(address ownerAddress, address tokenSellerAddress, address asset,
-        uint256 sellPrice, uint256 units, bool sellsTokens);
-    event OwnerWithdrewERC20Token(address tokenAddress, uint256 tokens);
+    event TradeListing(address indexed ownerAddress, address indexed tokenSellerAddress,
+        address indexed asset, uint256 sellPrice, uint256 units, bool sellsTokens);
+    event OwnerWithdrewERC20Token(address indexed tokenAddress, uint256 tokens);
 
     mapping(address => bool) _verify;
 
@@ -242,8 +242,8 @@ contract TokenSellerFactory is Owned {
         uint256 units,
         bool    sellsTokens
     ) returns (address seller) {
-        // Cannot set negative price
-        if (sellPrice < 0) throw;
+        // Cannot set zero or negative price
+        if (sellPrice <= 0) throw;
         // Cannot sell zero or negative units
         if (units <= 0) throw;
         seller = new TokenSeller(
