@@ -9,6 +9,8 @@ There are two types of these contracts:
 
 See the [wiki](https://github.com/bokkypoobah/TokenTrader/wiki) for further information.
 
+** BELOW TO BE DELETED **
+
 ---
 
 ## TokenTrader
