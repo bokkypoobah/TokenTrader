@@ -64,8 +64,8 @@ contract TestERC20Token is ERC20Interface {
     }
 
     // Constructor
-    function TestERC20Token(address _owner) {
-        owner = _owner;
+    function TestERC20Token() {
+        owner = msg.sender;
     }
 
     function totalSupply() constant returns (uint256 totalSupply) {
