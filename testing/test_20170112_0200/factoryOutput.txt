@@ -1,0 +1,631 @@
+geth endpoint 'ipc:./testchain/geth.ipc'
+TokenA contract address '0xebb2634dd3194ba6d75eeb049cd0f73bf9801d95'
+TokenB contract address '0xe9ba90b474ef72aa062d89a319c3e15b31e8fe65'
+TokenC contract address '0x30da52ef30bdaec61b43317cc045e4f267eaf779'
+Welcome to the Geth JavaScript console!
+
+instance: Geth/v1.5.5-stable-ff07d548/darwin/go1.7.4
+coinbase: 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e
+at block: 17 (Thu, 12 Jan 2017 01:57:07 AEDT)
+ datadir: /Users/bok/CryptoDerivatives/TokenTraderFactory/testchain
+ modules: admin:1.0 debug:1.0 eth:1.0 miner:1.0 net:1.0 personal:1.0 rpc:1.0 txpool:1.0 web3:1.0
+
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+> 
+undefined
+> 
+undefined
+> 
+> 
+... 
+... 
+...... 
+...... 
+... 
+... 
+undefined
+> 
+> 
+undefined
+> 
+"Account #0"
+> 
+"Account #1"
+> 
+"Account #2"
+> 
+"ERC20A"
+> 
+"ERC20B"
+> 
+"ERC20C"
+> 
+> 
+... 
+... 
+... 
+......... 
+......... 
+......... 
+......... 
+......... 
+............ 
+......... 
+......... 
+... 
+undefined
+> 
+> 
+... 
+... 
+... 
+...... 
+... 
+undefined
+> 
+> 
+... 
+... 
+... 
+...... 
+...... 
+...... 
+...... 
+... 
+undefined
+> 
+> 
+... 
+... 
+... 
+...... 
+...... 
+...... 
+...... 
+... 
+undefined
+> 
+> 
+... 
+... 
+true
+> 
+> 
+true
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+> 
+undefined
+> 
+undefined
+> 
+DATA: erc20ABI=[{"constant":false,"inputs":[{"name":"_spender","type":"address"},{"name":"_value","type":"uint256"}],"name":"approve","outputs":[{"name":"success","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"totalSupply","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_from","type":"address"},{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transferFrom","outputs":[{"name":"success","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transfer","outputs":[{"name":"success","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"},{"name":"_spender","type":"address"}],"name":"allowance","outputs":[{"name":"remaining","type":"uint256"}],"payable":false,"type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_owner","type":"address"},{"indexed":true,"name":"_spender","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Approval","type":"event"}]
+undefined
+> 
+DATA: tokenTraderABI=[{"constant":false,"inputs":[{"name":"ethers","type":"uint256"}],"name":"makerWithdrawEther","outputs":[{"name":"ok","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"asset","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"sellPrice","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"sellsTokens","outputs":[{"name":"","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"buyPrice","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"constant":false,"inputs":[],"name":"makerDepositEther","outputs":[],"payable":true,"type":"function"},{"constant":true,"inputs":[],"name":"units","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_buysTokens","type":"bool"},{"name":"_sellsTokens","type":"bool"}],"name":"activate","outputs":[],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"buysTokens","outputs":[{"name":"","type":"bool"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"tokenAddress","type":"address"},{"name":"tokens","type":"uint256"}],"name":"makerWithdrawERC20Token","outputs":[{"name":"ok","type":"bool"}],"payable":false,"type":"function"},{"constant":false,"inputs":[],"name":"takerBuyAsset","outputs":[],"payable":true,"type":"function"},{"constant":false,"inputs":[{"name":"tokens","type":"uint256"}],"name":"makerWithdrawAsset","outputs":[{"name":"ok","type":"bool"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"etherValueOfTokensToSell","type":"uint256"}],"name":"takerSellAsset","outputs":[],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"type":"function"},{"inputs":[{"name":"_asset","type":"address"},{"name":"_buyPrice","type":"uint256"},{"name":"_sellPrice","type":"uint256"},{"name":"_units","type":"uint256"},{"name":"_buysTokens","type":"bool"},{"name":"_sellsTokens","type":"bool"}],"type":"constructor"},{"payable":true,"type":"fallback"},{"anonymous":false,"inputs":[{"indexed":false,"name":"buys","type":"bool"},{"indexed":false,"name":"sells","type":"bool"}],"name":"ActivatedEvent","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"amount","type":"uint256"}],"name":"MakerDepositedEther","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"tokens","type":"uint256"}],"name":"MakerWithdrewAsset","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"tokenAddress","type":"address"},{"indexed":false,"name":"tokens","type":"uint256"}],"name":"MakerWithdrewERC20Token","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"ethers","type":"uint256"}],"name":"MakerWithdrewEther","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"buyer","type":"address"},{"indexed":false,"name":"ethersSent","type":"uint256"},{"indexed":false,"name":"ethersReturned","type":"uint256"},{"indexed":false,"name":"tokensBought","type":"uint256"}],"name":"TakerBoughtAsset","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"seller","type":"address"},{"indexed":false,"name":"etherValueOfTokensToSell","type":"uint256"},{"indexed":false,"name":"tokensSold","type":"uint256"},{"indexed":false,"name":"etherValueOfTokensSold","type":"uint256"}],"name":"TakerSoldAsset","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"}],"name":"OwnershipTransferred","type":"event"}]
+undefined
+> 
+DATA: tokenTraderFactoryABI=[{"constant":false,"inputs":[{"name":"asset","type":"address"},{"name":"buyPrice","type":"uint256"},{"name":"sellPrice","type":"uint256"},{"name":"units","type":"uint256"},{"name":"buysTokens","type":"bool"},{"name":"sellsTokens","type":"bool"}],"name":"createTradeContract","outputs":[{"name":"trader","type":"address"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"tokenAddress","type":"address"},{"name":"tokens","type":"uint256"}],"name":"ownerWithdrawERC20Token","outputs":[{"name":"ok","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"tradeContract","type":"address"}],"name":"verify","outputs":[{"name":"valid","type":"bool"},{"name":"owner","type":"address"},{"name":"asset","type":"address"},{"name":"buyPrice","type":"uint256"},{"name":"sellPrice","type":"uint256"},{"name":"units","type":"uint256"},{"name":"buysTokens","type":"bool"},{"name":"sellsTokens","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"type":"function"},{"payable":false,"type":"fallback"},{"anonymous":false,"inputs":[{"indexed":true,"name":"ownerAddress","type":"address"},{"indexed":true,"name":"tokenTraderAddress","type":"address"},{"indexed":true,"name":"asset","type":"address"},{"indexed":false,"name":"buyPrice","type":"uint256"},{"indexed":false,"name":"sellPrice","type":"uint256"},{"indexed":false,"name":"units","type":"uint256"},{"indexed":false,"name":"buysTokens","type":"bool"},{"indexed":false,"name":"sellsTokens","type":"bool"}],"name":"TradeListing","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"tokenAddress","type":"address"},{"indexed":false,"name":"tokens","type":"uint256"}],"name":"OwnerWithdrewERC20Token","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"}],"name":"OwnershipTransferred","type":"event"}]
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+... 
+...... 
+......... 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+......... 
+...... 
+... 
+traderFactoryTxId=0xae209ecc278ce2196091bb332a6f7a0f0fd233fcb99d0154a341a289a7661647
+undefined
+> 
+> 
+undefined
+> 
+undefined
+> 
+DATA: erc20PartialABI=[{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"totalSupply","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transfer","outputs":[{"name":"success","type":"bool"}],"payable":false,"type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Transfer","type":"event"}]
+undefined
+> 
+DATA: tokenSellerABI=[{"constant":false,"inputs":[{"name":"ethers","type":"uint256"}],"name":"makerWithdrawEther","outputs":[{"name":"ok","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"asset","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"sellPrice","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"sellsTokens","outputs":[{"name":"","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"units","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"tokenAddress","type":"address"},{"name":"tokens","type":"uint256"}],"name":"makerWithdrawERC20Token","outputs":[{"name":"ok","type":"bool"}],"payable":false,"type":"function"},{"constant":false,"inputs":[],"name":"takerBuyAsset","outputs":[],"payable":true,"type":"function"},{"constant":false,"inputs":[{"name":"tokens","type":"uint256"}],"name":"makerWithdrawAsset","outputs":[{"name":"ok","type":"bool"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_sellsTokens","type":"bool"}],"name":"activate","outputs":[],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"type":"function"},{"inputs":[{"name":"_asset","type":"address"},{"name":"_sellPrice","type":"uint256"},{"name":"_units","type":"uint256"},{"name":"_sellsTokens","type":"bool"}],"type":"constructor"},{"payable":true,"type":"fallback"},{"anonymous":false,"inputs":[{"indexed":false,"name":"sells","type":"bool"}],"name":"ActivatedEvent","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"tokens","type":"uint256"}],"name":"MakerWithdrewAsset","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"tokenAddress","type":"address"},{"indexed":false,"name":"tokens","type":"uint256"}],"name":"MakerWithdrewERC20Token","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"ethers","type":"uint256"}],"name":"MakerWithdrewEther","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"buyer","type":"address"},{"indexed":false,"name":"ethersSent","type":"uint256"},{"indexed":false,"name":"ethersReturned","type":"uint256"},{"indexed":false,"name":"tokensBought","type":"uint256"}],"name":"TakerBoughtAsset","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"}],"name":"OwnershipTransferred","type":"event"}]
+undefined
+> 
+DATA: tokenSellerFactoryABI=[{"constant":false,"inputs":[{"name":"tokenAddress","type":"address"},{"name":"tokens","type":"uint256"}],"name":"ownerWithdrawERC20Token","outputs":[{"name":"ok","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"tradeContract","type":"address"}],"name":"verify","outputs":[{"name":"valid","type":"bool"},{"name":"owner","type":"address"},{"name":"asset","type":"address"},{"name":"sellPrice","type":"uint256"},{"name":"units","type":"uint256"},{"name":"sellsTokens","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"asset","type":"address"},{"name":"sellPrice","type":"uint256"},{"name":"units","type":"uint256"},{"name":"sellsTokens","type":"bool"}],"name":"createSaleContract","outputs":[{"name":"seller","type":"address"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"type":"function"},{"payable":false,"type":"fallback"},{"anonymous":false,"inputs":[{"indexed":true,"name":"ownerAddress","type":"address"},{"indexed":true,"name":"tokenSellerAddress","type":"address"},{"indexed":true,"name":"asset","type":"address"},{"indexed":false,"name":"sellPrice","type":"uint256"},{"indexed":false,"name":"units","type":"uint256"},{"indexed":false,"name":"sellsTokens","type":"bool"}],"name":"TradeListing","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"tokenAddress","type":"address"},{"indexed":false,"name":"tokens","type":"uint256"}],"name":"OwnerWithdrewERC20Token","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"}],"name":"OwnershipTransferred","type":"event"}]
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+... 
+...... 
+......... 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+......... 
+...... 
+... 
+sellerFactoryTxId=0xd01d20976d73dd45b7d930182b127e6463758f12b6c493e3c87db07a69bebfc0
+undefined
+> 
+> 
+undefined
+> 
+undefined
+> 
+DATA: gntTokenTraderABI=[{"constant":false,"inputs":[{"name":"_value","type":"uint256"}],"name":"withdraw","outputs":[{"name":"ok","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"asset","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"sellPrice","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"sellsTokens","outputs":[{"name":"","type":"bool"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_value","type":"uint256"}],"name":"withdrawAsset","outputs":[{"name":"ok","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"units","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_token","type":"address"},{"name":"_value","type":"uint256"}],"name":"withdrawToken","outputs":[{"name":"ok","type":"bool"}],"payable":false,"type":"function"},{"constant":false,"inputs":[],"name":"buy","outputs":[],"payable":true,"type":"function"},{"constant":false,"inputs":[{"name":"_sellsTokens","type":"bool"}],"name":"activate","outputs":[],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"type":"function"},{"inputs":[{"name":"_asset","type":"address"},{"name":"_sellPrice","type":"uint256"},{"name":"_units","type":"uint256"},{"name":"_sellsTokens","type":"bool"}],"type":"constructor"},{"payable":true,"type":"fallback"},{"anonymous":false,"inputs":[{"indexed":false,"name":"sells","type":"bool"}],"name":"ActivatedEvent","type":"event"},{"anonymous":false,"inputs":[],"name":"UpdateEvent","type":"event"}]
+undefined
+> 
+DATA: gntTokenTraderFactoryABI=[{"constant":false,"inputs":[{"name":"_asset","type":"address"},{"name":"_sellPrice","type":"uint256"},{"name":"_units","type":"uint256"},{"name":"_sellsTokens","type":"bool"}],"name":"createTradeContract","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"tradeContract","type":"address"}],"name":"verify","outputs":[{"name":"valid","type":"bool"},{"name":"asset","type":"address"},{"name":"sellPrice","type":"uint256"},{"name":"units","type":"uint256"},{"name":"sellsTokens","type":"bool"}],"payable":false,"type":"function"},{"payable":false,"type":"fallback"},{"anonymous":false,"inputs":[{"indexed":false,"name":"bookid","type":"bytes32"},{"indexed":false,"name":"owner","type":"address"},{"indexed":false,"name":"addr","type":"address"}],"name":"TradeListing","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"bookid","type":"bytes32"},{"indexed":false,"name":"asset","type":"address"},{"indexed":false,"name":"units","type":"uint256"}],"name":"NewBook","type":"event"}]
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+... 
+...... 
+......... 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+......... 
+...... 
+... 
+gntTraderFactoryTxId=0xd273d77e4c0898f63f82c42d3c7931f5db881006f9fb69206fcfb097972a0ee1
+undefined
+> 
+> 
+... 
+undefined
+> 
+> 
+DATA: tokenTraderFactoryAddress=0x03d47b0d78f8dee3089037dffd5c9a1f7e7282af
+RESULT: traderFactoryAddress=0x03d47b0d78f8dee3089037dffd5c9a1f7e7282af gas=3000000 gasUsed=1222799 cost=0.02445598 block=21 txId=0xae209ecc278ce2196091bb332a6f7a0f0fd233fcb99d0154a341a289a7661647
+DATA: tokenSellerFactoryAddress=0xcc643e6c5639d64ca3c0c484a6c0f23d11b87477
+RESULT: sellerFactoryAddress=0xcc643e6c5639d64ca3c0c484a6c0f23d11b87477 gas=3000000 gasUsed=972139 cost=0.01944278 block=22 txId=0xd01d20976d73dd45b7d930182b127e6463758f12b6c493e3c87db07a69bebfc0
+DATA: gntTokenTraderFactoryAddress=0xbd7780c8773a6c99163ea9c1fa870450bc216aa6
+RESULT: gntTraderFactoryAddress=0xbd7780c8773a6c99163ea9c1fa870450bc216aa6 gas=3000000 gasUsed=781907 cost=0.01563814 block=22 txId=0xd273d77e4c0898f63f82c42d3c7931f5db881006f9fb69206fcfb097972a0ee1
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+... 
+undefined
+> 
+RESULT: createTradeContractTxId gas=1000000 gasUsed=678965 cost=0.0135793 block=24 txId=0xf46777a420da75f8ae3c369612864af96d45d3fbcc4eb87b257159f5a6498728
+undefined
+> 
+RESULT: createSaleContractTxId gas=1000000 gasUsed=528711 cost=0.01057422 block=24 txId=0x5430709530191f0ff1d6395b3eb7c87dedc8252d2248b786e6afd24e8d795753
+undefined
+> 
+RESULT: createGNTTradeContractTxId gas=1000000 gasUsed=503624 cost=0.01007248 block=24 txId=0x9955b6f4bbe4854e86420ea52f0724aea63a416055ae556814b896f804868afd
+undefined
+> 
+undefined
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+...... 
+...... 
+...... 
+...... 
+...... 
+...... 
+...... 
+...... 
+...... 
+...... 
+...... 
+DATA: tokenTraderAddress=0xfb6ae08258f553335fd33b71081228e53794f8eb
+DATA: tokenTraderOwner=0x0014060ff383c9b21c6840a3b14aab06741e5c49
+0: {"address":"0x03d47b0d78f8dee3089037dffd5c9a1f7e7282af","args":{"asset":"0xebb2634dd3194ba6d75eeb049cd0f73bf9801d95","buyPrice":"110000","buysTokens":true,"ownerAddress":"0x0014060ff383c9b21c6840a3b14aab06741e5c49","sellPrice":"120000","sellsTokens":true,"tokenTraderAddress":"0xfb6ae08258f553335fd33b71081228e53794f8eb","units":"100000"},"blockHash":"0xf8f05e03afaf041b54ced90855dae62e66a213434a77b06daa2bf82d0b040f6a","blockNumber":24,"event":"TradeListing","logIndex":2,"removed":false,"transactionHash":"0xf46777a420da75f8ae3c369612864af96d45d3fbcc4eb87b257159f5a6498728","transactionIndex":0}
+{
+  callbacks: [function(error, result)],
+  filterId: "0x42c7438e659f74ead651b76675c079b3",
+  getLogsCallbacks: [],
+  implementation: {
+    getLogs: function(),
+    newFilter: function(),
+    poll: function(),
+    uninstallFilter: function()
+  },
+  options: {
+    address: "0x03d47b0d78f8dee3089037dffd5c9a1f7e7282af",
+    from: undefined,
+    fromBlock: "0x16",
+    to: undefined,
+    toBlock: "0x18",
+    topics: ["0x65ff0f5aef2091ad3616436792adf51be3068c631b081ac0f30f77e3a0e6502d", null, null, null]
+  },
+  pollFilters: [],
+  requestManager: {
+    polls: {
+      0x42c7438e659f74ead651b76675c079b3: {
+        data: {...},
+        id: "0x42c7438e659f74ead651b76675c079b3",
+        callback: function(error, messages),
+        uninstall: function()
+      }
+    },
+    provider: {
+      newAccount: function(),
+      send: function github.com/ethereum/go-ethereum/console.(*bridge).Send-fm(),
+      sendAsync: function github.com/ethereum/go-ethereum/console.(*bridge).Send-fm(),
+      sign: function(),
+      unlockAccount: function()
+    },
+    timeout: {},
+    poll: function(),
+    reset: function(keepIsSyncing),
+    send: function(data),
+    sendAsync: function(data, callback),
+    sendBatch: function(data, callback),
+    setProvider: function(p),
+    startPolling: function(data, pollId, callback, uninstall),
+    stopPolling: function(pollId)
+  },
+  formatter: function(),
+  get: function(callback),
+  stopWatching: function(),
+  watch: function(callback)
+}
+> 
+undefined
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+...... 
+...... 
+...... 
+...... 
+...... 
+...... 
+...... 
+...... 
+...... 
+...... 
+...... 
+DATA: tokenSellerAddress=0x85e7378cb6a2ecbcaf5c178775764615f5046a9d
+DATA: tokenSellerOwner=0x0014060ff383c9b21c6840a3b14aab06741e5c49
+0: {"address":"0xcc643e6c5639d64ca3c0c484a6c0f23d11b87477","args":{"asset":"0xebb2634dd3194ba6d75eeb049cd0f73bf9801d95","ownerAddress":"0x0014060ff383c9b21c6840a3b14aab06741e5c49","sellPrice":"120000","sellsTokens":true,"tokenSellerAddress":"0x85e7378cb6a2ecbcaf5c178775764615f5046a9d","units":"100000"},"blockHash":"0xf8f05e03afaf041b54ced90855dae62e66a213434a77b06daa2bf82d0b040f6a","blockNumber":24,"event":"TradeListing","logIndex":5,"removed":false,"transactionHash":"0x5430709530191f0ff1d6395b3eb7c87dedc8252d2248b786e6afd24e8d795753","transactionIndex":1}
+{
+  callbacks: [function(error, result)],
+  filterId: "0x23ab464ee3f021a414d1040206570f8f",
+  getLogsCallbacks: [],
+  implementation: {
+    getLogs: function(),
+    newFilter: function(),
+    poll: function(),
+    uninstallFilter: function()
+  },
+  options: {
+    address: "0xcc643e6c5639d64ca3c0c484a6c0f23d11b87477",
+    from: undefined,
+    fromBlock: "0x16",
+    to: undefined,
+    toBlock: "0x18",
+    topics: ["0x95883871899e33394289953f74bb83c1b73d35af75cbff5548be3a0d6c52b3b5", null, null, null]
+  },
+  pollFilters: [],
+  requestManager: {
+    polls: {
+      0x23ab464ee3f021a414d1040206570f8f: {
+        data: {...},
+        id: "0x23ab464ee3f021a414d1040206570f8f",
+        callback: function(error, messages),
+        uninstall: function()
+      }
+    },
+    provider: {
+      newAccount: function(),
+      send: function github.com/ethereum/go-ethereum/console.(*bridge).Send-fm(),
+      sendAsync: function github.com/ethereum/go-ethereum/console.(*bridge).Send-fm(),
+      sign: function(),
+      unlockAccount: function()
+    },
+    timeout: {},
+    poll: function(),
+    reset: function(keepIsSyncing),
+    send: function(data),
+    sendAsync: function(data, callback),
+    sendBatch: function(data, callback),
+    setProvider: function(p),
+    startPolling: function(data, pollId, callback, uninstall),
+    stopPolling: function(pollId)
+  },
+  formatter: function(),
+  get: function(callback),
+  stopWatching: function(),
+  watch: function(callback)
+}
+> 
+undefined
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+...... 
+...... 
+...... 
+...... 
+...... 
+...... 
+...... 
+...... 
+...... 
+...... 
+...... 
+DATA: gntTokenTraderAddress=0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5
+DATA: gntTokenTraderOwner=0x0014060ff383c9b21c6840a3b14aab06741e5c49
+0: {"address":"0xbd7780c8773a6c99163ea9c1fa870450bc216aa6","args":{"addr":"0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5","bookid":"0x41b7d4341ac016fc45537354446d3187f617fe79a1ffbb59ac04b3f97c9d6b82","owner":"0x0014060ff383c9b21c6840a3b14aab06741e5c49"},"blockHash":"0xf8f05e03afaf041b54ced90855dae62e66a213434a77b06daa2bf82d0b040f6a","blockNumber":24,"event":"TradeListing","logIndex":8,"removed":false,"transactionHash":"0x9955b6f4bbe4854e86420ea52f0724aea63a416055ae556814b896f804868afd","transactionIndex":2}
+{
+  callbacks: [function(error, result)],
+  filterId: "0x2ee42b4b994e2dc37d1d4a4d8cb91dc1",
+  getLogsCallbacks: [],
+  implementation: {
+    getLogs: function(),
+    newFilter: function(),
+    poll: function(),
+    uninstallFilter: function()
+  },
+  options: {
+    address: "0xbd7780c8773a6c99163ea9c1fa870450bc216aa6",
+    from: undefined,
+    fromBlock: "0x16",
+    to: undefined,
+    toBlock: "0x18",
+    topics: ["0x2d6a3482be690073d89f3c5420f70aca9f53be93321c5f45b5be55907b5f2b5b"]
+  },
+  pollFilters: [],
+  requestManager: {
+    polls: {
+      0x2ee42b4b994e2dc37d1d4a4d8cb91dc1: {
+        data: {...},
+        id: "0x2ee42b4b994e2dc37d1d4a4d8cb91dc1",
+        callback: function(error, messages),
+        uninstall: function()
+      }
+    },
+    provider: {
+      newAccount: function(),
+      send: function github.com/ethereum/go-ethereum/console.(*bridge).Send-fm(),
+      sendAsync: function github.com/ethereum/go-ethereum/console.(*bridge).Send-fm(),
+      sign: function(),
+      unlockAccount: function()
+    },
+    timeout: {},
+    poll: function(),
+    reset: function(keepIsSyncing),
+    send: function(data),
+    sendAsync: function(data, callback),
+    sendBatch: function(data, callback),
+    setProvider: function(p),
+    startPolling: function(data, pollId, callback, uninstall),
+    stopPolling: function(pollId)
+  },
+  formatter: function(),
+  get: function(callback),
+  stopWatching: function(),
+  watch: function(callback)
+}
+> 
+undefined
+> 
+> 
+undefined
+> 
+RESULT: traderVerifyResults [true,"0x0014060ff383c9b21c6840a3b14aab06741e5c49","0xebb2634dd3194ba6d75eeb049cd0f73bf9801d95","110000","120000","100000",true,true]
+undefined
+> 
+undefined
+> 
+RESULT: sellerVerifyResults [true,"0x0014060ff383c9b21c6840a3b14aab06741e5c49","0xebb2634dd3194ba6d75eeb049cd0f73bf9801d95","120000","100000",true]
+undefined
+> 
+undefined
+> 
+RESULT: gntTraderVerifyResults [true,"0xebb2634dd3194ba6d75eeb049cd0f73bf9801d95","130000","100000",true]
+undefined
+> 
+> 
+... 
+RESULT: # Account                                                   EtherBalance               TokenABalance               TokenBBalance               TokenCBalance Name
+RESULT: 0 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e    97120.120362529650968678     1000.000000000000000000     1000.000000000000000000     1000.000000000000000000 Account #0
+RESULT: 1 0x0014060ff383c9b21c6840a3b14aab06741e5c49    96999.882416550349031322     1000.000000000000000000     1000.000000000000000000     1000.000000000000000000 Account #1
+RESULT: 2 0x0020017ba4c67f76c76b1af8c41821ee54f37171    96999.997220920000000000     1000.000000000000000000     1000.000000000000000000     1000.000000000000000000 Account #2
+RESULT: 3 0xebb2634dd3194ba6d75eeb049cd0f73bf9801d95     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20A
+RESULT: 4 0xe9ba90b474ef72aa062d89a319c3e15b31e8fe65     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20B
+RESULT: 5 0x30da52ef30bdaec61b43317cc045e4f267eaf779     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20C
+RESULT: 6 0x03d47b0d78f8dee3089037dffd5c9a1f7e7282af        0.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 TokenTraderFactory
+RESULT: 7 0xcc643e6c5639d64ca3c0c484a6c0f23d11b87477        0.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 TokenSellerFactory
+RESULT: 8 0xbd7780c8773a6c99163ea9c1fa870450bc216aa6        0.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 GNTTokenTraderFactory
+RESULT: 9 0xfb6ae08258f553335fd33b71081228e53794f8eb        0.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 TokenTrader
+RESULT: 10 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d        0.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 TokenSeller
+RESULT: 11 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5        0.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 GNTTokenTrader
+undefined
+> 
+> 
+undefined
+> 
+RESULT: Depositing 100 ETH to tokenTrader 0xfb6ae08258f553335fd33b71081228e53794f8eb
+undefined
+> 
+undefined
+> 
+undefined
+> 
+> 
+undefined
+> 
+RESULT: Transferring 100 tokenAs to tokenTrader 0xfb6ae08258f553335fd33b71081228e53794f8eb
+undefined
+> 
+undefined
+> 
+> 
+undefined
+> 
+RESULT: Transferring 100 tokenAs to tokenSeller 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d
+undefined
+> 
+undefined
+> 
+> 
+undefined
+> 
+RESULT: Transferring 100 tokenAs to gntTokenTrader 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5
+undefined
+> 
+undefined
+> 
+> 
+... 
+undefined
+> 
+> 
+RESULT: traderDepositEtherTxId gas=100000 gasUsed=22687 cost=0.00045374 block=26 txId=0xb1f4f3f16b51ae82a897183014d8fe87b46c2326a961f7b2d2a53faae8bebdc0
+undefined
+> 
+RESULT: traderTransferTokenTxId gas=100000 gasUsed=50921 cost=0.00101842 block=26 txId=0x6bfe11fc63bed9d185cbd5580b8d1fba3fd4c516eeddcee7874742ac8ffdc707
+undefined
+> 
+RESULT: sellerTransferTokenTxId gas=100000 gasUsed=50921 cost=0.00101842 block=26 txId=0x58d27e49027dda193fb57228b86d2d9ff42e54ecc0e5b3c5b22ec09b519441cd
+undefined
+> 
+RESULT: gntTraderTransferTokenTxId gas=100000 gasUsed=50921 cost=0.00101842 block=26 txId=0x9aaec795b3b7b10407e1c3057d9a80cdc914124a5916f20954b43681440356af
+undefined
+> 
+> 
+RESULT: OK 0xebb2634dd3194ba6d75eeb049cd0f73bf9801d95 has expected balance 3000
+undefined
+> 
+> 
+RESULT: Expecting 100 TokenABalance and 100 ETH in tokenTrader 0xfb6ae08258f553335fd33b71081228e53794f8eb
+undefined
+> 
+RESULT: Expecting 100 TokenABalance in tokenSeller 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d
+undefined
+> 
+RESULT: Expecting 100 TokenABalance in gntTokenTrader 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5
+undefined
+> 
+... 
+RESULT: # Account                                                   EtherBalance               TokenABalance               TokenBBalance               TokenCBalance Name
+RESULT: 0 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e    97130.123871529650968678     1000.000000000000000000     1000.000000000000000000     1000.000000000000000000 Account #0
+RESULT: 1 0x0014060ff383c9b21c6840a3b14aab06741e5c49    96899.878907550349031322      700.000000000000000000     1000.000000000000000000     1000.000000000000000000 Account #1
+RESULT: 2 0x0020017ba4c67f76c76b1af8c41821ee54f37171    96999.997220920000000000     1000.000000000000000000     1000.000000000000000000     1000.000000000000000000 Account #2
+RESULT: 3 0xebb2634dd3194ba6d75eeb049cd0f73bf9801d95     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20A
+RESULT: 4 0xe9ba90b474ef72aa062d89a319c3e15b31e8fe65     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20B
+RESULT: 5 0x30da52ef30bdaec61b43317cc045e4f267eaf779     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20C
+RESULT: 6 0x03d47b0d78f8dee3089037dffd5c9a1f7e7282af        0.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 TokenTraderFactory
+RESULT: 7 0xcc643e6c5639d64ca3c0c484a6c0f23d11b87477        0.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 TokenSellerFactory
+RESULT: 8 0xbd7780c8773a6c99163ea9c1fa870450bc216aa6        0.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 GNTTokenTraderFactory
+RESULT: 9 0xfb6ae08258f553335fd33b71081228e53794f8eb      100.000000000000000000      100.000000000000000000        0.000000000000000000        0.000000000000000000 TokenTrader
+RESULT: 10 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d        0.000000000000000000      100.000000000000000000        0.000000000000000000        0.000000000000000000 TokenSeller
+RESULT: 11 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5        0.000000000000000000      100.000000000000000000        0.000000000000000000        0.000000000000000000 GNTTokenTrader
+undefined
+> 
+> 
+RESULT: OK 0x03d47b0d78f8dee3089037dffd5c9a1f7e7282af has expected balance 0
+undefined
+> 
+RESULT: OK 0x03d47b0d78f8dee3089037dffd5c9a1f7e7282af has expected ERC20A token balance 0
+undefined
+> 
+RESULT: OK 0xcc643e6c5639d64ca3c0c484a6c0f23d11b87477 has expected balance 0
+undefined
+> 
+RESULT: OK 0xcc643e6c5639d64ca3c0c484a6c0f23d11b87477 has expected ERC20A token balance 0
+undefined
+> 
+RESULT: OK 0xbd7780c8773a6c99163ea9c1fa870450bc216aa6 has expected balance 0
+undefined
+> 
+RESULT: OK 0xbd7780c8773a6c99163ea9c1fa870450bc216aa6 has expected ERC20A token balance 0
+undefined
+> 
+RESULT: OK 0xfb6ae08258f553335fd33b71081228e53794f8eb has expected balance 100
+undefined
+> 
+RESULT: OK 0xfb6ae08258f553335fd33b71081228e53794f8eb has expected ERC20A token balance 100
+undefined
+> 
+RESULT: OK 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d has expected balance 0
+undefined
+> 
+RESULT: OK 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d has expected ERC20A token balance 100
+undefined
+> 
+RESULT: OK 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5 has expected balance 0
+undefined
+> 
+RESULT: OK 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5 has expected ERC20A token balance 100
+undefined
+> 
+> 
+> 
