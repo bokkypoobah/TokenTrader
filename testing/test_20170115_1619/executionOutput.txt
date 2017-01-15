@@ -1,0 +1,967 @@
+Connecting to geth on endpoint 'ipc:./testchain/geth.ipc'
+Token address ''
+Token ABI '[{"constant":false,"inputs":[{"name":"_spender","type":"address"},{"name":"_amount","type":"uint256"}],"name":"approve","outputs":[{"name":"success","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"totalSupply","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_from","type":"address"},{"name":"_to","type":"address"},{"name":"_amount","type":"uint256"}],"name":"transferFrom","outputs":[{"name":"success","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_amount","type":"uint256"}],"name":"transfer","outputs":[{"name":"success","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"},{"name":"_spender","type":"address"}],"name":"allowance","outputs":[{"name":"remaining","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"ethers","type":"uint256"}],"name":"withdrawEthers","outputs":[{"name":"ok","type":"bool"}],"payable":false,"type":"function"},{"inputs":[],"type":"constructor"},{"payable":true,"type":"fallback"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_owner","type":"address"},{"indexed":false,"name":"_amount","type":"uint256"}],"name":"TokensCreated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_owner","type":"address"},{"indexed":true,"name":"_spender","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Approval","type":"event"}]'
+TokenTraderFactory address '0x03d47b0d78f8dee3089037dffd5c9a1f7e7282af'
+TokenTraderFactory ABI '[{"constant":false,"inputs":[{"name":"asset","type":"address"},{"name":"buyPrice","type":"uint256"},{"name":"sellPrice","type":"uint256"},{"name":"units","type":"uint256"},{"name":"buysTokens","type":"bool"},{"name":"sellsTokens","type":"bool"}],"name":"createTradeContract","outputs":[{"name":"trader","type":"address"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"tokenAddress","type":"address"},{"name":"tokens","type":"uint256"}],"name":"ownerWithdrawERC20Token","outputs":[{"name":"ok","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"tradeContract","type":"address"}],"name":"verify","outputs":[{"name":"valid","type":"bool"},{"name":"owner","type":"address"},{"name":"asset","type":"address"},{"name":"buyPrice","type":"uint256"},{"name":"sellPrice","type":"uint256"},{"name":"units","type":"uint256"},{"name":"buysTokens","type":"bool"},{"name":"sellsTokens","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"type":"function"},{"payable":false,"type":"fallback"},{"anonymous":false,"inputs":[{"indexed":true,"name":"ownerAddress","type":"address"},{"indexed":true,"name":"tokenTraderAddress","type":"address"},{"indexed":true,"name":"asset","type":"address"},{"indexed":false,"name":"buyPrice","type":"uint256"},{"indexed":false,"name":"sellPrice","type":"uint256"},{"indexed":false,"name":"units","type":"uint256"},{"indexed":false,"name":"buysTokens","type":"bool"},{"indexed":false,"name":"sellsTokens","type":"bool"}],"name":"TradeListing","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"tokenAddress","type":"address"},{"indexed":false,"name":"tokens","type":"uint256"}],"name":"OwnerWithdrewERC20Token","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"}],"name":"OwnershipTransferred","type":"event"}]'
+TokenTrader address '0xfb6ae08258f553335fd33b71081228e53794f8eb'
+TokenTrader ABI '[{"constant":false,"inputs":[{"name":"ethers","type":"uint256"}],"name":"makerWithdrawEther","outputs":[{"name":"ok","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"asset","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"sellPrice","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"sellsTokens","outputs":[{"name":"","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"buyPrice","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"constant":false,"inputs":[],"name":"makerDepositEther","outputs":[],"payable":true,"type":"function"},{"constant":true,"inputs":[],"name":"units","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_buysTokens","type":"bool"},{"name":"_sellsTokens","type":"bool"}],"name":"activate","outputs":[],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"buysTokens","outputs":[{"name":"","type":"bool"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"tokenAddress","type":"address"},{"name":"tokens","type":"uint256"}],"name":"makerWithdrawERC20Token","outputs":[{"name":"ok","type":"bool"}],"payable":false,"type":"function"},{"constant":false,"inputs":[],"name":"takerBuyAsset","outputs":[],"payable":true,"type":"function"},{"constant":false,"inputs":[{"name":"tokens","type":"uint256"}],"name":"makerWithdrawAsset","outputs":[{"name":"ok","type":"bool"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"etherValueOfTokensToSell","type":"uint256"}],"name":"takerSellAsset","outputs":[],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"type":"function"},{"inputs":[{"name":"_asset","type":"address"},{"name":"_buyPrice","type":"uint256"},{"name":"_sellPrice","type":"uint256"},{"name":"_units","type":"uint256"},{"name":"_buysTokens","type":"bool"},{"name":"_sellsTokens","type":"bool"}],"type":"constructor"},{"payable":true,"type":"fallback"},{"anonymous":false,"inputs":[{"indexed":false,"name":"buys","type":"bool"},{"indexed":false,"name":"sells","type":"bool"}],"name":"ActivatedEvent","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"amount","type":"uint256"}],"name":"MakerDepositedEther","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"tokens","type":"uint256"}],"name":"MakerWithdrewAsset","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"tokenAddress","type":"address"},{"indexed":false,"name":"tokens","type":"uint256"}],"name":"MakerWithdrewERC20Token","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"ethers","type":"uint256"}],"name":"MakerWithdrewEther","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"buyer","type":"address"},{"indexed":false,"name":"ethersSent","type":"uint256"},{"indexed":false,"name":"ethersReturned","type":"uint256"},{"indexed":false,"name":"tokensBought","type":"uint256"}],"name":"TakerBoughtAsset","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"seller","type":"address"},{"indexed":false,"name":"etherValueOfTokensToSell","type":"uint256"},{"indexed":false,"name":"tokensSold","type":"uint256"},{"indexed":false,"name":"etherValueOfTokensSold","type":"uint256"}],"name":"TakerSoldAsset","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"}],"name":"OwnershipTransferred","type":"event"}]'
+TokenSellerFactory address '0xcc643e6c5639d64ca3c0c484a6c0f23d11b87477'
+TokenSellerFactory ABI '[{"constant":false,"inputs":[{"name":"tokenAddress","type":"address"},{"name":"tokens","type":"uint256"}],"name":"ownerWithdrawERC20Token","outputs":[{"name":"ok","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"tradeContract","type":"address"}],"name":"verify","outputs":[{"name":"valid","type":"bool"},{"name":"owner","type":"address"},{"name":"asset","type":"address"},{"name":"sellPrice","type":"uint256"},{"name":"units","type":"uint256"},{"name":"sellsTokens","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"asset","type":"address"},{"name":"sellPrice","type":"uint256"},{"name":"units","type":"uint256"},{"name":"sellsTokens","type":"bool"}],"name":"createSaleContract","outputs":[{"name":"seller","type":"address"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"type":"function"},{"payable":false,"type":"fallback"},{"anonymous":false,"inputs":[{"indexed":true,"name":"ownerAddress","type":"address"},{"indexed":true,"name":"tokenSellerAddress","type":"address"},{"indexed":true,"name":"asset","type":"address"},{"indexed":false,"name":"sellPrice","type":"uint256"},{"indexed":false,"name":"units","type":"uint256"},{"indexed":false,"name":"sellsTokens","type":"bool"}],"name":"TradeListing","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"tokenAddress","type":"address"},{"indexed":false,"name":"tokens","type":"uint256"}],"name":"OwnerWithdrewERC20Token","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"}],"name":"OwnershipTransferred","type":"event"}]'
+TokenSeller address '0x85e7378cb6a2ecbcaf5c178775764615f5046a9d'
+TokenSeller ABI '[{"constant":false,"inputs":[{"name":"ethers","type":"uint256"}],"name":"makerWithdrawEther","outputs":[{"name":"ok","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"asset","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"sellPrice","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"sellsTokens","outputs":[{"name":"","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"units","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"tokenAddress","type":"address"},{"name":"tokens","type":"uint256"}],"name":"makerWithdrawERC20Token","outputs":[{"name":"ok","type":"bool"}],"payable":false,"type":"function"},{"constant":false,"inputs":[],"name":"takerBuyAsset","outputs":[],"payable":true,"type":"function"},{"constant":false,"inputs":[{"name":"tokens","type":"uint256"}],"name":"makerWithdrawAsset","outputs":[{"name":"ok","type":"bool"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_sellsTokens","type":"bool"}],"name":"activate","outputs":[],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"type":"function"},{"inputs":[{"name":"_asset","type":"address"},{"name":"_sellPrice","type":"uint256"},{"name":"_units","type":"uint256"},{"name":"_sellsTokens","type":"bool"}],"type":"constructor"},{"payable":true,"type":"fallback"},{"anonymous":false,"inputs":[{"indexed":false,"name":"sells","type":"bool"}],"name":"ActivatedEvent","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"tokens","type":"uint256"}],"name":"MakerWithdrewAsset","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"tokenAddress","type":"address"},{"indexed":false,"name":"tokens","type":"uint256"}],"name":"MakerWithdrewERC20Token","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"ethers","type":"uint256"}],"name":"MakerWithdrewEther","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"buyer","type":"address"},{"indexed":false,"name":"ethersSent","type":"uint256"},{"indexed":false,"name":"ethersReturned","type":"uint256"},{"indexed":false,"name":"tokensBought","type":"uint256"}],"name":"TakerBoughtAsset","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"}],"name":"OwnershipTransferred","type":"event"}]'
+GNTTokenTraderFactory address '0xbd7780c8773a6c99163ea9c1fa870450bc216aa6'
+GNTTokenTraderFactory ABI '[{"constant":false,"inputs":[{"name":"_asset","type":"address"},{"name":"_sellPrice","type":"uint256"},{"name":"_units","type":"uint256"},{"name":"_sellsTokens","type":"bool"}],"name":"createTradeContract","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"tradeContract","type":"address"}],"name":"verify","outputs":[{"name":"valid","type":"bool"},{"name":"asset","type":"address"},{"name":"sellPrice","type":"uint256"},{"name":"units","type":"uint256"},{"name":"sellsTokens","type":"bool"}],"payable":false,"type":"function"},{"payable":false,"type":"fallback"},{"anonymous":false,"inputs":[{"indexed":false,"name":"bookid","type":"bytes32"},{"indexed":false,"name":"owner","type":"address"},{"indexed":false,"name":"addr","type":"address"}],"name":"TradeListing","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"bookid","type":"bytes32"},{"indexed":false,"name":"asset","type":"address"},{"indexed":false,"name":"units","type":"uint256"}],"name":"NewBook","type":"event"}]'
+GNTTokenTrader address '0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5'
+GNTTokenTrader ABI '[{"constant":false,"inputs":[{"name":"_value","type":"uint256"}],"name":"withdraw","outputs":[{"name":"ok","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"asset","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"sellPrice","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"sellsTokens","outputs":[{"name":"","type":"bool"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_value","type":"uint256"}],"name":"withdrawAsset","outputs":[{"name":"ok","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"units","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_token","type":"address"},{"name":"_value","type":"uint256"}],"name":"withdrawToken","outputs":[{"name":"ok","type":"bool"}],"payable":false,"type":"function"},{"constant":false,"inputs":[],"name":"buy","outputs":[],"payable":true,"type":"function"},{"constant":false,"inputs":[{"name":"_sellsTokens","type":"bool"}],"name":"activate","outputs":[],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"type":"function"},{"inputs":[{"name":"_asset","type":"address"},{"name":"_sellPrice","type":"uint256"},{"name":"_units","type":"uint256"},{"name":"_sellsTokens","type":"bool"}],"type":"constructor"},{"payable":true,"type":"fallback"},{"anonymous":false,"inputs":[{"indexed":false,"name":"sells","type":"bool"}],"name":"ActivatedEvent","type":"event"},{"anonymous":false,"inputs":[],"name":"UpdateEvent","type":"event"}]'
+Welcome to the Geth JavaScript console!
+
+instance: Geth/v1.5.5-stable-ff07d548/darwin/go1.7.4
+coinbase: 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e
+at block: 22 (Sun, 15 Jan 2017 16:16:34 AEDT)
+ datadir: /Users/bok/CryptoDerivatives/TokenTraderFactory/testchain
+ modules: admin:1.0 debug:1.0 eth:1.0 miner:1.0 net:1.0 personal:1.0 rpc:1.0 txpool:1.0 web3:1.0
+
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+> 
+undefined
+> 
+undefined
+> 
+> 
+... 
+... 
+...... 
+...... 
+... 
+... 
+undefined
+> 
+> 
+undefined
+> 
+undefined
+> 
+"Account #0"
+> 
+"Account #1"
+> 
+"Account #2"
+> 
+"ERC20A"
+> 
+"ERC20B"
+> 
+"ERC20C"
+> 
+"TokenTraderFactory"
+> 
+"TokenTrader b1.1,s1.2"
+> 
+"TokenSellerFactory"
+> 
+"TokenSeller s1.2"
+> 
+"GNTTokenTraderFactory"
+> 
+"GNTTokenTrader s1.3"
+> 
+> 
+... 
+... 
+... 
+......... 
+......... 
+......... 
+......... 
+......... 
+......... 
+......... 
+... 
+undefined
+> 
+> 
+... 
+... 
+... 
+...... 
+... 
+undefined
+> 
+> 
+... 
+... 
+... 
+...... 
+...... 
+...... 
+...... 
+... 
+undefined
+> 
+> 
+... 
+... 
+... 
+...... 
+...... 
+...... 
+...... 
+... 
+undefined
+> 
+> 
+RESULT: # Account                                                   EtherBalance               TokenABalance               TokenBBalance               TokenCBalance Name
+RESULT: 0 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e    97110.124825385207106619     1000.000000000000000000     1000.000000000000000000     1000.000000000000000000 Account #0
+RESULT: 1 0x0014060ff383c9b21c6840a3b14aab06741e5c49    96899.877953694792893381      700.000000000000000000     1000.000000000000000000     1000.000000000000000000 Account #1
+RESULT: 2 0x0020017ba4c67f76c76b1af8c41821ee54f37171    96999.997220920000000000     1000.000000000000000000     1000.000000000000000000     1000.000000000000000000 Account #2
+RESULT: 3 0xebb2634dd3194ba6d75eeb049cd0f73bf9801d95     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20A
+RESULT: 4 0xe9ba90b474ef72aa062d89a319c3e15b31e8fe65     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20B
+RESULT: 5 0x30da52ef30bdaec61b43317cc045e4f267eaf779     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20C
+RESULT: 6 0xfb6ae08258f553335fd33b71081228e53794f8eb      100.000000000000000000      100.000000000000000000        0.000000000000000000        0.000000000000000000 TokenTrader b1.1,s1.2
+RESULT: 7 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d        0.000000000000000000      100.000000000000000000        0.000000000000000000        0.000000000000000000 TokenSeller s1.2
+RESULT: 8 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5        0.000000000000000000      100.000000000000000000        0.000000000000000000        0.000000000000000000 GNTTokenTrader s1.3
+undefined
+> 
+RESULT: OK 0x0014060ff383c9b21c6840a3b14aab06741e5c49 has expected balance 96899.8789
+undefined
+> 
+RESULT: OK 0x0014060ff383c9b21c6840a3b14aab06741e5c49 has expected ERC20A token balance 700
+undefined
+> 
+RESULT: OK 0x0020017ba4c67f76c76b1af8c41821ee54f37171 has expected balance 96999.9969
+undefined
+> 
+RESULT: OK 0x0020017ba4c67f76c76b1af8c41821ee54f37171 has expected ERC20A token balance 1000
+undefined
+> 
+RESULT: OK 0xfb6ae08258f553335fd33b71081228e53794f8eb has expected balance 100
+undefined
+> 
+RESULT: OK 0xfb6ae08258f553335fd33b71081228e53794f8eb has expected ERC20A token balance 100
+undefined
+> 
+RESULT: OK 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d has expected balance 0
+undefined
+> 
+RESULT: OK 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d has expected ERC20A token balance 100
+undefined
+> 
+RESULT: OK 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5 has expected balance 0
+undefined
+> 
+RESULT: OK 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5 has expected ERC20A token balance 100
+undefined
+> 
+> 
+... 
+... 
+true
+> 
+> 
+undefined
+> 
+undefined
+> 
+RESULT: Deactivating TokenTrader Buy
+undefined
+> 
+undefined
+> 
+tokenTraderDeactivateBuyTxId=0x7eaa254f4d3a9ea035c7f1a931fe189eea4c6ab37f8b091263de9cfc282c1aea
+undefined
+> 
+... 
+undefined
+> 
+RESULT: tokenTraderDeactivateBuyTxId gas=300000 gasUsed=28583 cost=0.00057166 block=28 txId=0x7eaa254f4d3a9ea035c7f1a931fe189eea4c6ab37f8b091263de9cfc282c1aea
+undefined
+> 
+> 
+RESULT: Approving 200 tokens from eth.accounts[2] to contract 0xfb6ae08258f553335fd33b71081228e53794f8eb
+undefined
+> 
+undefined
+> 
+... 
+undefined
+> 
+RESULT: tokenApproveTxId gas=300000 gasUsed=45476 cost=0.00090952 block=30 txId=0x14128f9174017cc2eccf84efecdd6478759b04f9dc38256ce514ab49631e1932
+undefined
+> 
+> 
+RESULT: Sending 90 tokens from eth.accounts[2] to contract 0xfb6ae08258f553335fd33b71081228e53794f8eb
+undefined
+> 
+undefined
+> 
+... 
+undefined
+> 
+RESULT: tokenTraderSellTokenTxId gas=300000 gasUsed=22417 cost=0.00044834 block=32 txId=0x533cd6d97975a86f9a00955183a01aab349af02ec949f5a0145270f37fabd491
+undefined
+> 
+RESULT: Expecting no change in balances except for a bit of gas from eth.accounts[2]
+undefined
+> 
+RESULT: # Account                                                   EtherBalance               TokenABalance               TokenBBalance               TokenCBalance Name
+RESULT: 0 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e    97160.126754905207106619     1000.000000000000000000     1000.000000000000000000     1000.000000000000000000 Account #0
+RESULT: 1 0x0014060ff383c9b21c6840a3b14aab06741e5c49    96899.877382034792893381      700.000000000000000000     1000.000000000000000000     1000.000000000000000000 Account #1
+RESULT: 2 0x0020017ba4c67f76c76b1af8c41821ee54f37171    96999.995863060000000000     1000.000000000000000000     1000.000000000000000000     1000.000000000000000000 Account #2
+RESULT: 3 0xebb2634dd3194ba6d75eeb049cd0f73bf9801d95     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20A
+RESULT: 4 0xe9ba90b474ef72aa062d89a319c3e15b31e8fe65     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20B
+RESULT: 5 0x30da52ef30bdaec61b43317cc045e4f267eaf779     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20C
+RESULT: 6 0xfb6ae08258f553335fd33b71081228e53794f8eb      100.000000000000000000      100.000000000000000000        0.000000000000000000        0.000000000000000000 TokenTrader b1.1,s1.2
+RESULT: 7 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d        0.000000000000000000      100.000000000000000000        0.000000000000000000        0.000000000000000000 TokenSeller s1.2
+RESULT: 8 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5        0.000000000000000000      100.000000000000000000        0.000000000000000000        0.000000000000000000 GNTTokenTrader s1.3
+undefined
+> 
+RESULT: OK 0x0014060ff383c9b21c6840a3b14aab06741e5c49 has expected balance 96899.8783
+undefined
+> 
+RESULT: OK 0x0014060ff383c9b21c6840a3b14aab06741e5c49 has expected ERC20A token balance 700
+undefined
+> 
+RESULT: OK 0x0020017ba4c67f76c76b1af8c41821ee54f37171 has expected balance 96999.9955
+undefined
+> 
+RESULT: OK 0x0020017ba4c67f76c76b1af8c41821ee54f37171 has expected ERC20A token balance 1000
+undefined
+> 
+RESULT: OK 0xfb6ae08258f553335fd33b71081228e53794f8eb has expected balance 100
+undefined
+> 
+RESULT: OK 0xfb6ae08258f553335fd33b71081228e53794f8eb has expected ERC20A token balance 100
+undefined
+> 
+RESULT: OK 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d has expected balance 0
+undefined
+> 
+RESULT: OK 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d has expected ERC20A token balance 100
+undefined
+> 
+RESULT: OK 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5 has expected balance 0
+undefined
+> 
+RESULT: OK 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5 has expected ERC20A token balance 100
+undefined
+> 
+> 
+undefined
+> 
+RESULT: Activating TokenTrader Buy (Sell active)
+undefined
+> 
+undefined
+> 
+tokenTraderActivateBuyTxId=0xfd886a1131a0e8641c4149e75c428089366a1b1b74646b5f5715589be834cbb1
+undefined
+> 
+... 
+undefined
+> 
+RESULT: tokenTraderActivateBuyTxId gas=300000 gasUsed=28647 cost=0.00057294 block=39 txId=0xfd886a1131a0e8641c4149e75c428089366a1b1b74646b5f5715589be834cbb1
+undefined
+> 
+RESULT: Taker Selling - Sending 90 tokens (exchange for 99 ETH) from eth.accounts[2] to contract 0xfb6ae08258f553335fd33b71081228e53794f8eb
+undefined
+> 
+undefined
+> 
+... 
+undefined
+> 
+RESULT: tokenTraderSellTokenTxId gas=300000 gasUsed=50319 cost=0.00100638 block=41 txId=0xf06bca334ead7694cc5db7179f8a04747f00c427d21dabde8567e0f325861ac0
+undefined
+> 
+RESULT: Expecting change in eth.accounts[2] and TokenTrader balances
+undefined
+> 
+RESULT: # Account                                                   EtherBalance               TokenABalance               TokenBBalance               TokenCBalance Name
+RESULT: 0 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e    97205.128334225207106619     1000.000000000000000000     1000.000000000000000000     1000.000000000000000000 Account #0
+RESULT: 1 0x0014060ff383c9b21c6840a3b14aab06741e5c49    96899.876809094792893381      700.000000000000000000     1000.000000000000000000     1000.000000000000000000 Account #1
+RESULT: 2 0x0020017ba4c67f76c76b1af8c41821ee54f37171    97098.994856680000000000      910.000000000000000000     1000.000000000000000000     1000.000000000000000000 Account #2
+RESULT: 3 0xebb2634dd3194ba6d75eeb049cd0f73bf9801d95     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20A
+RESULT: 4 0xe9ba90b474ef72aa062d89a319c3e15b31e8fe65     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20B
+RESULT: 5 0x30da52ef30bdaec61b43317cc045e4f267eaf779     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20C
+RESULT: 6 0xfb6ae08258f553335fd33b71081228e53794f8eb        1.000000000000000000      190.000000000000000000        0.000000000000000000        0.000000000000000000 TokenTrader b1.1,s1.2
+RESULT: 7 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d        0.000000000000000000      100.000000000000000000        0.000000000000000000        0.000000000000000000 TokenSeller s1.2
+RESULT: 8 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5        0.000000000000000000      100.000000000000000000        0.000000000000000000        0.000000000000000000 GNTTokenTrader s1.3
+undefined
+> 
+RESULT: OK 0x0014060ff383c9b21c6840a3b14aab06741e5c49 has expected balance 96899.8777
+undefined
+> 
+RESULT: OK 0x0014060ff383c9b21c6840a3b14aab06741e5c49 has expected ERC20A token balance 700
+undefined
+> 
+RESULT: OK 0x0020017ba4c67f76c76b1af8c41821ee54f37171 has expected balance 97098.9945
+undefined
+> 
+RESULT: OK 0x0020017ba4c67f76c76b1af8c41821ee54f37171 has expected ERC20A token balance 910
+undefined
+> 
+RESULT: OK 0xfb6ae08258f553335fd33b71081228e53794f8eb has expected balance 1
+undefined
+> 
+RESULT: OK 0xfb6ae08258f553335fd33b71081228e53794f8eb has expected ERC20A token balance 190
+undefined
+> 
+RESULT: OK 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d has expected balance 0
+undefined
+> 
+RESULT: OK 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d has expected ERC20A token balance 100
+undefined
+> 
+RESULT: OK 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5 has expected balance 0
+undefined
+> 
+RESULT: OK 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5 has expected ERC20A token balance 100
+undefined
+> 
+> 
+undefined
+> 
+RESULT: Taker Selling - Sending 90 tokens (exchange for 99 ETH) from eth.accounts[2] to contract 0xfb6ae08258f553335fd33b71081228e53794f8eb but only 1 ETH remaining to pay for tokens (exchange for 0.909090909090900000 tokens
+undefined
+> 
+undefined
+> 
+... 
+undefined
+> 
+RESULT: tokenTraderSellTokenTxId gas=300000 gasUsed=50324 cost=0.00100648 block=44 txId=0x256c9b55fb1bea32e8a37c3a235f01f234b96161d726b21d80cab3c57a689252
+undefined
+> 
+RESULT: Expecting change in eth.accounts[2] and TokenTrader balances
+undefined
+> 
+RESULT: # Account                                                   EtherBalance               TokenABalance               TokenBBalance               TokenCBalance Name
+RESULT: 0 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e    97220.129340705207106619     1000.000000000000000000     1000.000000000000000000     1000.000000000000000000 Account #0
+RESULT: 1 0x0014060ff383c9b21c6840a3b14aab06741e5c49    96899.876809094792893381      700.000000000000000000     1000.000000000000000000     1000.000000000000000000 Account #1
+RESULT: 2 0x0020017ba4c67f76c76b1af8c41821ee54f37171    97099.993850199999990000      909.090909090909100000     1000.000000000000000000     1000.000000000000000000 Account #2
+RESULT: 3 0xebb2634dd3194ba6d75eeb049cd0f73bf9801d95     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20A
+RESULT: 4 0xe9ba90b474ef72aa062d89a319c3e15b31e8fe65     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20B
+RESULT: 5 0x30da52ef30bdaec61b43317cc045e4f267eaf779     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20C
+RESULT: 6 0xfb6ae08258f553335fd33b71081228e53794f8eb        0.000000000000010000      190.909090909090900000        0.000000000000000000        0.000000000000000000 TokenTrader b1.1,s1.2
+RESULT: 7 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d        0.000000000000000000      100.000000000000000000        0.000000000000000000        0.000000000000000000 TokenSeller s1.2
+RESULT: 8 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5        0.000000000000000000      100.000000000000000000        0.000000000000000000        0.000000000000000000 GNTTokenTrader s1.3
+undefined
+> 
+RESULT: OK 0x0014060ff383c9b21c6840a3b14aab06741e5c49 has expected balance 96899.8777
+undefined
+> 
+RESULT: OK 0x0014060ff383c9b21c6840a3b14aab06741e5c49 has expected ERC20A token balance 700
+undefined
+> 
+RESULT: OK 0x0020017ba4c67f76c76b1af8c41821ee54f37171 has expected balance 97099.9935
+undefined
+> 
+RESULT: OK 0x0020017ba4c67f76c76b1af8c41821ee54f37171 has expected ERC20A token balance 909.0909
+undefined
+> 
+RESULT: OK 0xfb6ae08258f553335fd33b71081228e53794f8eb has expected balance 0
+undefined
+> 
+RESULT: OK 0xfb6ae08258f553335fd33b71081228e53794f8eb has expected ERC20A token balance 190.9091
+undefined
+> 
+RESULT: OK 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d has expected balance 0
+undefined
+> 
+RESULT: OK 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d has expected ERC20A token balance 100
+undefined
+> 
+RESULT: OK 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5 has expected balance 0
+undefined
+> 
+RESULT: OK 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5 has expected ERC20A token balance 100
+undefined
+> 
+> 
+undefined
+> 
+undefined
+> 
+RESULT: Deactivating TokenTrader Sell
+undefined
+> 
+undefined
+> 
+tokenTraderDeactivateSellTxId=0x7854bb76b70bbc8e974944fd482e59efce97270e91cd7c35151fb5005213dab6
+undefined
+> 
+RESULT: Deactivating TokenSeller Sell
+undefined
+> 
+undefined
+> 
+tokenSellerDeactivateSellTxId=0xbccac95da857807f373bc08d8b4107db151079e2e822b62e4bc4a3ce5577f997
+undefined
+> 
+RESULT: Deactivating GNTTokenTrader Sell
+undefined
+> 
+undefined
+> 
+gntTokenTraderDeactivateSellTxId=0xb9335420378fa68202cc67390e66ff34083542562d355c722847e091d988227b
+undefined
+> 
+... 
+undefined
+> 
+RESULT: tokenTraderDeactivateSellTxId gas=300000 gasUsed=28583 cost=0.00057166 block=48 txId=0x7854bb76b70bbc8e974944fd482e59efce97270e91cd7c35151fb5005213dab6
+undefined
+> 
+RESULT: tokenSellerDeactivateSellTxId gas=300000 gasUsed=14020 cost=0.0002804 block=48 txId=0xbccac95da857807f373bc08d8b4107db151079e2e822b62e4bc4a3ce5577f997
+undefined
+> 
+RESULT: gntTokenTraderDeactivateSellTxId gas=300000 gasUsed=14020 cost=0.0002804 block=48 txId=0xb9335420378fa68202cc67390e66ff34083542562d355c722847e091d988227b
+undefined
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+... 
+undefined
+> 
+RESULT: tokenTraderBuyTokenTxId gas=100000 gasUsed=28185 cost=0.0005637 block=50 txId=0xd48aaddb112d507cdad3653835cd17716fc605f886a74cc7de2fd2708bc88f51
+undefined
+> 
+RESULT: tokenSellerBuyTokenTxId gas=100000 gasUsed=28154 cost=0.00056308 block=50 txId=0xb1c92926029a7169bb2a18ab19ef75c9e0db1af411b7c421e5e368caae0f59fa
+undefined
+> 
+RESULT: gntTokenTraderBuyTokenTxId gas=100000 gasUsed=28154 cost=0.00056308 block=50 txId=0x704a3274dc0f802f7e35e0a827e097e503c022569026920ec13fb81ce87c4674
+undefined
+> 
+> 
+RESULT: Expecting no change in balances except for a bit of gas from eth.accounts[1] (deactivate) and eth.accounts[2] (trading inactive)
+undefined
+> 
+RESULT: # Account                                                   EtherBalance               TokenABalance               TokenBBalance               TokenCBalance Name
+RESULT: 0 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e    97255.132163025207106619     1000.000000000000000000     1000.000000000000000000     1000.000000000000000000 Account #0
+RESULT: 1 0x0014060ff383c9b21c6840a3b14aab06741e5c49    96899.875676634792893381      700.000000000000000000     1000.000000000000000000     1000.000000000000000000 Account #1
+RESULT: 2 0x0020017ba4c67f76c76b1af8c41821ee54f37171    97099.992160339999990000      909.090909090909100000     1000.000000000000000000     1000.000000000000000000 Account #2
+RESULT: 3 0xebb2634dd3194ba6d75eeb049cd0f73bf9801d95     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20A
+RESULT: 4 0xe9ba90b474ef72aa062d89a319c3e15b31e8fe65     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20B
+RESULT: 5 0x30da52ef30bdaec61b43317cc045e4f267eaf779     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20C
+RESULT: 6 0xfb6ae08258f553335fd33b71081228e53794f8eb        0.000000000000010000      190.909090909090900000        0.000000000000000000        0.000000000000000000 TokenTrader b1.1,s1.2
+RESULT: 7 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d        0.000000000000000000      100.000000000000000000        0.000000000000000000        0.000000000000000000 TokenSeller s1.2
+RESULT: 8 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5        0.000000000000000000      100.000000000000000000        0.000000000000000000        0.000000000000000000 GNTTokenTrader s1.3
+undefined
+> 
+RESULT: OK 0x0014060ff383c9b21c6840a3b14aab06741e5c49 has expected balance 96899.8767
+undefined
+> 
+RESULT: OK 0x0014060ff383c9b21c6840a3b14aab06741e5c49 has expected ERC20A token balance 700
+undefined
+> 
+RESULT: OK 0x0020017ba4c67f76c76b1af8c41821ee54f37171 has expected balance 97099.9919
+undefined
+> 
+RESULT: OK 0x0020017ba4c67f76c76b1af8c41821ee54f37171 has expected ERC20A token balance 909.0909
+undefined
+> 
+RESULT: OK 0xfb6ae08258f553335fd33b71081228e53794f8eb has expected balance 0
+undefined
+> 
+RESULT: OK 0xfb6ae08258f553335fd33b71081228e53794f8eb has expected ERC20A token balance 190.9091
+undefined
+> 
+RESULT: OK 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d has expected balance 0
+undefined
+> 
+RESULT: OK 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d has expected ERC20A token balance 100
+undefined
+> 
+RESULT: OK 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5 has expected balance 0
+undefined
+> 
+RESULT: OK 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5 has expected ERC20A token balance 100
+undefined
+> 
+> 
+undefined
+> 
+RESULT: Activating TokenTrader Sell (Buy active)
+undefined
+> 
+undefined
+> 
+tokenTraderActivateSellTxId=0xb1e3085645b920430add7d2a1d1cf9adabd3ff10950160261296f1b16dc96e02
+undefined
+> 
+RESULT: Activating TokenSeller Sell
+undefined
+> 
+undefined
+> 
+tokenSellerActivateSellTxId=0x8a704b78e38c05135c12f242060aa8f86fa0d3bb3f1df215f8a1b8034f07b4f6
+undefined
+> 
+RESULT: Activating GNTTokenTrader Sell (Buy active)
+undefined
+> 
+undefined
+> 
+gntTokenTraderActivateSellTxId=0x36e742fe2be5d508623e4326708cf499c8a77cc390959db38b50e46cc0fde5c4
+undefined
+> 
+... 
+undefined
+> 
+RESULT: tokenTraderActivateSellTxId gas=300000 gasUsed=28647 cost=0.00057294 block=55 txId=0xb1e3085645b920430add7d2a1d1cf9adabd3ff10950160261296f1b16dc96e02
+undefined
+> 
+RESULT: tokenSellerActivateSellTxId gas=300000 gasUsed=43103 cost=0.00086206 block=55 txId=0x8a704b78e38c05135c12f242060aa8f86fa0d3bb3f1df215f8a1b8034f07b4f6
+undefined
+> 
+RESULT: gntTokenTraderActivateSellTxId gas=300000 gasUsed=43103 cost=0.00086206 block=55 txId=0x36e742fe2be5d508623e4326708cf499c8a77cc390959db38b50e46cc0fde5c4
+undefined
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+... 
+undefined
+> 
+RESULT: tokenTraderBuyTokenTxId gas=100000 gasUsed=37580 cost=0.0007516 block=57 txId=0xe62f5901cec8aa49fec8e019f60961753794cf0d8887ce1f2c81e90dced1a791
+undefined
+> 
+RESULT: tokenSellerBuyTokenTxId gas=100000 gasUsed=37486 cost=0.00074972 block=57 txId=0x79af3c58207fac3ff37950e560adf03988d11d58f723c031f1f71f3e92d89944
+undefined
+> 
+RESULT: gntTokenTraderBuyTokenTxId gas=100000 gasUsed=36172 cost=0.00072344 block=57 txId=0x5289ec57519c7e9b568d0dec5878549f2f213aa4680b75843f074512e18f9aa0
+undefined
+> 
+> 
+RESULT: Expecting change in eth.accounts[1] (activating), eth.accounts[2] (-300 ETH for 200/1.2 + 100/1.3 tokens) plus decrease in TokenTrader, TokenSeller and GNTTokenTraderbalances
+undefined
+> 
+RESULT: # Account                                                   EtherBalance               TokenABalance               TokenBBalance               TokenCBalance Name
+RESULT: 0 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e    97285.136684845207106619     1000.000000000000000000     1000.000000000000000000     1000.000000000000000000 Account #0
+RESULT: 1 0x0014060ff383c9b21c6840a3b14aab06741e5c49    96899.873379574792893381      700.000000000000000000     1000.000000000000000000     1000.000000000000000000 Account #1
+RESULT: 2 0x0020017ba4c67f76c76b1af8c41821ee54f37171    96799.989935579999990000     1152.680652680652600000     1000.000000000000000000     1000.000000000000000000 Account #2
+RESULT: 3 0xebb2634dd3194ba6d75eeb049cd0f73bf9801d95     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20A
+RESULT: 4 0xe9ba90b474ef72aa062d89a319c3e15b31e8fe65     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20B
+RESULT: 5 0x30da52ef30bdaec61b43317cc045e4f267eaf779     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20C
+RESULT: 6 0xfb6ae08258f553335fd33b71081228e53794f8eb      100.000000000000010000      107.575757575757600000        0.000000000000000000        0.000000000000000000 TokenTrader b1.1,s1.2
+RESULT: 7 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d      100.000000000000000000       16.666666666666700000        0.000000000000000000        0.000000000000000000 TokenSeller s1.2
+RESULT: 8 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5      100.000000000000000000       23.076923076923100000        0.000000000000000000        0.000000000000000000 GNTTokenTrader s1.3
+undefined
+> 
+RESULT: OK 0x0014060ff383c9b21c6840a3b14aab06741e5c49 has expected balance 96899.8744
+undefined
+> 
+RESULT: OK 0x0014060ff383c9b21c6840a3b14aab06741e5c49 has expected ERC20A token balance 700
+undefined
+> 
+RESULT: OK 0x0020017ba4c67f76c76b1af8c41821ee54f37171 has expected balance 96799.9896
+undefined
+> 
+RESULT: OK 0x0020017ba4c67f76c76b1af8c41821ee54f37171 has expected ERC20A token balance 1152.6806
+undefined
+> 
+RESULT: OK 0xfb6ae08258f553335fd33b71081228e53794f8eb has expected balance 100
+undefined
+> 
+RESULT: OK 0xfb6ae08258f553335fd33b71081228e53794f8eb has expected ERC20A token balance 107.5758
+undefined
+> 
+RESULT: OK 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d has expected balance 100
+undefined
+> 
+RESULT: OK 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d has expected ERC20A token balance 16.6667
+undefined
+> 
+RESULT: OK 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5 has expected balance 100
+undefined
+> 
+RESULT: OK 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5 has expected ERC20A token balance 23.0769
+undefined
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+... 
+undefined
+> 
+RESULT: tokenTraderBuyTokenTxId gas=100000 gasUsed=29528 cost=0.00059056 block=62 txId=0x801566584e6ffb9f4a68cc5eaa5a8a316a23138d9900d7fbfa75d651aab26b1a
+undefined
+> 
+RESULT: tokenSellerBuyTokenTxId gas=100000 gasUsed=29434 cost=0.00058868 block=62 txId=0xa8107f5ded812b1d7563d06ff74404bf7b42a2a32990418b1277edac82fd6cbe
+undefined
+> 
+RESULT: gntTokenTraderBuyTokenTxId gas=100000 gasUsed=28120 cost=0.0005624 block=62 txId=0xf93d9d1409494f5c384079890adc222cd1eff6b6ca4a544e0d2f05cdd35f80a6
+undefined
+> 
+> 
+RESULT: Expecting change in eth.accounts[2] plus decrease in TokenTrader, TokenSeller and GNTTokenTrader balances, but limited tokens left
+undefined
+> 
+RESULT: # Account                                                   EtherBalance               TokenABalance               TokenBBalance               TokenCBalance Name
+RESULT: 0 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e    97310.138426485207106619     1000.000000000000000000     1000.000000000000000000     1000.000000000000000000 Account #0
+RESULT: 1 0x0014060ff383c9b21c6840a3b14aab06741e5c49    96899.873379574792893381      700.000000000000000000     1000.000000000000000000     1000.000000000000000000 Account #1
+RESULT: 2 0x0020017ba4c67f76c76b1af8c41821ee54f37171    96620.897284849090800000     1300.000000000000000000     1000.000000000000000000     1000.000000000000000000 Account #2
+RESULT: 3 0xebb2634dd3194ba6d75eeb049cd0f73bf9801d95     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20A
+RESULT: 4 0xe9ba90b474ef72aa062d89a319c3e15b31e8fe65     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20B
+RESULT: 5 0x30da52ef30bdaec61b43317cc045e4f267eaf779     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20C
+RESULT: 6 0xfb6ae08258f553335fd33b71081228e53794f8eb      229.090909090909130000        0.000000000000000000        0.000000000000000000        0.000000000000000000 TokenTrader b1.1,s1.2
+RESULT: 7 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d      120.000000000000040000        0.000000000000000000        0.000000000000000000        0.000000000000000000 TokenSeller s1.2
+RESULT: 8 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5      130.000000000000030000        0.000000000000000000        0.000000000000000000        0.000000000000000000 GNTTokenTrader s1.3
+undefined
+> 
+RESULT: OK 0x0014060ff383c9b21c6840a3b14aab06741e5c49 has expected balance 96899.8744
+undefined
+> 
+RESULT: OK 0x0014060ff383c9b21c6840a3b14aab06741e5c49 has expected ERC20A token balance 700
+undefined
+> 
+RESULT: OK 0x0020017ba4c67f76c76b1af8c41821ee54f37171 has expected balance 96620.897
+undefined
+> 
+RESULT: OK 0x0020017ba4c67f76c76b1af8c41821ee54f37171 has expected ERC20A token balance 1300
+undefined
+> 
+RESULT: OK 0xfb6ae08258f553335fd33b71081228e53794f8eb has expected balance 229.0909
+undefined
+> 
+RESULT: OK 0xfb6ae08258f553335fd33b71081228e53794f8eb has expected ERC20A token balance 0
+undefined
+> 
+RESULT: OK 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d has expected balance 120
+undefined
+> 
+RESULT: OK 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d has expected ERC20A token balance 0
+undefined
+> 
+RESULT: OK 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5 has expected balance 130
+undefined
+> 
+RESULT: OK 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5 has expected ERC20A token balance 0
+undefined
+> 
+> 
+RESULT: Maker transferring 30 tokens to tokenTrader, tokenSeller and gntTokenTrader
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+... 
+undefined
+> 
+RESULT: traderTransferTokenTxId gas=100000 gasUsed=50921 cost=0.00101842 block=66 txId=0x774c5a5b0a9e6cef8372492156127b84919ecbdbec2e63006b3af482f81ddb7b
+undefined
+> 
+RESULT: sellerTransferTokenTxId gas=100000 gasUsed=50921 cost=0.00101842 block=66 txId=0x43117acae8350b10b50a354fcb2f9f812b29cb266e1031ec986aa38fcab0f05c
+undefined
+> 
+RESULT: gntTraderTransferTokenTxId gas=100000 gasUsed=50921 cost=0.00101842 block=66 txId=0xe6f8071cea9264b926a3e4132bcd5f3bb3ccfe1351c947ed8ec98dda39059a1d
+undefined
+> 
+RESULT: Expecting change in eth.accounts[1] tokens plus 30 tokens in TokenTrader, TokenSeller and GNTTokenTrader
+undefined
+> 
+RESULT: # Account                                                   EtherBalance               TokenABalance               TokenBBalance               TokenCBalance Name
+RESULT: 0 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e    97330.141481745207106619     1000.000000000000000000     1000.000000000000000000     1000.000000000000000000 Account #0
+RESULT: 1 0x0014060ff383c9b21c6840a3b14aab06741e5c49    96899.870324314792893381      610.000000000000000000     1000.000000000000000000     1000.000000000000000000 Account #1
+RESULT: 2 0x0020017ba4c67f76c76b1af8c41821ee54f37171    96620.897284849090800000     1300.000000000000000000     1000.000000000000000000     1000.000000000000000000 Account #2
+RESULT: 3 0xebb2634dd3194ba6d75eeb049cd0f73bf9801d95     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20A
+RESULT: 4 0xe9ba90b474ef72aa062d89a319c3e15b31e8fe65     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20B
+RESULT: 5 0x30da52ef30bdaec61b43317cc045e4f267eaf779     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20C
+RESULT: 6 0xfb6ae08258f553335fd33b71081228e53794f8eb      229.090909090909130000       30.000000000000000000        0.000000000000000000        0.000000000000000000 TokenTrader b1.1,s1.2
+RESULT: 7 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d      120.000000000000040000       30.000000000000000000        0.000000000000000000        0.000000000000000000 TokenSeller s1.2
+RESULT: 8 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5      130.000000000000030000       30.000000000000000000        0.000000000000000000        0.000000000000000000 GNTTokenTrader s1.3
+undefined
+> 
+RESULT: OK 0x0014060ff383c9b21c6840a3b14aab06741e5c49 has expected balance 96899.8713
+undefined
+> 
+RESULT: OK 0x0014060ff383c9b21c6840a3b14aab06741e5c49 has expected ERC20A token balance 610
+undefined
+> 
+RESULT: OK 0x0020017ba4c67f76c76b1af8c41821ee54f37171 has expected balance 96620.897
+undefined
+> 
+RESULT: OK 0x0020017ba4c67f76c76b1af8c41821ee54f37171 has expected ERC20A token balance 1300
+undefined
+> 
+RESULT: OK 0xfb6ae08258f553335fd33b71081228e53794f8eb has expected balance 229.0909
+undefined
+> 
+RESULT: OK 0xfb6ae08258f553335fd33b71081228e53794f8eb has expected ERC20A token balance 30
+undefined
+> 
+RESULT: OK 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d has expected balance 120
+undefined
+> 
+RESULT: OK 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d has expected ERC20A token balance 30
+undefined
+> 
+RESULT: OK 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5 has expected balance 130
+undefined
+> 
+RESULT: OK 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5 has expected ERC20A token balance 30
+undefined
+> 
+> 
+undefined
+> 
+RESULT: Maker transferring 30 ETH to tokenTrader, tokenSeller and gntTokenTrader. This will buy tokens
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+... 
+undefined
+> 
+RESULT: tokenTraderAddEtherTxId gas=100000 gasUsed=37580 cost=0.0007516 block=69 txId=0xb77f94700dd749e0b26377f030a8dbc0ff900f4bed5668f4f3b1113a174da3b0
+undefined
+> 
+RESULT: tokenSellerAddEtherTxId gas=100000 gasUsed=37486 cost=0.00074972 block=69 txId=0x6552ae8378c43d27874938e4b788b7e70985146c557f684cb99a9bfcb5a29e16
+undefined
+> 
+RESULT: gntTokenTraderAddEtherTxId gas=100000 gasUsed=36172 cost=0.00072344 block=69 txId=0x7fe5102f07e5182f97f01fdb335cace5b43fb1b37c11e2d0ba2f73f18b36fb14
+undefined
+> 
+RESULT: # Account                                                   EtherBalance               TokenABalance               TokenBBalance               TokenCBalance Name
+RESULT: 0 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e    97345.143706505207106619     1000.000000000000000000     1000.000000000000000000     1000.000000000000000000 Account #0
+RESULT: 1 0x0014060ff383c9b21c6840a3b14aab06741e5c49    96809.868099554792893381      683.076923076923000000     1000.000000000000000000     1000.000000000000000000 Account #1
+RESULT: 2 0x0020017ba4c67f76c76b1af8c41821ee54f37171    96620.897284849090800000     1300.000000000000000000     1000.000000000000000000     1000.000000000000000000 Account #2
+RESULT: 3 0xebb2634dd3194ba6d75eeb049cd0f73bf9801d95     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20A
+RESULT: 4 0xe9ba90b474ef72aa062d89a319c3e15b31e8fe65     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20B
+RESULT: 5 0x30da52ef30bdaec61b43317cc045e4f267eaf779     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20C
+RESULT: 6 0xfb6ae08258f553335fd33b71081228e53794f8eb      259.090909090909130000        5.000000000000000000        0.000000000000000000        0.000000000000000000 TokenTrader b1.1,s1.2
+RESULT: 7 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d      150.000000000000040000        5.000000000000000000        0.000000000000000000        0.000000000000000000 TokenSeller s1.2
+RESULT: 8 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5      160.000000000000030000        6.923076923077000000        0.000000000000000000        0.000000000000000000 GNTTokenTrader s1.3
+undefined
+> 
+RESULT: OK 0x0014060ff383c9b21c6840a3b14aab06741e5c49 has expected balance 96809.8691
+undefined
+> 
+RESULT: OK 0x0014060ff383c9b21c6840a3b14aab06741e5c49 has expected ERC20A token balance 683.0769
+undefined
+> 
+RESULT: OK 0x0020017ba4c67f76c76b1af8c41821ee54f37171 has expected balance 96620.897
+undefined
+> 
+RESULT: OK 0x0020017ba4c67f76c76b1af8c41821ee54f37171 has expected ERC20A token balance 1300
+undefined
+> 
+RESULT: OK 0xfb6ae08258f553335fd33b71081228e53794f8eb has expected balance 259.0909
+undefined
+> 
+RESULT: OK 0xfb6ae08258f553335fd33b71081228e53794f8eb has expected ERC20A token balance 5
+undefined
+> 
+RESULT: OK 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d has expected balance 150
+undefined
+> 
+RESULT: OK 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d has expected ERC20A token balance 5
+undefined
+> 
+RESULT: OK 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5 has expected balance 160
+undefined
+> 
+RESULT: OK 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5 has expected ERC20A token balance 6.9231
+undefined
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+... 
+undefined
+> 
+RESULT: tokenTraderWithdrawEtherTxId1 gas=300000 gasUsed=30125 cost=0.0006025 block=74 txId=0x76aab3c0ac26c5d3745cec285e8a8f4006b6c3a39541613d8110a5bb64910527
+undefined
+> 
+RESULT: tokenTraderWithdrawAssetTxId1 gas=300000 gasUsed=36549 cost=0.00073098 block=74 txId=0x2649f8b5558f0381aa23fc2bb5de72172d7af67e873808840427a0f74d6c4582
+undefined
+> 
+RESULT: tokenSellerWithdrawEtherTxId1 gas=300000 gasUsed=30125 cost=0.0006025 block=74 txId=0xc8d8dbe6ec8f874a069dc070ea79e0388550d1a695ad71a2b25fd867de2b91fc
+undefined
+> 
+RESULT: tokenSellerWithdrawAssetTxId1 gas=300000 gasUsed=36461 cost=0.00072922 block=74 txId=0xa3ff04c25c70560bf04fa6358fe4fe8c466d6a581c6ef587fb7d1710510ee372
+undefined
+> 
+RESULT: gntTokenTraderWithdrawEtherTxId1 gas=300000 gasUsed=29088 cost=0.00058176 block=74 txId=0xe8e1349cee84fac6654c7cfc7750b57c8a10fa7ce430ca8a1052529f93aecc46
+undefined
+> 
+RESULT: gntTokenTraderWithdrawAssetTxId1 gas=300000 gasUsed=35319 cost=0.00070638 block=74 txId=0x67c078bd299b3662505fb825613522e577f2c364e50c9f7605a9c7573b6c3ac7
+undefined
+> 
+RESULT: Expecting increase of 1 ETH and 1 tokens in eth.accounts[1] tokens and decrease of 1 ETH and 1 tokens in TokenTrader, TokenSeller and GNTTOkenTrader
+undefined
+> 
+RESULT: # Account                                                   EtherBalance               TokenABalance               TokenBBalance               TokenCBalance Name
+RESULT: 0 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e    97370.147659845207106619     1000.000000000000000000     1000.000000000000000000     1000.000000000000000000 Account #0
+RESULT: 1 0x0014060ff383c9b21c6840a3b14aab06741e5c49    96812.864146214792893381      686.076923076923000000     1000.000000000000000000     1000.000000000000000000 Account #1
+RESULT: 2 0x0020017ba4c67f76c76b1af8c41821ee54f37171    96620.897284849090800000     1300.000000000000000000     1000.000000000000000000     1000.000000000000000000 Account #2
+RESULT: 3 0xebb2634dd3194ba6d75eeb049cd0f73bf9801d95     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20A
+RESULT: 4 0xe9ba90b474ef72aa062d89a319c3e15b31e8fe65     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20B
+RESULT: 5 0x30da52ef30bdaec61b43317cc045e4f267eaf779     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20C
+RESULT: 6 0xfb6ae08258f553335fd33b71081228e53794f8eb      258.090909090909130000        4.000000000000000000        0.000000000000000000        0.000000000000000000 TokenTrader b1.1,s1.2
+RESULT: 7 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d      149.000000000000040000        4.000000000000000000        0.000000000000000000        0.000000000000000000 TokenSeller s1.2
+RESULT: 8 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5      159.000000000000030000        5.923076923077000000        0.000000000000000000        0.000000000000000000 GNTTokenTrader s1.3
+undefined
+> 
+RESULT: OK 0x0014060ff383c9b21c6840a3b14aab06741e5c49 has expected balance 96812.8651
+undefined
+> 
+RESULT: OK 0x0014060ff383c9b21c6840a3b14aab06741e5c49 has expected ERC20A token balance 686.0769
+undefined
+> 
+RESULT: OK 0x0020017ba4c67f76c76b1af8c41821ee54f37171 has expected balance 96620.897
+undefined
+> 
+RESULT: OK 0x0020017ba4c67f76c76b1af8c41821ee54f37171 has expected ERC20A token balance 1300
+undefined
+> 
+RESULT: OK 0xfb6ae08258f553335fd33b71081228e53794f8eb has expected balance 258.0909
+undefined
+> 
+RESULT: OK 0xfb6ae08258f553335fd33b71081228e53794f8eb has expected ERC20A token balance 4
+undefined
+> 
+RESULT: OK 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d has expected balance 149
+undefined
+> 
+RESULT: OK 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d has expected ERC20A token balance 4
+undefined
+> 
+RESULT: OK 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5 has expected balance 159
+undefined
+> 
+RESULT: OK 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5 has expected ERC20A token balance 5.9231
+undefined
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+... 
+undefined
+> 
+RESULT: tokenTraderWithdrawEtherTxId2 gas=300000 gasUsed=22238 cost=0.00044476 block=76 txId=0x5e64a784dbb0d16aa7a06f6eadd399b3593cf42e9fd8bf3ae85fd5cb5abf9e2d
+undefined
+> 
+RESULT: tokenTraderWithdrawAssetTxId2 gas=300000 gasUsed=24476 cost=0.00048952 block=76 txId=0xef2312d1f7f10d86a06b4a6a54f017399b5bed8a5433cc0a65271350b547a930
+undefined
+> 
+RESULT: tokenSellerWithdrawEtherTxId2 gas=300000 gasUsed=22238 cost=0.00044476 block=76 txId=0x877a73151183078333d323c240a85be2b99375fde68285fb2bb31e19fde44d4d
+undefined
+> 
+RESULT: tokenSellerWithdrawAssetTxId2 gas=300000 gasUsed=24388 cost=0.00048776 block=76 txId=0xf5bd9e98d0b24df69e78b49884780260f386da56c090c348fee0ddf1d1d8963f
+undefined
+> 
+RESULT: gntTokenTraderWithdrawEtherTxId2 gas=300000 gasUsed=23007 cost=0.00046014 block=76 txId=0xcd55483a2fdcf7093409e9f2240cd084eef659ed5c41af5d6f58550229ec0865
+undefined
+> 
+RESULT: gntTokenTraderWithdrawAssetTxId2 gas=300000 gasUsed=23246 cost=0.00046492 block=76 txId=0x9b19f0edfdfb79c08b20bbbf53fe2b1dfc20036079f1f827b30ad122b007bdf9
+undefined
+> 
+RESULT: Expecting failure to increase of 500ETH and 500 tokens in eth.accounts[1] tokens and decrease of 5 ETH and 5 tokens in TokenTrader, TokenSeller and GNTTOkenTrader
+undefined
+> 
+RESULT: # Account                                                   EtherBalance               TokenABalance               TokenBBalance               TokenCBalance Name
+RESULT: 0 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e    97380.150451705207106619     1000.000000000000000000     1000.000000000000000000     1000.000000000000000000 Account #0
+RESULT: 1 0x0014060ff383c9b21c6840a3b14aab06741e5c49    96812.861354354792893381      686.076923076923000000     1000.000000000000000000     1000.000000000000000000 Account #1
+RESULT: 2 0x0020017ba4c67f76c76b1af8c41821ee54f37171    96620.897284849090800000     1300.000000000000000000     1000.000000000000000000     1000.000000000000000000 Account #2
+RESULT: 3 0xebb2634dd3194ba6d75eeb049cd0f73bf9801d95     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20A
+RESULT: 4 0xe9ba90b474ef72aa062d89a319c3e15b31e8fe65     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20B
+RESULT: 5 0x30da52ef30bdaec61b43317cc045e4f267eaf779     3000.000000000000000000        0.000000000000000000        0.000000000000000000        0.000000000000000000 ERC20C
+RESULT: 6 0xfb6ae08258f553335fd33b71081228e53794f8eb      258.090909090909130000        4.000000000000000000        0.000000000000000000        0.000000000000000000 TokenTrader b1.1,s1.2
+RESULT: 7 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d      149.000000000000040000        4.000000000000000000        0.000000000000000000        0.000000000000000000 TokenSeller s1.2
+RESULT: 8 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5      159.000000000000030000        5.923076923077000000        0.000000000000000000        0.000000000000000000 GNTTokenTrader s1.3
+undefined
+> 
+RESULT: OK 0x0014060ff383c9b21c6840a3b14aab06741e5c49 has expected balance 96812.8623
+undefined
+> 
+RESULT: OK 0x0014060ff383c9b21c6840a3b14aab06741e5c49 has expected ERC20A token balance 686.0769
+undefined
+> 
+RESULT: OK 0x0020017ba4c67f76c76b1af8c41821ee54f37171 has expected balance 96620.897
+undefined
+> 
+RESULT: OK 0x0020017ba4c67f76c76b1af8c41821ee54f37171 has expected ERC20A token balance 1300
+undefined
+> 
+RESULT: OK 0xfb6ae08258f553335fd33b71081228e53794f8eb has expected balance 258.0909
+undefined
+> 
+RESULT: OK 0xfb6ae08258f553335fd33b71081228e53794f8eb has expected ERC20A token balance 4
+undefined
+> 
+RESULT: OK 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d has expected balance 149
+undefined
+> 
+RESULT: OK 0x85e7378cb6a2ecbcaf5c178775764615f5046a9d has expected ERC20A token balance 4
+undefined
+> 
+RESULT: OK 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5 has expected balance 159
+undefined
+> 
+RESULT: OK 0x7afc189b25beba65c5a2dec4804ea77b40f8c9a5 has expected ERC20A token balance 5.9231
+undefined
+> 
+> 
