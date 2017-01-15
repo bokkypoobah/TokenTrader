@@ -146,7 +146,9 @@ contract TokenSeller is Owned {
     // This method was called buy() in the old version
     function takerBuyAsset() payable {
         if (sellsTokens || msg.sender == owner) {
+            // Note that sellPrice has already been validated as > 0
             uint order    = msg.value / sellPrice;
+            // Note that units has already been validated as > 0
             uint can_sell = ERC20Partial(asset).balanceOf(address(this)) / units;
             uint256 change = 0;
             if (order > can_sell) {
@@ -242,6 +244,8 @@ contract TokenSellerFactory is Owned {
         uint256 units,
         bool    sellsTokens
     ) returns (address seller) {
+        // Cannot have invalid asset
+        if (asset == 0x0) throw;
         // Cannot set zero or negative price
         if (sellPrice <= 0) throw;
         // Cannot sell zero or negative units
@@ -277,4 +281,3 @@ contract TokenSellerFactory is Owned {
         throw;
     }
 }
- 
