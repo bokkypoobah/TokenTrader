@@ -55,7 +55,7 @@ contract TestERC20Token is ERC20Interface {
     // Total supply
     uint256 _totalSupply;
 
-    // Functions with this modifier can only be executed by the bank
+    // Functions with this modifier can only be executed by the owner
     modifier onlyOwner() {
         if (msg.sender != owner) {
             throw;
