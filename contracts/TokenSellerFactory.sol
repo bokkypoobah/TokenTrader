@@ -159,7 +159,7 @@ contract TokenSeller is Owned {
             if (order > 0) {
                 if(!ERC20Partial(asset).transfer(msg.sender, order * units)) throw;
             }
-            TakerBoughtAsset(msg.sender, msg.value, order * units, change);
+            TakerBoughtAsset(msg.sender, msg.value, change, order * units);
         }
         // Return user funds if the contract is not selling
         else if (!msg.sender.send(msg.value)) throw;
