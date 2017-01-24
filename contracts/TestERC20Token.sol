@@ -43,6 +43,10 @@ contract ERC20Interface {
 
 contract TestERC20Token is ERC20Interface {
 
+    string public name;
+    string public symbol;
+    uint8 public decimals;
+
     // Owner of this contract
     address public owner;
 
@@ -64,7 +68,10 @@ contract TestERC20Token is ERC20Interface {
     }
 
     // Constructor
-    function TestERC20Token() {
+    function TestERC20Token(string _name, string _symbol, uint8 _decimals) {
+        name = _name;
+        symbol = _symbol;
+        decimals = _decimals;
         owner = msg.sender;
     }
 
