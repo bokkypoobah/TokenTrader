@@ -38,6 +38,11 @@ contract Owned {
         _;
     }
 
+    modifier onlyOwnerOrTokenTraderWithSameOwner {
+        if (msg.sender != owner && TokenTrader(msg.sender).owner() != owner) throw;
+        _;
+    }
+
     function transferOwnership(address newOwner) onlyOwner {
         OwnershipTransferred(owner, newOwner);
         owner = newOwner;
@@ -60,8 +65,10 @@ contract TokenTrader is Owned {
     event ActivatedEvent(bool buys, bool sells);
     event MakerDepositedEther(uint256 amount);
     event MakerWithdrewAsset(uint256 tokens);
+    event MakerTransferredAsset(address toTokenTrader, uint256 tokens);
     event MakerWithdrewERC20Token(address tokenAddress, uint256 tokens);
     event MakerWithdrewEther(uint256 ethers);
+    event MakerTransferredEther(address toTokenTrader, uint256 ethers);
     event TakerBoughtAsset(address indexed buyer, uint256 ethersSent,
         uint256 ethersReturned, uint256 tokensBought);
     event TakerSoldAsset(address indexed seller, uint256 etherValueOfTokensToSell,
@@ -114,13 +121,16 @@ contract TokenTrader is Owned {
     // MUST use the takerSellAsset() method to sell asset tokens
     // to this contract
     //
+    // Maker can also transfer ethers from one TokenTrader contract
+    // to another TokenTrader contract, both owned by the Maker
+    //
     // The MakerDepositedEther() event is logged with the following
     // parameter:
     //   ethers  is the number of ethers deposited by the maker
     //
     // This method was called deposit() in the old version
     //
-    function makerDepositEther() payable onlyOwner {
+    function makerDepositEther() payable onlyOwnerOrTokenTraderWithSameOwner {
         MakerDepositedEther(msg.value);
     }
 
@@ -137,6 +147,32 @@ contract TokenTrader is Owned {
     function makerWithdrawAsset(uint256 tokens) onlyOwner returns (bool ok) {
         MakerWithdrewAsset(tokens);
         return ERC20(asset).transfer(owner, tokens);
+    }
+
+    // Maker can transfer asset tokens from this contract to another
+    // TokenTrader contract, with the following parameter:
+    //   toTokenTrader  Another TokenTrader contract owned by the
+    //                  same owner and with the same asset
+    //   tokens         is the number of asset tokens to be moved
+    //
+    // The MakerTransferredAsset() event is logged with the following
+    // parameters:
+    //   toTokenTrader  The other TokenTrader contract owned by
+    //                  the same owner and with the same asset
+    //   tokens         is the number of tokens transferred
+    //
+    // The asset Transfer() event is also logged from this contract
+    // to the other contract
+    //
+    function makerTransferAsset(
+        TokenTrader toTokenTrader,
+        uint256 tokens
+    ) onlyOwner returns (bool ok) {
+        if (owner != toTokenTrader.owner() || asset != toTokenTrader.asset()) {
+            throw;
+        }
+        MakerTransferredAsset(toTokenTrader, tokens);
+        return ERC20(asset).transfer(toTokenTrader, tokens);
     }
 
     // Maker can withdraw any ERC20 asset tokens from this contract
@@ -170,6 +206,34 @@ contract TokenTrader is Owned {
         if (this.balance >= ethers) {
             MakerWithdrewEther(ethers);
             return owner.send(ethers);
+        }
+    }
+
+    // Maker can transfer ethers from this contract to another TokenTrader
+    // contract, with the following parameters:
+    //   toTokenTrader  Another TokenTrader contract owned by the
+    //                  same owner and with the same asset
+    //   ethers         is the number of ethers to be moved
+    //
+    // The MakerTransferredEther() event is logged with the following parameter
+    //   toTokenTrader  The other TokenTrader contract owned by the
+    //                  same owner and with the same asset
+    //   ethers         is the number of ethers transferred
+    //
+    // The MakerDepositedEther() event is logged on the other
+    // contract with the following parameter:
+    //   ethers  is the number of ethers deposited by the maker
+    //
+    function makerTransferEther(
+        TokenTrader toTokenTrader,
+        uint256 ethers
+    ) onlyOwner returns (bool ok) {
+        if (owner != toTokenTrader.owner() || asset != toTokenTrader.asset()) {
+            throw;
+        }
+        if (this.balance >= ethers) {
+            MakerTransferredEther(toTokenTrader, ethers);
+            toTokenTrader.makerDepositEther.value(ethers)();
         }
     }
 

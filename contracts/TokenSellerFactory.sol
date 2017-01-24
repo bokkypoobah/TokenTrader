@@ -56,6 +56,7 @@ contract TokenSeller is Owned {
 
     event ActivatedEvent(bool sells);
     event MakerWithdrewAsset(uint256 tokens);
+    event MakerTransferredAsset(address toTokenSeller, uint256 tokens);
     event MakerWithdrewERC20Token(address tokenAddress, uint256 tokens);
     event MakerWithdrewEther(uint256 ethers);
     event TakerBoughtAsset(address indexed buyer, uint256 ethersSent,
@@ -100,6 +101,32 @@ contract TokenSeller is Owned {
     function makerWithdrawAsset(uint256 tokens) onlyOwner returns (bool ok) {
         MakerWithdrewAsset(tokens);
         return ERC20Partial(asset).transfer(owner, tokens);
+    }
+
+    // Maker can transfer asset tokens from this contract to another
+    // TokenSeller contract, with the following parameter:
+    //   toTokenSeller  Another TokenSeller contract owned by the
+    //                  same owner
+    //   tokens         is the number of asset tokens to be moved
+    //
+    // The MakerTransferredAsset() event is logged with the following
+    // parameters:
+    //   toTokenSeller  The other TokenSeller contract owned by
+    //                  the same owner
+    //   tokens         is the number of tokens transferred
+    //
+    // The asset Transfer() event is logged from this contract to
+    // the other contract
+    //
+    function makerTransferAsset(
+        TokenSeller toTokenSeller,
+        uint256 tokens
+    ) onlyOwner returns (bool ok) {
+        if (owner != toTokenSeller.owner() || asset != toTokenSeller.asset()) {
+            throw;
+        }
+        MakerTransferredAsset(toTokenSeller, tokens);
+        return ERC20Partial(asset).transfer(toTokenSeller, tokens);
     }
 
     // Maker can withdraw any ERC20 asset tokens from this contract
