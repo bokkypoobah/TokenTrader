@@ -1,0 +1,78 @@
+#!/bin/sh
+
+# ------------------------------------------------------------------------------
+# Find Golem Network Token (GNT) Balances
+#
+# Works on Linux and OS/X. May work on Windows with Cygwin.
+#
+# Cut and paste the JavaScript between the two EOF lines to run directly in
+# `geth` console.
+#
+# Usage:
+#   1. Download this script to getGNTBalances
+#   2. `chmod 700 getGNTBalances`
+#   3. Run `geth console` in a window.
+#   4. Then run this script `./getGNTBalances` in a separate window.
+#
+# History:
+#   * Jan 30 2016 - Version 1.0
+#
+# Enjoy. (c) BokkyPooBah 2016. The MIT licence.
+# ------------------------------------------------------------------------------
+
+# Don't define PARAM to use the standard IPC comms
+# Use below to connect to RPC port
+# PARAM="rpc:http://192.168.1.123:8545"
+
+geth attach $PARAM << EOF | grep "Data:" | sed "s/Data: //"
+
+function padTokens(s, n, m) {
+  var o = s.toFixed(n);
+  while (o.length < m) {
+    o = " " + o;
+  }
+  return o;
+}
+
+function padEthers(s, n) {
+  var o = s.toFixed(18);
+  while (o.length < 27) {
+    o = " " + o;
+  }
+  return o;
+}
+
+function checkAllBalances() {
+  var erc20ABI = [{"constant":false,"inputs":[{"name":"_spender","type":"address"},{"name":"_value","type":"uint256"}],"name":"approve","outputs":[{"name":"success","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"totalSupply","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_from","type":"address"},{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transferFrom","outputs":[{"name":"success","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transfer","outputs":[{"name":"success","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"},{"name":"_spender","type":"address"}],"name":"allowance","outputs":[{"name":"remaining","type":"uint256"}],"payable":false,"type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_owner","type":"address"},{"indexed":true,"name":"_spender","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Approval","type":"event"}];
+  var golemAddress = "0xa74476443119a942de498590fe1f2454d7d4ac0d";
+  var golemContract = eth.contract(erc20ABI).at(golemAddress);
+  var golemTotal = new BigNumber(0);
+  var ethersTotal = new BigNumber(0);
+
+  console.log("Data:   #     Account                                                             GNT                        ETH");
+  console.log("Data: ------- ------------------------------------------ ---------------------------- --------------------------");
+  var i =0;
+  // Standard accounts
+  var accounts = eth.accounts;
+  // Add additional accounts
+  accounts.push("0x4319c142f7b6cd722fc3a49289b8a22a7a51ca1e");
+  accounts.push("0x168ae36b4386cea14475faa41498a0ea63c67dd7");
+  accounts.push("0xd39379d7887c6a9ebd01007e2b96efc774652047");
+  accounts.forEach( function(e){
+    var golemTokens = golemContract.balanceOf(e).div(1e18);
+    golemTotal = golemTotal.add(golemTokens);
+    var ethers = web3.fromWei(eth.getBalance(e), "ether");
+    ethersTotal = ethersTotal.add(ethers);
+    console.log("Data:   " + i + "\t" + e + " " + padTokens(golemTokens, 18, 28) + " " + padTokens(ethers, 18, 26));
+    i++;
+  })
+  console.log("Data: ------- ------------------------------------------ ---------------------------- --------------------------");
+  console.log("Data:   " + i + "     Total                                      " + padTokens(golemTotal, 18, 28) + " " + padTokens(ethersTotal, 18, 26));
+};
+
+checkAllBalances()
+
+exit;
+
+EOF
+
