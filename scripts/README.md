@@ -1,4 +1,4 @@
-Run the [`getGNTBalances`](https://github.com/bokkypoobah/TokenTrader/blob/master/scripts/getGNTBalances) script above to produce the following type of output output:
+Run the [`getGNTBalances`](https://github.com/bokkypoobah/TokenTrader/blob/master/scripts/getGNTBalances) script above to produce the following type of output:
 
       #     Account                                                             GNT                        ETH
     ------- ------------------------------------------ ---------------------------- --------------------------
