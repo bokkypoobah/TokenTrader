@@ -9,7 +9,12 @@ pragma solidity ^0.4.4;
 // This caters for the Golem Network Token which does not implement the
 // ERC20 transferFrom(...), approve(...) and allowance(...) methods
 //
-// Enjoy. (c) JonnyLatte, Cintix & BokkyPooBah 2016. The MIT licence.
+// History:
+//   Jan 25 2017 - BPB Added makerTransferAsset(...)
+//   Feb 05 2017 - BPB Bug fix in the change calculation for the Unicorn
+//                     token with natural number 1
+//
+// Enjoy. (c) JonnyLatte, Cintix & BokkyPooBah 2017. The MIT licence.
 // ------------------------------------------------------------------------
 
 // https://github.com/ethereum/EIPs/issues/20
@@ -68,7 +73,7 @@ contract TokenSeller is Owned {
         uint256 _sellPrice,
         uint256 _units,
         bool    _sellsTokens
-    ) internal {
+    ) {
         asset       = _asset;
         sellPrice   = _sellPrice;
         units       = _units;
@@ -178,13 +183,15 @@ contract TokenSeller is Owned {
             // Note that units has already been validated as > 0
             uint can_sell = ERC20Partial(asset).balanceOf(address(this)) / units;
             uint256 change = 0;
-            if (order > can_sell) {
-                change = msg.value - (can_sell * sellPrice);
+            if (msg.value > (can_sell * sellPrice)) {
+                change  = msg.value - (can_sell * sellPrice);
                 order = can_sell;
+            }
+            if (change > 0) {
                 if (!msg.sender.send(change)) throw;
             }
             if (order > 0) {
-                if(!ERC20Partial(asset).transfer(msg.sender, order * units)) throw;
+                if (!ERC20Partial(asset).transfer(msg.sender, order * units)) throw;
             }
             TakerBoughtAsset(msg.sender, msg.value, change, order * units);
         }

@@ -10,7 +10,13 @@ pragma solidity ^0.4.4;
 // directly as the token does not implement the ERC20
 // transferFrom(...), approve(...) and allowance(...) methods
 //
-// Enjoy. (c) JonnyLatte & BokkyPooBah 2016. The MIT licence.
+// History:
+//   Jan 25 2017 - BPB Added makerTransferAsset(...) and
+//                     makerTransferEther(...)
+//   Feb 05 2017 - BPB Bug fix in the change calculation for the Unicorn
+//                     token with natural number 1
+//
+// Enjoy. (c) JonnyLatte & BokkyPooBah 2017. The MIT licence.
 // ------------------------------------------------------------------------
 
 // https://github.com/ethereum/EIPs/issues/20
@@ -82,7 +88,7 @@ contract TokenTrader is Owned {
         uint256 _units,
         bool    _buysTokens,
         bool    _sellsTokens
-    ) internal {
+    ) {
         asset       = _asset;
         buyPrice    = _buyPrice;
         sellPrice   = _sellPrice;
@@ -255,13 +261,15 @@ contract TokenTrader is Owned {
             // Note that units has already been validated as > 0
             uint can_sell = ERC20(asset).balanceOf(address(this)) / units;
             uint256 change = 0;
-            if (order > can_sell) {
-                change = msg.value - (can_sell * sellPrice);
+            if (msg.value > (can_sell * sellPrice)) {
+                change  = msg.value - (can_sell * sellPrice);
                 order = can_sell;
+            }
+            if (change > 0) {
                 if (!msg.sender.send(change)) throw;
             }
             if (order > 0) {
-                if(!ERC20(asset).transfer(msg.sender, order * units)) throw;
+                if (!ERC20(asset).transfer(msg.sender, order * units)) throw;
             }
             TakerBoughtAsset(msg.sender, msg.value, change, order * units);
         }
@@ -298,9 +306,9 @@ contract TokenTrader is Owned {
             if (order > can_buy) order = can_buy;
             if (order > 0) {
                 // Extract user tokens
-                if(!ERC20(asset).transferFrom(msg.sender, address(this), order * units)) throw;
+                if (!ERC20(asset).transferFrom(msg.sender, address(this), order * units)) throw;
                 // Pay user
-                if(!msg.sender.send(order * buyPrice)) throw;
+                if (!msg.sender.send(order * buyPrice)) throw;
             }
             TakerSoldAsset(msg.sender, etherValueOfTokensToSell, order * units, order * buyPrice);
         }
