@@ -1,5 +1,5 @@
 # TokenTrader
-Decentralised trustless ERC20-compliant token and ETH exchange contract on the Ethereum blockchain.
+Decentralised trustless ether/ERC20-compliant token exchange contract on the Ethereum blockchain.
 
 TokenTrader, TokenTraderFactory, TokenSeller, TokenSellerFactory, GNTTokenTrader, GNTTokenTraderFactory - See the [wiki](https://github.com/bokkypoobah/TokenTrader/wiki) for the latest information.
 
