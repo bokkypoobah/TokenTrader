@@ -84,50 +84,52 @@ contract TestERC20Token is ERC20Interface {
         return balances[_owner];
     }
 
-    // Transfer the balance from owner's account to another account
+    // Send _value amount of tokens to address _to
     function transfer(address _to, uint256 _amount) returns (bool success) {
-        if (balances[msg.sender] >= _amount && _amount > 0) {
+        if (balances[msg.sender] >= _amount
+            && _amount > 0
+            && balances[_to] + _amount > balances[_to]) {
             balances[msg.sender] -= _amount;
             balances[_to] += _amount;
             Transfer(msg.sender, _to, _amount);
-            return true;
-        } else {
-           return false;
-        }
-    }
-
-    // Send _value amount of tokens from address _from to address _to
-    // The transferFrom method is used for a withdraw workflow, allowing contracts to send
-    // tokens on your behalf, for example to "deposit" to a contract address and/or to charge
-    // fees in sub-currencies; the command should fail unless the _from account has
-    // deliberately authorized the sender of the message via some mechanism; we propose
-    // these standardized APIs for approval:
-    function transferFrom(
-        address _from,
-        address _to,
-        uint256 _amount
-    ) returns (bool success) {
-
-        if (balances[_from] >= _amount
-            && allowed[_from][msg.sender] >= _amount
-            && _amount > 0) {
-
-            balances[_to] += _amount;
-            balances[_from] -= _amount;
-            allowed[_from][msg.sender] -= _amount;
-            Transfer(_from, _to, _amount);
             return true;
         } else {
             return false;
         }
     }
 
-    // Allow _spender to withdraw from your account, multiple times, up to the _value amount.
-    // If this function is called again it overwrites the current allowance with _value.
-    function approve(address _spender, uint256 _amount) returns (bool success) {
+    // Allow _spender to withdraw from your account, multiple times, up to the
+    // _value amount. If this function is called again it overwrites the
+    // current allowance with _value.
+    function approve(
+        address _spender,
+        uint256 _amount
+    ) returns (bool success) {
         allowed[msg.sender][_spender] = _amount;
         Approval(msg.sender, _spender, _amount);
         return true;
+    }
+
+    // Spender of tokens transfer an amount of tokens from the token owner's
+    // balance to the spender's account. The owner of the tokens must already
+    // have approve(...)-d this transfer
+    function transferFrom(
+        address _from,
+        address _to,
+        uint256 _amount
+    ) returns (bool success) {
+        if (balances[_from] >= _amount
+            && allowed[_from][msg.sender] >= _amount
+            && _amount > 0
+            && balances[_to] + _amount > balances[_to]) {
+            balances[_from] -= _amount;
+            allowed[_from][msg.sender] -= _amount;
+            balances[_to] += _amount;
+            Transfer(_from, _to, _amount);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     function allowance(address _owner, address _spender) constant returns (uint256 remaining) {
