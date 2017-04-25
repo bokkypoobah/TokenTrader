@@ -21,6 +21,8 @@ pragma solidity ^0.4.4;
 //                     Added check in createTradeContract(...) to prevent
 //                     GNTs from being used with this contract. The asset
 //                     token will need to have an allowance(...) function.
+//   Apr 25 2017 - BPB Various changes including:
+//                     * Correct comment for takerSellAsset(...)
 //
 // Enjoy. (c) JonnyLatte & BokkyPooBah 2017. The MIT licence.
 // ------------------------------------------------------------------------
@@ -285,11 +287,11 @@ contract TokenTrader is Owned {
 
     // Taker sells asset tokens for ethers by:
     // 1. Calling the asset's approve() method with the following parameters
-    //    _spender            is the address of this contract
-    //    _value              is the number of tokens to be sold
+    //    _spender              is the address of this contract
+    //    _value                is the number of tokens to be sold
     // 2. Calling this takerSellAsset() method with the following parameter
-    //    etherValueOfTokens  is the ether value of the asset tokens to be sold
-    //                        by the taker
+    //    amountOfTokensToSell  is the amount of asset tokens to be sold by
+    //                          the taker
     //
     // The TakerSoldAsset() event is logged with the following parameters
     //   seller                  is the seller's address
