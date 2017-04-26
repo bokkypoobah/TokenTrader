@@ -8,3 +8,5 @@ TokenTrader, TokenTraderFactory, TokenSeller, TokenSellerFactory, GNTTokenTrader
 ---
 
 Enjoy. (c) JonnyLatte, Cintix &amp; BokkyPooBah 2016. The MIT licence.
+
+test
