@@ -2,3 +2,4 @@
 .project
 private
 private/*
+test/testchain/geth*
