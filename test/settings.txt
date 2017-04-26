@@ -1,0 +1,15 @@
+IPCFILE=ipc:./testchain/geth.ipc
+PASSWORD=testtest
+
+TESTERC20SOL=../contracts/TestERC20Token.sol
+TESTERC20JS=TestERC20Token.js
+TOKENTRADERFACTORYSOL=../contracts/TokenTraderFactory.sol
+TOKENTRADERFACTORYJS=TokenTraderFactory.js
+TOKENSELLERFACTORYSOL=../contracts/TokenSellerFactory.sol
+TOKENSELLERFACTORYJS=TokenSellerFactory.js
+
+DEPLOYMENTDATA=deploymentData.txt
+
+INCLUDEJS=./include.js
+TEST1OUTPUT=test1output.txt
+TEST1RESULTS=test1results.txt
