@@ -2,19 +2,36 @@ var accounts = [];
 var accountNames = {};
 
 addAccount(eth.accounts[0], "Account #0 - Miner");
-addAccount(eth.accounts[1], "Account #1 - CustomerDepositFactory Owner");
-addAccount(eth.accounts[2], "Account #2 - Incent Account");
-addAccount(eth.accounts[3], "Account #3 - Fee Account");
-addAccount(eth.accounts[4], "Account #4 - Client Account");
-addAccount(eth.accounts[5], "Account #5 - Customer1 Account");
-addAccount(eth.accounts[6], "Account #6 - Customer2 Account");
+addAccount(eth.accounts[1], "Account #1 - Token Owner");
+addAccount(eth.accounts[2], "Account #2 - Factory Owner");
+addAccount(eth.accounts[3], "Account #3 - Maker 1 Account");
+addAccount(eth.accounts[4], "Account #4 - Maker 2 Account");
+addAccount(eth.accounts[5], "Account #5 - Taker 1 Account");
+addAccount(eth.accounts[6], "Account #6 - Taker 2 Account");
 
 var tokenOwnerAccount = eth.accounts[1];
-var customerDepositFactoryOwnerAccount = eth.accounts[1];
-var incentAccount = eth.accounts[2];
-var feeAccount = eth.accounts[3];
-var clientAccount = eth.accounts[4];
-var customer1Account = eth.accounts[5];
+var factoryOwnerAccount = eth.accounts[2];
+var maker1Account = eth.accounts[3];
+var maker2Account = eth.accounts[4];
+var taker1Account = eth.accounts[5];
+var taker2Account = eth.accounts[6];
+
+var token0 = null;
+var token2 = null;
+var token8 = null;
+var token18 = null;
+
+var tokenTraderFactory = null;
+var tokenSellerFactory = null;
+
+var token0Address = null;
+var token2Address = null;
+var token8Address = null;
+var token18Address = null;
+
+var tokenTraderFactoryAddress = null;
+var tokenSellerFactoryAddress = null;
+
 var customer2Account = eth.accounts[6];
 var depositContractFactoryAddress = null;
 
@@ -31,12 +48,20 @@ function addAccount(account, accountName) {
 
 function printBalances() {
   var i = 0;
-  console.log("RESULT: # Account                                                   EtherBalance Name");
+  console.log("RESULT:  # Account                                                   EtherBalance Name");
   accounts.forEach(function(e) {
     i++;
     var etherBalance = web3.fromWei(eth.getBalance(e), "ether");
-    console.log("RESULT: " + i + " " + e  + " " + pad(etherBalance) + " " + accountNames[e]);
+    console.log("RESULT: " + pad2(i) + " " + e  + " " + pad(etherBalance) + " " + accountNames[e]);
   });
+}
+
+function pad2(s) {
+  var o = s.toFixed(0);
+  while (o.length < 2) {
+    o = " " + o;
+  }
+  return o;
 }
 
 function pad(s) {

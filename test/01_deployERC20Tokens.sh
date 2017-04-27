@@ -34,9 +34,9 @@ printf "INCLUDEJS             = '$INCLUDEJS'\n"
 printf "TEST1OUTPUT           = '$TEST1OUTPUT'\n"
 printf "TEST1RESULTS          = '$TEST1RESULTS'\n"
 
-echo "var testErc20Output=`solc --optimize --combined-json abi,bin,interface $TESTERC20SOL`" > $TESTERC20JS
-echo "var tokenTraderFactoryOutput=`solc --optimize --combined-json abi,bin,interface $TOKENTRADERFACTORYSOL`" > $TOKENTRADERFACTORYJS
-echo "var tokenSellerFactoryOutput=`solc --optimize --combined-json abi,bin,interface $TOKENSELLERFACTORYSOL`" > $TOKENSELLERFACTORYJS
+echo "var tokenOutput=`solc --optimize --combined-json abi,bin,interface $TESTERC20SOL`;" > $TESTERC20JS
+echo "var tokenTraderFactoryOutput=`solc --optimize --combined-json abi,bin,interface $TOKENTRADERFACTORYSOL`;" > $TOKENTRADERFACTORYJS
+echo "var tokenSellerFactoryOutput=`solc --optimize --combined-json abi,bin,interface $TOKENSELLERFACTORYSOL`;" > $TOKENSELLERFACTORYJS
 
 geth --verbosity 3 attach $GETHATTACHPOINT << EOF | tee $TEST1OUTPUT
 loadScript("$TESTERC20JS");
@@ -44,15 +44,88 @@ loadScript("$TOKENTRADERFACTORYJS");
 loadScript("$TOKENSELLERFACTORYJS");
 loadScript("functions.js");
 
-console.log("testErc20Output=" + JSON.stringify(testErc20Output));
-console.log("tokenTraderFactoryOutput=" + JSON.stringify(tokenTraderFactoryOutput));
-console.log("tokenSellerFactoryOutput=" + JSON.stringify(tokenSellerFactoryOutput));
-
-exit;
-
+var tokenContractAbi = JSON.parse(tokenOutput.contracts["../contracts/TestERC20Token.sol:TestERC20Token"].abi);
+var tokenContractBin = "0x" + tokenOutput.contracts["../contracts/TestERC20Token.sol:TestERC20Token"].bin;
 
 unlockAccounts("$PASSWORD");
 printBalances();
+
+var tokenContract = web3.eth.contract(tokenContractAbi);
+// var tokenTraderFactoryContract = web3.eth.contract(tokenTraderFactoryOutput.contracts["../contracts/TokenTraderFactory.sol:TokenTraderFactory"].abi);
+// var tokenSellerFactoryContract = web3.eth.contract(tokenSellerFactoryOutput.contracts["../contracts/TokenSellerFactory.sol:TokenSellerFactory"].abi);
+// tokenTraderFactoryContract;
+// tokenSellerFactoryContract;
+
+// -----------------------------------------------------------------------------
+var testMessage = "Setup 1.1 Deploy Tokens And Factories";
+console.log("RESULT: " + testMessage);
+
+var token0Tx = null;
+token0 = tokenContract.new("Token 0 Decimals", "TOKEN0", 0, {from: tokenOwnerAccount, data: tokenContractBin, gas: 4000000},
+  function(e, contract) {
+    if (!e) {
+      if (!contract.address) {
+        token0Tx = contract.transactionHash;
+      } else {
+        token0Address = contract.address;
+        addAccount(token0Address, "TOKEN0");
+        printTxData("token0Address=" + token0Address, token0Tx);
+      }
+    }
+  }
+);
+var token2Tx = null;
+token2 = tokenContract.new("Token 2 Decimals", "TOKEN2", 2, {from: tokenOwnerAccount, data: tokenContractBin, gas: 4000000},
+  function(e, contract) {
+    if (!e) {
+      if (!contract.address) {
+        token2Tx = contract.transactionHash;
+      } else {
+        token2Address = contract.address;
+        addAccount(token2Address, "TOKEN2");
+        printTxData("token2Address=" + token2Address, token2Tx);
+      }
+    }
+  }
+);
+var token8Tx = null;
+token8 = tokenContract.new("Token 8 Decimals", "TOKEN8", 8, {from: tokenOwnerAccount, data: tokenContractBin, gas: 4000000},
+  function(e, contract) {
+    if (!e) {
+      if (!contract.address) {
+        token8Tx = contract.transactionHash;
+      } else {
+        token8Address = contract.address;
+        addAccount(token8Address, "TOKEN8");
+        printTxData("token8Address=" + token8Address, token8Tx);
+      }
+    }
+  }
+);
+var token18Tx = null;
+token18 = tokenContract.new("Token 18 Decimals", "TOKEN18", 18, {from: tokenOwnerAccount, data: tokenContractBin, gas: 4000000},
+  function(e, contract) {
+    if (!e) {
+      if (!contract.address) {
+        token18Tx = contract.transactionHash;
+      } else {
+        token18Address = contract.address;
+        addAccount(token18Address, "TOKEN18");
+        printTxData("token18Address=" + token18Address, token18Tx);
+      }
+    }
+  }
+);
+while (txpool.status.pending > 0) {
+}
+
+printBalances();
+exit;
+
+printContractStaticDetails();
+printContractDynamicDetails();
+failIfGasEqualsGasUsedOrContractAddressNull(depositContractFactoryAddress, depositContractFactoryTx, testMessage);
+console.log("RESULT: ");
 
 // Load source code
 loadScript("$INCLUDEJS");
