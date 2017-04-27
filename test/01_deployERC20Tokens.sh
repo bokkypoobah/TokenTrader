@@ -44,24 +44,26 @@ loadScript("$TOKENTRADERFACTORYJS");
 loadScript("$TOKENSELLERFACTORYJS");
 loadScript("functions.js");
 
-var tokenContractAbi = JSON.parse(tokenOutput.contracts["../contracts/TestERC20Token.sol:TestERC20Token"].abi);
-var tokenContractBin = "0x" + tokenOutput.contracts["../contracts/TestERC20Token.sol:TestERC20Token"].bin;
+var tokenAbi = JSON.parse(tokenOutput.contracts["../contracts/TestERC20Token.sol:TestERC20Token"].abi);
+var tokenBin = "0x" + tokenOutput.contracts["../contracts/TestERC20Token.sol:TestERC20Token"].bin;
+var tokenTraderFactoryAbi = JSON.parse(tokenTraderFactoryOutput.contracts["../contracts/TokenTraderFactory.sol:TokenTraderFactory"].abi);
+var tokenTraderFactoryBin = "0x" + tokenTraderFactoryOutput.contracts["../contracts/TokenTraderFactory.sol:TokenTraderFactory"].bin;
+var tokenSellerFactoryAbi = JSON.parse(tokenSellerFactoryOutput.contracts["../contracts/TokenSellerFactory.sol:TokenSellerFactory"].abi);
+var tokenSellerFactoryBin = "0x" + tokenSellerFactoryOutput.contracts["../contracts/TokenSellerFactory.sol:TokenSellerFactory"].bin;
 
 unlockAccounts("$PASSWORD");
 printBalances();
 
-var tokenContract = web3.eth.contract(tokenContractAbi);
-// var tokenTraderFactoryContract = web3.eth.contract(tokenTraderFactoryOutput.contracts["../contracts/TokenTraderFactory.sol:TokenTraderFactory"].abi);
-// var tokenSellerFactoryContract = web3.eth.contract(tokenSellerFactoryOutput.contracts["../contracts/TokenSellerFactory.sol:TokenSellerFactory"].abi);
-// tokenTraderFactoryContract;
-// tokenSellerFactoryContract;
+var tokenContract = web3.eth.contract(tokenAbi);
+var tokenTraderFactoryContract = web3.eth.contract(tokenTraderFactoryAbi);
+var tokenSellerFactoryContract = web3.eth.contract(tokenSellerFactoryAbi);
 
 // -----------------------------------------------------------------------------
 var testMessage = "Setup 1.1 Deploy Tokens And Factories";
 console.log("RESULT: " + testMessage);
 
 var token0Tx = null;
-token0 = tokenContract.new("Token 0 Decimals", "TOKEN0", 0, {from: tokenOwnerAccount, data: tokenContractBin, gas: 4000000},
+token0 = tokenContract.new("Token 0 Decimals", "TOKEN0", 0, {from: tokenOwnerAccount, data: tokenBin, gas: 4000000},
   function(e, contract) {
     if (!e) {
       if (!contract.address) {
@@ -75,7 +77,7 @@ token0 = tokenContract.new("Token 0 Decimals", "TOKEN0", 0, {from: tokenOwnerAcc
   }
 );
 var token2Tx = null;
-token2 = tokenContract.new("Token 2 Decimals", "TOKEN2", 2, {from: tokenOwnerAccount, data: tokenContractBin, gas: 4000000},
+token2 = tokenContract.new("Token 2 Decimals", "TOKEN2", 2, {from: tokenOwnerAccount, data: tokenBin, gas: 4000000},
   function(e, contract) {
     if (!e) {
       if (!contract.address) {
@@ -89,7 +91,7 @@ token2 = tokenContract.new("Token 2 Decimals", "TOKEN2", 2, {from: tokenOwnerAcc
   }
 );
 var token8Tx = null;
-token8 = tokenContract.new("Token 8 Decimals", "TOKEN8", 8, {from: tokenOwnerAccount, data: tokenContractBin, gas: 4000000},
+token8 = tokenContract.new("Token 8 Decimals", "TOKEN8", 8, {from: tokenOwnerAccount, data: tokenBin, gas: 4000000},
   function(e, contract) {
     if (!e) {
       if (!contract.address) {
@@ -103,7 +105,7 @@ token8 = tokenContract.new("Token 8 Decimals", "TOKEN8", 8, {from: tokenOwnerAcc
   }
 );
 var token18Tx = null;
-token18 = tokenContract.new("Token 18 Decimals", "TOKEN18", 18, {from: tokenOwnerAccount, data: tokenContractBin, gas: 4000000},
+token18 = tokenContract.new("Token 18 Decimals", "TOKEN18", 18, {from: tokenOwnerAccount, data: tokenBin, gas: 4000000},
   function(e, contract) {
     if (!e) {
       if (!contract.address) {
@@ -112,6 +114,34 @@ token18 = tokenContract.new("Token 18 Decimals", "TOKEN18", 18, {from: tokenOwne
         token18Address = contract.address;
         addAccount(token18Address, "TOKEN18");
         printTxData("token18Address=" + token18Address, token18Tx);
+      }
+    }
+  }
+);
+var tokenTraderFactoryTx = null;
+tokenTraderFactory = tokenContract.new({from: factoryOwnerAccount, data: tokenBin, gas: 4000000},
+  function(e, contract) {
+    if (!e) {
+      if (!contract.address) {
+        tokenTraderFactoryTx = contract.transactionHash;
+      } else {
+        tokenTraderFactoryAddress = contract.address;
+        addAccount(tokenTraderFactoryAddress, "TokenTraderFactory");
+        printTxData("tokenTraderFactoryAddress=" + tokenTraderFactoryAddress, tokenTraderFactoryTx);
+      }
+    }
+  }
+);
+var tokenSellerFactoryTx = null;
+tokenSellerFactory = tokenContract.new({from: factoryOwnerAccount, data: tokenBin, gas: 4000000},
+  function(e, contract) {
+    if (!e) {
+      if (!contract.address) {
+        tokenSellerFactoryTx = contract.transactionHash;
+      } else {
+        tokenSellerFactoryAddress = contract.address;
+        addAccount(tokenSellerFactoryAddress, "TokenSellerFactory");
+        printTxData("tokenSellerFactoryAddress=" + tokenSellerFactoryAddress, tokenSellerFactoryTx);
       }
     }
   }
