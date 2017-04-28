@@ -2,7 +2,7 @@ Welcome to the Geth JavaScript console!
 
 instance: Geth/v1.6.0-stable-facc47cb/darwin-amd64/go1.8.1
 coinbase: 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e
-at block: 34 (Fri, 28 Apr 2017 21:30:50 AEST)
+at block: 557 (Fri, 28 Apr 2017 22:01:55 AEST)
  datadir: /Users/bok/Projects/TokenTrader/test/testchain
  modules: admin:1.0 debug:1.0 eth:1.0 miner:1.0 net:1.0 personal:1.0 rpc:1.0 txpool:1.0 web3:1.0
 
@@ -29,10 +29,13 @@ undefined
 undefined
 > 
 > 
+DATA: tokenABI=[{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_spender","type":"address"},{"name":"_amount","type":"uint256"}],"name":"approve","outputs":[{"name":"success","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"totalSupply","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_from","type":"address"},{"name":"_to","type":"address"},{"name":"_amount","type":"uint256"}],"name":"transferFrom","outputs":[{"name":"success","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"name":"","type":"uint8"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_amount","type":"uint256"}],"name":"transfer","outputs":[{"name":"success","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"},{"name":"_spender","type":"address"}],"name":"allowance","outputs":[{"name":"remaining","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"ethers","type":"uint256"}],"name":"withdrawEthers","outputs":[{"name":"ok","type":"bool"}],"payable":false,"type":"function"},{"inputs":[{"name":"_name","type":"string"},{"name":"_symbol","type":"string"},{"name":"_decimals","type":"uint8"}],"payable":false,"type":"constructor"},{"payable":true,"type":"fallback"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_owner","type":"address"},{"indexed":false,"name":"_amount","type":"uint256"}],"name":"TokensCreated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_owner","type":"address"},{"indexed":true,"name":"_spender","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Approval","type":"event"}]
 undefined
 > 
+DATA: tokenTraderFactoryABI=[{"constant":false,"inputs":[{"name":"asset","type":"address"},{"name":"buyPrice","type":"uint256"},{"name":"sellPrice","type":"uint256"},{"name":"units","type":"uint256"},{"name":"buysTokens","type":"bool"},{"name":"sellsTokens","type":"bool"}],"name":"createTradeContract","outputs":[{"name":"trader","type":"address"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"tokenAddress","type":"address"},{"name":"tokens","type":"uint256"}],"name":"ownerWithdrawERC20Token","outputs":[{"name":"ok","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"tradeContract","type":"address"}],"name":"verify","outputs":[{"name":"valid","type":"bool"},{"name":"owner","type":"address"},{"name":"asset","type":"address"},{"name":"buyPrice","type":"uint256"},{"name":"sellPrice","type":"uint256"},{"name":"units","type":"uint256"},{"name":"buysTokens","type":"bool"},{"name":"sellsTokens","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"type":"function"},{"payable":false,"type":"fallback"},{"anonymous":false,"inputs":[{"indexed":true,"name":"ownerAddress","type":"address"},{"indexed":true,"name":"tokenTraderAddress","type":"address"},{"indexed":true,"name":"asset","type":"address"},{"indexed":false,"name":"buyPrice","type":"uint256"},{"indexed":false,"name":"sellPrice","type":"uint256"},{"indexed":false,"name":"units","type":"uint256"},{"indexed":false,"name":"buysTokens","type":"bool"},{"indexed":false,"name":"sellsTokens","type":"bool"}],"name":"TradeListing","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"tokenAddress","type":"address"},{"indexed":false,"name":"tokens","type":"uint256"}],"name":"OwnerWithdrewERC20Token","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"}],"name":"OwnershipTransferred","type":"event"}]
 undefined
 > 
+DATA: tokenSellerFactoryABI=[{"constant":false,"inputs":[{"name":"tokenAddress","type":"address"},{"name":"tokens","type":"uint256"}],"name":"ownerWithdrawERC20Token","outputs":[{"name":"ok","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"tradeContract","type":"address"}],"name":"verify","outputs":[{"name":"valid","type":"bool"},{"name":"owner","type":"address"},{"name":"asset","type":"address"},{"name":"sellPrice","type":"uint256"},{"name":"units","type":"uint256"},{"name":"sellsTokens","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"asset","type":"address"},{"name":"sellPrice","type":"uint256"},{"name":"units","type":"uint256"},{"name":"sellsTokens","type":"bool"}],"name":"createSaleContract","outputs":[{"name":"seller","type":"address"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"type":"function"},{"payable":false,"type":"fallback"},{"anonymous":false,"inputs":[{"indexed":true,"name":"ownerAddress","type":"address"},{"indexed":true,"name":"tokenSellerAddress","type":"address"},{"indexed":true,"name":"asset","type":"address"},{"indexed":false,"name":"sellPrice","type":"uint256"},{"indexed":false,"name":"units","type":"uint256"},{"indexed":false,"name":"sellsTokens","type":"bool"}],"name":"TradeListing","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"tokenAddress","type":"address"},{"indexed":false,"name":"tokens","type":"uint256"}],"name":"OwnerWithdrewERC20Token","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"}],"name":"OwnershipTransferred","type":"event"}]
 undefined
 > 
 > 
@@ -181,7 +184,7 @@ undefined
       type: "event"
   }],
   address: undefined,
-  transactionHash: "0x0cfba9a50e99044919838d044010d93e8b7b7cfd6b60de97f11351bda1702e52"
+  transactionHash: "0x4304eb11669e4e4826c2da0251f89ddf8de74776bdbfb0e4fc5ce50f38482607"
 }
 > 
 undefined
@@ -301,7 +304,7 @@ undefined
       type: "event"
   }],
   address: undefined,
-  transactionHash: "0x86ef4e110dbf939dc739c406582ec84e8706ea979527b809e05ba014e022625e"
+  transactionHash: "0x717400c3dd3d354554a33014b76f955d5fe95ecbed647ad66be09e154ebef7bb"
 }
 > 
 undefined
@@ -421,7 +424,7 @@ undefined
       type: "event"
   }],
   address: undefined,
-  transactionHash: "0x5a1740b16495e8780caa4009c07382073cce555e4886d5abfe2c6edb3b072331"
+  transactionHash: "0xe931506fb4f3d3797acca152b55c31c8c81ca42470c3ca71077776516ff5468e"
 }
 > 
 undefined
@@ -541,7 +544,7 @@ undefined
       type: "event"
   }],
   address: undefined,
-  transactionHash: "0xda497d9a45b9df1aa8003543879dc2735bb958a9712a6a54f66fe39aa311c792"
+  transactionHash: "0x37b56e412b896c8aa47af462f55b697e89386e651be344ff79dd209e37d090ef"
 }
 > 
 undefined
@@ -661,7 +664,7 @@ undefined
       type: "event"
   }],
   address: undefined,
-  transactionHash: "0xa1b8ee944b6716aa6dafd1c94cdd6a5a53b3183706204059ab1b97f5ee583180"
+  transactionHash: "0x5857363a02c47ecf3ac2cf9e731bd033c5d09e857fc94748cd83178da67f1e6f"
 }
 > 
 undefined
@@ -681,45 +684,24 @@ undefined
 ... 
 {
   abi: [{
-      constant: true,
-      inputs: [],
-      name: "name",
+      constant: false,
+      inputs: [{...}, {...}, {...}, {...}, {...}, {...}],
+      name: "createTradeContract",
       outputs: [{...}],
       payable: false,
       type: "function"
   }, {
       constant: false,
       inputs: [{...}, {...}],
-      name: "approve",
-      outputs: [{...}],
-      payable: false,
-      type: "function"
-  }, {
-      constant: true,
-      inputs: [],
-      name: "totalSupply",
-      outputs: [{...}],
-      payable: false,
-      type: "function"
-  }, {
-      constant: false,
-      inputs: [{...}, {...}, {...}],
-      name: "transferFrom",
-      outputs: [{...}],
-      payable: false,
-      type: "function"
-  }, {
-      constant: true,
-      inputs: [],
-      name: "decimals",
+      name: "ownerWithdrawERC20Token",
       outputs: [{...}],
       payable: false,
       type: "function"
   }, {
       constant: true,
       inputs: [{...}],
-      name: "balanceOf",
-      outputs: [{...}],
+      name: "verify",
+      outputs: [{...}, {...}, {...}, {...}, {...}, {...}, {...}, {...}],
       payable: false,
       type: "function"
   }, {
@@ -730,58 +712,33 @@ undefined
       payable: false,
       type: "function"
   }, {
-      constant: true,
-      inputs: [],
-      name: "symbol",
-      outputs: [{...}],
-      payable: false,
-      type: "function"
-  }, {
-      constant: false,
-      inputs: [{...}, {...}],
-      name: "transfer",
-      outputs: [{...}],
-      payable: false,
-      type: "function"
-  }, {
-      constant: true,
-      inputs: [{...}, {...}],
-      name: "allowance",
-      outputs: [{...}],
-      payable: false,
-      type: "function"
-  }, {
       constant: false,
       inputs: [{...}],
-      name: "withdrawEthers",
-      outputs: [{...}],
+      name: "transferOwnership",
+      outputs: [],
       payable: false,
       type: "function"
   }, {
-      inputs: [{...}, {...}, {...}],
       payable: false,
-      type: "constructor"
-  }, {
-      payable: true,
       type: "fallback"
   }, {
       anonymous: false,
+      inputs: [{...}, {...}, {...}, {...}, {...}, {...}, {...}, {...}],
+      name: "TradeListing",
+      type: "event"
+  }, {
+      anonymous: false,
       inputs: [{...}, {...}],
-      name: "TokensCreated",
+      name: "OwnerWithdrewERC20Token",
       type: "event"
   }, {
       anonymous: false,
-      inputs: [{...}, {...}, {...}],
-      name: "Transfer",
-      type: "event"
-  }, {
-      anonymous: false,
-      inputs: [{...}, {...}, {...}],
-      name: "Approval",
+      inputs: [{...}, {...}],
+      name: "OwnershipTransferred",
       type: "event"
   }],
   address: undefined,
-  transactionHash: "0x477a278c5896bb1bb721de61484e4976a02227d18de565c42bc2c330f1c64f8c"
+  transactionHash: "0x930dc155066e86786226a41ff882da314109571da69f401f70bb7881744f2f11"
 }
 > 
 undefined
@@ -801,45 +758,17 @@ undefined
 ... 
 {
   abi: [{
-      constant: true,
-      inputs: [],
-      name: "name",
-      outputs: [{...}],
-      payable: false,
-      type: "function"
-  }, {
       constant: false,
       inputs: [{...}, {...}],
-      name: "approve",
-      outputs: [{...}],
-      payable: false,
-      type: "function"
-  }, {
-      constant: true,
-      inputs: [],
-      name: "totalSupply",
-      outputs: [{...}],
-      payable: false,
-      type: "function"
-  }, {
-      constant: false,
-      inputs: [{...}, {...}, {...}],
-      name: "transferFrom",
-      outputs: [{...}],
-      payable: false,
-      type: "function"
-  }, {
-      constant: true,
-      inputs: [],
-      name: "decimals",
+      name: "ownerWithdrawERC20Token",
       outputs: [{...}],
       payable: false,
       type: "function"
   }, {
       constant: true,
       inputs: [{...}],
-      name: "balanceOf",
-      outputs: [{...}],
+      name: "verify",
+      outputs: [{...}, {...}, {...}, {...}, {...}, {...}],
       payable: false,
       type: "function"
   }, {
@@ -850,93 +779,75 @@ undefined
       payable: false,
       type: "function"
   }, {
-      constant: true,
-      inputs: [],
-      name: "symbol",
-      outputs: [{...}],
-      payable: false,
-      type: "function"
-  }, {
       constant: false,
-      inputs: [{...}, {...}],
-      name: "transfer",
-      outputs: [{...}],
-      payable: false,
-      type: "function"
-  }, {
-      constant: true,
-      inputs: [{...}, {...}],
-      name: "allowance",
+      inputs: [{...}, {...}, {...}, {...}],
+      name: "createSaleContract",
       outputs: [{...}],
       payable: false,
       type: "function"
   }, {
       constant: false,
       inputs: [{...}],
-      name: "withdrawEthers",
-      outputs: [{...}],
+      name: "transferOwnership",
+      outputs: [],
       payable: false,
       type: "function"
   }, {
-      inputs: [{...}, {...}, {...}],
       payable: false,
-      type: "constructor"
-  }, {
-      payable: true,
       type: "fallback"
   }, {
       anonymous: false,
+      inputs: [{...}, {...}, {...}, {...}, {...}, {...}],
+      name: "TradeListing",
+      type: "event"
+  }, {
+      anonymous: false,
       inputs: [{...}, {...}],
-      name: "TokensCreated",
+      name: "OwnerWithdrewERC20Token",
       type: "event"
   }, {
       anonymous: false,
-      inputs: [{...}, {...}, {...}],
-      name: "Transfer",
-      type: "event"
-  }, {
-      anonymous: false,
-      inputs: [{...}, {...}, {...}],
-      name: "Approval",
+      inputs: [{...}, {...}],
+      name: "OwnershipTransferred",
       type: "event"
   }],
   address: undefined,
-  transactionHash: "0xb1c7f1a76cfb92837d7dea017b8b61c3012236f0d1cbf4aeb268c610bd199cfa"
+  transactionHash: "0x2a9826856e07cd791a0ae3e3d82960d10456655a564ea07b7e3d55e977eae14d"
 }
 > 
 ... 
 undefined
 > 
 > 
-DATA: token0Address=0x9a538a4dbfc9fa678ec782bb23fcbab065adbc6e
-RESULT: token0Address=0x9a538a4dbfc9fa678ec782bb23fcbab065adbc6e gas=4000000 gasUsed=685764 cost=0.01371528 block=39 txId=0x0cfba9a50e99044919838d044010d93e8b7b7cfd6b60de97f11351bda1702e52
-DATA: token1Address=0x03d47b0d78f8dee3089037dffd5c9a1f7e7282af
-RESULT: token1Address=0x03d47b0d78f8dee3089037dffd5c9a1f7e7282af gas=4000000 gasUsed=685828 cost=0.01371656 block=39 txId=0x86ef4e110dbf939dc739c406582ec84e8706ea979527b809e05ba014e022625e
-DATA: token2Address=0xcc643e6c5639d64ca3c0c484a6c0f23d11b87477
-RESULT: token2Address=0xcc643e6c5639d64ca3c0c484a6c0f23d11b87477 gas=4000000 gasUsed=685828 cost=0.01371656 block=39 txId=0x5a1740b16495e8780caa4009c07382073cce555e4886d5abfe2c6edb3b072331
-DATA: token8Address=0xbd7780c8773a6c99163ea9c1fa870450bc216aa6
-RESULT: token8Address=0xbd7780c8773a6c99163ea9c1fa870450bc216aa6 gas=4000000 gasUsed=685828 cost=0.01371656 block=39 txId=0xda497d9a45b9df1aa8003543879dc2735bb958a9712a6a54f66fe39aa311c792
-DATA: token18Address=0x8e23764210d851b4b621459575408b1e7bfb821d
-RESULT: token18Address=0x8e23764210d851b4b621459575408b1e7bfb821d gas=4000000 gasUsed=685956 cost=0.01371912 block=39 txId=0xa1b8ee944b6716aa6dafd1c94cdd6a5a53b3183706204059ab1b97f5ee583180
-DATA: tokenTraderFactoryAddress=0xe86ff84c7647d746799e6824855facc43c8df23a
-RESULT: tokenTraderFactoryAddress=0xe86ff84c7647d746799e6824855facc43c8df23a gas=4000000 gasUsed=653183 cost=0.01306366 block=39 txId=0x477a278c5896bb1bb721de61484e4976a02227d18de565c42bc2c330f1c64f8c
-DATA: tokenSellerFactoryAddress=0xb5fb5e9294bdfc6036992d1fe345828a46a639d7
-RESULT: tokenSellerFactoryAddress=0xb5fb5e9294bdfc6036992d1fe345828a46a639d7 gas=4000000 gasUsed=653183 cost=0.01306366 block=39 txId=0xb1c7f1a76cfb92837d7dea017b8b61c3012236f0d1cbf4aeb268c610bd199cfa
+DATA: token0Address=0x27d061c2671105e9d691abe7ac511b542e69caf0
+RESULT: token0Address=0x27d061c2671105e9d691abe7ac511b542e69caf0 gas=4000000 gasUsed=685764 cost=0.01371528 block=563 txId=0x4304eb11669e4e4826c2da0251f89ddf8de74776bdbfb0e4fc5ce50f38482607
+DATA: token1Address=0x2be9f94508210e0b4cfa38e22e6c0be8aa4e977d
+RESULT: token1Address=0x2be9f94508210e0b4cfa38e22e6c0be8aa4e977d gas=4000000 gasUsed=685828 cost=0.01371656 block=563 txId=0x717400c3dd3d354554a33014b76f955d5fe95ecbed647ad66be09e154ebef7bb
+DATA: token2Address=0xca439eae92887028fff9f12a3eafa2b9b63cc7cc
+RESULT: token2Address=0xca439eae92887028fff9f12a3eafa2b9b63cc7cc gas=4000000 gasUsed=685828 cost=0.01371656 block=563 txId=0xe931506fb4f3d3797acca152b55c31c8c81ca42470c3ca71077776516ff5468e
+DATA: token8Address=0x719cd76b63a299f7ad5a7482c977d53fe546a8a5
+RESULT: token8Address=0x719cd76b63a299f7ad5a7482c977d53fe546a8a5 gas=4000000 gasUsed=685828 cost=0.01371656 block=563 txId=0x37b56e412b896c8aa47af462f55b697e89386e651be344ff79dd209e37d090ef
+DATA: token18Address=0xb1c8b8c10b933bad0983c7994a2249a2f464f740
+RESULT: token18Address=0xb1c8b8c10b933bad0983c7994a2249a2f464f740 gas=4000000 gasUsed=685956 cost=0.01371912 block=563 txId=0x5857363a02c47ecf3ac2cf9e731bd033c5d09e857fc94748cd83178da67f1e6f
+DATA: tokenTraderFactoryAddress=0x2b9bb1dc192a930272b113403ffe5102cc6dbcfe
+RESULT: tokenTraderFactoryAddress=0x2b9bb1dc192a930272b113403ffe5102cc6dbcfe gas=4000000 gasUsed=653183 cost=0.01306366 block=563 txId=0x930dc155066e86786226a41ff882da314109571da69f401f70bb7881744f2f11
+DATA: tokenSellerFactoryAddress=0x1259c29cfb0fcb15448b9d8c44dd422aa5615d20
+RESULT: tokenSellerFactoryAddress=0x1259c29cfb0fcb15448b9d8c44dd422aa5615d20 gas=4000000 gasUsed=653183 cost=0.01306366 block=563 txId=0x2a9826856e07cd791a0ae3e3d82960d10456655a564ea07b7e3d55e977eae14d
 RESULT:  # Account                                             EtherBalanceChange   Token0    Token1     Token2           Token8                    Token18 Name
-RESULT:  1 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e       25.094711400000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #0 - Miner
+RESULT:  1 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e       30.094711400000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #0 - Miner
 RESULT:  2 0x0014060ff383c9b21c6840a3b14aab06741e5c49       -0.068584080000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #1 - Token Owner
 RESULT:  3 0x0020017ba4c67f76c76b1af8c41821ee54f37171       -0.026127320000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #2 - Factory Owner
 RESULT:  4 0x0036f6addb6d64684390f55a92f0f4988266901b        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #3 - Maker 1 Account
 RESULT:  5 0x004e64833635cd1056b948b57286b7c91e62731c        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #4 - Maker 2 Account
 RESULT:  6 0x0055fbc1ada89056088c75eaf50400af6756ae61        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #5 - Taker 1 Account
 RESULT:  7 0x006b2baf3000413d83d257086fd3434a109aa552        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #6 - Taker 2 Account
-RESULT:  8 0x9a538a4dbfc9fa678ec782bb23fcbab065adbc6e        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 TOKEN0
-RESULT:  9 0x03d47b0d78f8dee3089037dffd5c9a1f7e7282af        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 TOKEN1
-RESULT: 10 0xcc643e6c5639d64ca3c0c484a6c0f23d11b87477        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 TOKEN2
-RESULT: 11 0xbd7780c8773a6c99163ea9c1fa870450bc216aa6        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 TOKEN8
-RESULT: 12 0x8e23764210d851b4b621459575408b1e7bfb821d        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 TOKEN18
-RESULT: 13 0xe86ff84c7647d746799e6824855facc43c8df23a        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 TokenTraderFactory
-RESULT: 14 0xb5fb5e9294bdfc6036992d1fe345828a46a639d7        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 TokenSellerFactory
+RESULT:  8 0x27d061c2671105e9d691abe7ac511b542e69caf0        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 TOKEN0
+RESULT:  9 0x2be9f94508210e0b4cfa38e22e6c0be8aa4e977d        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 TOKEN1
+RESULT: 10 0xca439eae92887028fff9f12a3eafa2b9b63cc7cc        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 TOKEN2
+RESULT: 11 0x719cd76b63a299f7ad5a7482c977d53fe546a8a5        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 TOKEN8
+RESULT: 12 0xb1c8b8c10b933bad0983c7994a2249a2f464f740        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 TOKEN18
+RESULT: 13 0x2b9bb1dc192a930272b113403ffe5102cc6dbcfe        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 TokenTraderFactory
+RESULT: 14 0x1259c29cfb0fcb15448b9d8c44dd422aa5615d20        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 TokenSellerFactory
 undefined
 > 
 > 
@@ -945,9 +856,8 @@ undefined
 > 
 undefined
 > 
-RESULT: Setup 1.2 Issue Tokens
+RESULT: Setup 1.2 Tokens
 undefined
-> 
 > 
 undefined
 > 
@@ -963,31 +873,106 @@ undefined
 undefined
 > 
 RESULT:  # Account                                             EtherBalanceChange   Token0    Token1     Token2           Token8                    Token18 Name
-RESULT:  1 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e       40.100843400000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #0 - Miner
+RESULT:  1 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e       50.100843400000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #0 - Miner
 RESULT:  2 0x0014060ff383c9b21c6840a3b14aab06741e5c49       -0.068584080000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #1 - Token Owner
 RESULT:  3 0x0020017ba4c67f76c76b1af8c41821ee54f37171       -0.026127320000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #2 - Factory Owner
 RESULT:  4 0x0036f6addb6d64684390f55a92f0f4988266901b    -1000.006132100000111000     1000    1000.0    1000.00    1000.00000000    1000.000000000000000000 Account #3 - Maker 1 Account
 RESULT:  5 0x004e64833635cd1056b948b57286b7c91e62731c        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #4 - Maker 2 Account
 RESULT:  6 0x0055fbc1ada89056088c75eaf50400af6756ae61        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #5 - Taker 1 Account
 RESULT:  7 0x006b2baf3000413d83d257086fd3434a109aa552        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #6 - Taker 2 Account
-RESULT:  8 0x9a538a4dbfc9fa678ec782bb23fcbab065adbc6e        0.000000000000001000        0       0.0       0.00       0.00000000       0.000000000000000000 TOKEN0
-RESULT:  9 0x03d47b0d78f8dee3089037dffd5c9a1f7e7282af        0.000000000000010000        0       0.0       0.00       0.00000000       0.000000000000000000 TOKEN1
-RESULT: 10 0xcc643e6c5639d64ca3c0c484a6c0f23d11b87477        0.000000000000100000        0       0.0       0.00       0.00000000       0.000000000000000000 TOKEN2
-RESULT: 11 0xbd7780c8773a6c99163ea9c1fa870450bc216aa6        0.000000100000000000        0       0.0       0.00       0.00000000       0.000000000000000000 TOKEN8
-RESULT: 12 0x8e23764210d851b4b621459575408b1e7bfb821d     1000.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 TOKEN18
-RESULT: 13 0xe86ff84c7647d746799e6824855facc43c8df23a        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 TokenTraderFactory
-RESULT: 14 0xb5fb5e9294bdfc6036992d1fe345828a46a639d7        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 TokenSellerFactory
+RESULT:  8 0x27d061c2671105e9d691abe7ac511b542e69caf0        0.000000000000001000        0       0.0       0.00       0.00000000       0.000000000000000000 TOKEN0
+RESULT:  9 0x2be9f94508210e0b4cfa38e22e6c0be8aa4e977d        0.000000000000010000        0       0.0       0.00       0.00000000       0.000000000000000000 TOKEN1
+RESULT: 10 0xca439eae92887028fff9f12a3eafa2b9b63cc7cc        0.000000000000100000        0       0.0       0.00       0.00000000       0.000000000000000000 TOKEN2
+RESULT: 11 0x719cd76b63a299f7ad5a7482c977d53fe546a8a5        0.000000100000000000        0       0.0       0.00       0.00000000       0.000000000000000000 TOKEN8
+RESULT: 12 0xb1c8b8c10b933bad0983c7994a2249a2f464f740     1000.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 TOKEN18
+RESULT: 13 0x2b9bb1dc192a930272b113403ffe5102cc6dbcfe        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 TokenTraderFactory
+RESULT: 14 0x1259c29cfb0fcb15448b9d8c44dd422aa5615d20        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 TokenSellerFactory
 undefined
 > 
-RESULT: tx12_0 gas=400000 gasUsed=61320 cost=0.0012264 block=42 txId=0x626dca36702d54b1ca4c17fa3598c3a800c286f8061babd9b3ca58bec53dc3cf
+RESULT: tx12_0 gas=400000 gasUsed=61320 cost=0.0012264 block=567 txId=0x0f01587faceea4151e7e7e50750e7a8bb65d1528baba1b177d5d3d8112a212f9
 undefined
 > 
-RESULT: PASS Setup 1.2 Issue Tokens
+RESULT: tx12_1 gas=400000 gasUsed=61320 cost=0.0012264 block=567 txId=0x546f6ae554d0b8a98861489e8649d5ab2ea38b668b91ee08643e814148f8bf73
+undefined
+> 
+RESULT: tx12_2 gas=400000 gasUsed=61320 cost=0.0012264 block=567 txId=0xc61a51471133ea37678109cee71f97a96adc84035466c9c92cbfeab5b521140a
+undefined
+> 
+RESULT: tx12_8 gas=400000 gasUsed=61320 cost=0.0012264 block=567 txId=0x038bb31e86764ca7f68dc01686e27687f1c73d263bed253c1828a2fddf6d611c
+undefined
+> 
+RESULT: tx12_18 gas=400000 gasUsed=61320 cost=0.0012264 block=567 txId=0xd11ab7592952d48bf6e353ac84dd000f971bc95ffdca77b5e6c32b4b930b8fbc
+undefined
+> 
+RESULT: PASS Setup 1.2 Tokens Token0
+1
+> 
+RESULT: PASS Setup 1.2 Tokens Token1
+1
+> 
+RESULT: PASS Setup 1.2 Tokens Token2
+1
+> 
+RESULT: PASS Setup 1.2 Tokens Token8
+1
+> 
+RESULT: PASS Setup 1.2 Tokens Token18
 1
 > 
 RESULT: 
 undefined
 > 
+> 
+> 
+undefined
+> 
+undefined
+> 
+RESULT: Setup 1.3 Trader Contracts
+undefined
+> 
+undefined
+> 
+DEBUG: 1
+undefined
+> 
+... 
+undefined
+> 
+DEBUG: 2
+undefined
+> 
+RESULT:  # Account                                             EtherBalanceChange   Token0    Token1     Token2           Token8                    Token18 Name
+RESULT:  1 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e       65.101327260000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #0 - Miner
+RESULT:  2 0x0014060ff383c9b21c6840a3b14aab06741e5c49       -0.068584080000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #1 - Token Owner
+RESULT:  3 0x0020017ba4c67f76c76b1af8c41821ee54f37171       -0.026127320000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #2 - Factory Owner
+RESULT:  4 0x0036f6addb6d64684390f55a92f0f4988266901b    -1000.006615960000111000     1000    1000.0    1000.00    1000.00000000    1000.000000000000000000 Account #3 - Maker 1 Account
+RESULT:  5 0x004e64833635cd1056b948b57286b7c91e62731c        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #4 - Maker 2 Account
+RESULT:  6 0x0055fbc1ada89056088c75eaf50400af6756ae61        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #5 - Taker 1 Account
+RESULT:  7 0x006b2baf3000413d83d257086fd3434a109aa552        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #6 - Taker 2 Account
+RESULT:  8 0x27d061c2671105e9d691abe7ac511b542e69caf0        0.000000000000001000        0       0.0       0.00       0.00000000       0.000000000000000000 TOKEN0
+RESULT:  9 0x2be9f94508210e0b4cfa38e22e6c0be8aa4e977d        0.000000000000010000        0       0.0       0.00       0.00000000       0.000000000000000000 TOKEN1
+RESULT: 10 0xca439eae92887028fff9f12a3eafa2b9b63cc7cc        0.000000000000100000        0       0.0       0.00       0.00000000       0.000000000000000000 TOKEN2
+RESULT: 11 0x719cd76b63a299f7ad5a7482c977d53fe546a8a5        0.000000100000000000        0       0.0       0.00       0.00000000       0.000000000000000000 TOKEN8
+RESULT: 12 0xb1c8b8c10b933bad0983c7994a2249a2f464f740     1000.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 TOKEN18
+RESULT: 13 0x2b9bb1dc192a930272b113403ffe5102cc6dbcfe        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 TokenTraderFactory
+RESULT: 14 0x1259c29cfb0fcb15448b9d8c44dd422aa5615d20        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 TokenSellerFactory
+undefined
+> 
+DEBUG: 3
+undefined
+> 
+RESULT: tx13_0 gas=1000000 gasUsed=24193 cost=0.00048386 block=570 txId=0x2529095bd4689619882925f7cc1261b6c10c6d0f0a94ef2cb106706387b281b3
+undefined
+> 
+DEBUG: 4
+undefined
+> 
+RESULT: PASS Setup 1.3 Trader Contracts Token0
+1
+> 
+RESULT: 
+undefined
 > 
 > 
 > 
