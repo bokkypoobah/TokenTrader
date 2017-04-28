@@ -46,13 +46,17 @@ loadScript("functions.js");
 
 var tokenAbi = JSON.parse(tokenOutput.contracts["../contracts/TestERC20Token.sol:TestERC20Token"].abi);
 var tokenBin = "0x" + tokenOutput.contracts["../contracts/TestERC20Token.sol:TestERC20Token"].bin;
+var tokenTraderAbi = JSON.parse(tokenTraderFactoryOutput.contracts["../contracts/TokenTraderFactory.sol:TokenTrader"].abi);
 var tokenTraderFactoryAbi = JSON.parse(tokenTraderFactoryOutput.contracts["../contracts/TokenTraderFactory.sol:TokenTraderFactory"].abi);
 var tokenTraderFactoryBin = "0x" + tokenTraderFactoryOutput.contracts["../contracts/TokenTraderFactory.sol:TokenTraderFactory"].bin;
+var tokenSellerAbi = JSON.parse(tokenSellerFactoryOutput.contracts["../contracts/TokenSellerFactory.sol:TokenSeller"].abi);
 var tokenSellerFactoryAbi = JSON.parse(tokenSellerFactoryOutput.contracts["../contracts/TokenSellerFactory.sol:TokenSellerFactory"].abi);
 var tokenSellerFactoryBin = "0x" + tokenSellerFactoryOutput.contracts["../contracts/TokenSellerFactory.sol:TokenSellerFactory"].bin;
 
 console.log("DATA: tokenABI=" + JSON.stringify(tokenAbi));
+console.log("DATA: tokenTraderABI=" + JSON.stringify(tokenTraderAbi));
 console.log("DATA: tokenTraderFactoryABI=" + JSON.stringify(tokenTraderFactoryAbi));
+console.log("DATA: tokenSellerABI=" + JSON.stringify(tokenSellerAbi));
 console.log("DATA: tokenSellerFactoryABI=" + JSON.stringify(tokenSellerFactoryAbi));
 
 unlockAccounts("$PASSWORD");
@@ -142,7 +146,7 @@ token18 = tokenContract.new("Token 18 Decimals", "TOKEN18", 18, {from: tokenOwne
   }
 );
 var tokenTraderFactoryTx = null;
-tokenTraderFactory = tokenTraderFactoryContract.new({from: factoryOwnerAccount, data: tokenBin, gas: 4000000},
+tokenTraderFactory = tokenTraderFactoryContract.new({from: factoryOwnerAccount, data: tokenTraderFactoryBin, gas: 4000000},
   function(e, contract) {
     if (!e) {
       if (!contract.address) {
@@ -157,7 +161,7 @@ tokenTraderFactory = tokenTraderFactoryContract.new({from: factoryOwnerAccount, 
   }
 );
 var tokenSellerFactoryTx = null;
-tokenSellerFactory = tokenSellerFactoryContract.new({from: factoryOwnerAccount, data: tokenBin, gas: 4000000},
+tokenSellerFactory = tokenSellerFactoryContract.new({from: factoryOwnerAccount, data: tokenSellerFactoryBin, gas: 4000000},
   function(e, contract) {
     if (!e) {
       if (!contract.address) {
@@ -173,26 +177,25 @@ tokenSellerFactory = tokenSellerFactoryContract.new({from: factoryOwnerAccount, 
 );
 while (txpool.status.pending > 0) {
 }
-
 printBalances();
 
 
 // -----------------------------------------------------------------------------
 var testMessage = "Setup 1.2 Tokens";
 console.log("RESULT: " + testMessage);
-var tx12_0 = eth.sendTransaction({from: maker1Account, to: token0Address, gas: 400000, value: "1000"});
-var tx12_1 = eth.sendTransaction({from: maker1Account, to: token1Address, gas: 400000, value: "10000"});
-var tx12_2 = eth.sendTransaction({from: maker1Account, to: token2Address, gas: 400000, value: "100000"});
-var tx12_8 = eth.sendTransaction({from: maker1Account, to: token8Address, gas: 400000, value: "100000000000"});
-var tx12_18 = eth.sendTransaction({from: maker1Account, to: token18Address, gas: 400000, value: "1000000000000000000000"});
+var tx12_0 = eth.sendTransaction({from: maker1Account, to: token0Address, gas: 400000, value: "1000"});                     // 1000
+var tx12_1 = eth.sendTransaction({from: maker1Account, to: token1Address, gas: 400000, value: "10000"});                    // 1000.0
+var tx12_2 = eth.sendTransaction({from: maker1Account, to: token2Address, gas: 400000, value: "100000"});                   // 1000.00
+var tx12_8 = eth.sendTransaction({from: maker1Account, to: token8Address, gas: 400000, value: "100000000000"});             // 1000.00000000
+var tx12_18 = eth.sendTransaction({from: maker1Account, to: token18Address, gas: 400000, value: "1000000000000000000000"}); // 1000.000000000000000000
 while (txpool.status.pending > 0) {
 }
-printBalances();
 printTxData("tx12_0", tx12_0);
 printTxData("tx12_1", tx12_1);
 printTxData("tx12_2", tx12_2);
 printTxData("tx12_8", tx12_8);
 printTxData("tx12_18", tx12_18);
+printBalances();
 failIfGasEqualsGasUsed(tx12_0, testMessage + " Token0");
 failIfGasEqualsGasUsed(tx12_1, testMessage + " Token1");
 failIfGasEqualsGasUsed(tx12_2, testMessage + " Token2");
@@ -204,16 +207,118 @@ console.log("RESULT: ");
 // -----------------------------------------------------------------------------
 var testMessage = "Setup 1.3 Trader Contracts";
 console.log("RESULT: " + testMessage);
-var tx13_0 = tokenTraderFactory.createTradeContract(token0Address, 11111, 22222, 10000, true, true, {from: maker1Account, gas: 1000000});
-console.log("DEBUG: 1");
+var startBlock = eth.blockNumber;
+var tx13_0 = tokenTraderFactory.createTradeContract(token0Address, "11111", "22222", "10000", true, true, {from: maker1Account, gas: 1000000});
+var tx13_1 = tokenTraderFactory.createTradeContract(token1Address, "111110", "222220", "10000", true, true, {from: maker1Account, gas: 1000000});
+var tx13_2 = tokenTraderFactory.createTradeContract(token2Address, "1111100", "2222200", "10000", true, true, {from: maker1Account, gas: 1000000});
+var tx13_8 = tokenTraderFactory.createTradeContract(token8Address, "1111100000000", "22222000000000", "10000", true, true, {from: maker1Account, gas: 1000000});
+// var tx13_18 = tokenTraderFactory.createTradeContract(token18Address, "11111", "22222", "10000", true, true, {from: maker1Account, gas: 1000000});
+var tx13_18 = tokenTraderFactory.createTradeContract(token18Address, "2555", "2666", "1000000", true, true, {from: maker1Account, gas: 1000000});
 while (txpool.status.pending > 0) {
 }
-console.log("DEBUG: 2");
-printBalances();
-console.log("DEBUG: 3");
 printTxData("tx13_0", tx13_0);
-console.log("DEBUG: 4");
+printTxData("tx13_1", tx13_1);
+printTxData("tx13_2", tx13_2);
+printTxData("tx13_8", tx13_8);
+printTxData("tx13_18", tx13_18);
+printBalances();
 failIfGasEqualsGasUsed(tx13_0, testMessage + " Token0");
+failIfGasEqualsGasUsed(tx13_1, testMessage + " Token0");
+failIfGasEqualsGasUsed(tx13_2, testMessage + " Token0");
+failIfGasEqualsGasUsed(tx13_8, testMessage + " Token0");
+failIfGasEqualsGasUsed(tx13_18, testMessage + " Token0");
+console.log("RESULT: ");
+var endBlock = eth.blockNumber;
+
+// Get TokenTrader address
+// var tradeListingEvent = tokenTraderFactory.TradeListing({}, { fromBlock: startBlock, toBlock: endBlock });
+var tradeListingEvent = tokenTraderFactory.TradeListing({}, { fromBlock: 0, toBlock: "latest" });
+var i = 0;
+var tokenTrader0Address = null;
+var tokenTrader1Address = null;
+var tokenTrader2Address = null;
+var tokenTrader8Address = null;
+var tokenTrader18Address = null;
+tradeListingEvent.watch(function (error, result) {
+// var tokenTraderFactoryAddress = result.address;
+// var owner = result.args.ownerAddress;
+ var asset = result.args.asset;
+if (asset == token0Address) {
+ tokenTrader0Address = result.args.tokenTraderAddress;
+  addAccount(tokenTrader0Address, "TokenTrader0");
+  console.log("DATA: tokenTrader0Address=" + tokenTrader0Address);
+} else if (asset == token1Address) {
+tokenTrader1Address = result.args.tokenTraderAddress;
+addAccount(tokenTrader1Address, "TokenTrader1");
+  console.log("DATA: tokenTrader1Address=" + tokenTrader1Address);
+} else if (asset == token2Address) {
+tokenTrader2Address = result.args.tokenTraderAddress;
+addAccount(tokenTrader2Address, "TokenTrader2");
+  console.log("DATA: tokenTrader2Address=" + tokenTrader2Address);
+} else if (asset == token8Address) {
+tokenTrader8Address = result.args.tokenTraderAddress;
+addAccount(tokenTrader8Address, "TokenTrader8");
+  console.log("DATA: tokenTrader8Address=" + tokenTrader8Address);
+} else if (asset == token18Address) {
+tokenTrader18Address = result.args.tokenTraderAddress;
+addAccount(tokenTrader18Address, "TokenTrader18");
+  console.log("DATA: tokenTrader18Address=" + tokenTrader18Address);
+}
+//  var blockNumber = result.blockNumber;
+//  var logIndex = result.logIndex;
+//  var transactionHash = result.transactionHash;
+//  console.log("DATA: tokenTraderOwner=" + owner);
+  console.log(i++ + ": " + JSON.stringify(result));
+});
+tradeListingEvent.stopWatching();
+printBalances();
+
+
+// -----------------------------------------------------------------------------
+var testMessage = "Setup 1.4 Transfer tokens to TokenTrader";
+console.log("RESULT: " + testMessage);
+var tx14_0 = token0.transfer(tokenTrader0Address, "100", {from: maker1Account, gas: 100000});
+var tx14_1 = token1.transfer(tokenTrader1Address, "1000", {from: maker1Account, gas: 100000});
+var tx14_2 = token2.transfer(tokenTrader2Address, "10000", {from: maker1Account, gas: 100000});
+var tx14_8 = token8.transfer(tokenTrader8Address, "10000000000", {from: maker1Account, gas: 100000});
+var tx14_18 = token18.transfer(tokenTrader18Address, "100000000000000000000", {from: maker1Account, gas: 100000});
+while (txpool.status.pending > 0) {
+}
+printTxData("tx14_0", tx14_0);
+printTxData("tx14_1", tx14_1);
+printTxData("tx14_2", tx14_2);
+printTxData("tx14_8", tx14_8);
+printTxData("tx14_18", tx14_18);
+printBalances();
+failIfGasEqualsGasUsed(tx14_0, testMessage + " Token0");
+failIfGasEqualsGasUsed(tx14_1, testMessage + " Token1");
+failIfGasEqualsGasUsed(tx14_2, testMessage + " Token2");
+failIfGasEqualsGasUsed(tx14_8, testMessage + " Token8");
+failIfGasEqualsGasUsed(tx14_18, testMessage + " Token18");
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+var testMessage = "Test 1.5 Buy Tokens from TokenTrader";
+console.log("RESULT: " + testMessage);
+var tx15_0 = eth.sendTransaction({from: taker1Account, to: tokenTrader0Address, gas: 400000, value: "100"});
+var tx15_1 = eth.sendTransaction({from: taker1Account, to: tokenTrader1Address, gas: 400000, value: "100"});
+var tx15_2 = eth.sendTransaction({from: taker1Account, to: tokenTrader2Address, gas: 400000, value: "100"});
+var tx15_8 = eth.sendTransaction({from: taker1Account, to: tokenTrader8Address, gas: 400000, value: "100"});
+var tx15_18 = eth.sendTransaction({from: taker1Account, to: tokenTrader18Address, gas: 400000, value: "100"});
+while (txpool.status.pending > 0) {
+}
+printTxData("tx15_0", tx15_0);
+printTxData("tx15_1", tx15_1);
+printTxData("tx15_2", tx15_2);
+printTxData("tx15_8", tx15_8);
+printTxData("tx15_18", tx15_18);
+printBalances();
+failIfGasEqualsGasUsed(tx15_0, testMessage + " Token0");
+failIfGasEqualsGasUsed(tx15_1, testMessage + " Token1");
+failIfGasEqualsGasUsed(tx15_2, testMessage + " Token2");
+failIfGasEqualsGasUsed(tx15_8, testMessage + " Token8");
+failIfGasEqualsGasUsed(tx15_18, testMessage + " Token18");
 console.log("RESULT: ");
 
 
