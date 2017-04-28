@@ -51,6 +51,10 @@ var tokenTraderFactoryBin = "0x" + tokenTraderFactoryOutput.contracts["../contra
 var tokenSellerFactoryAbi = JSON.parse(tokenSellerFactoryOutput.contracts["../contracts/TokenSellerFactory.sol:TokenSellerFactory"].abi);
 var tokenSellerFactoryBin = "0x" + tokenSellerFactoryOutput.contracts["../contracts/TokenSellerFactory.sol:TokenSellerFactory"].bin;
 
+console.log("DATA: tokenABI=" + JSON.stringify(tokenAbi));
+console.log("DATA: tokenTraderFactoryABI=" + JSON.stringify(tokenTraderFactoryBin));
+console.log("DATA: tokenSellerFactoryABI=" + JSON.stringify(tokenSellerFactoryAbi));
+
 unlockAccounts("$PASSWORD");
 printBalances();
 
@@ -71,7 +75,23 @@ token0 = tokenContract.new("Token 0 Decimals", "TOKEN0", 0, {from: tokenOwnerAcc
       } else {
         token0Address = contract.address;
         addAccount(token0Address, "TOKEN0");
+        console.log("DATA: token0Address=" + token0Address);
         printTxData("token0Address=" + token0Address, token0Tx);
+      }
+    }
+  }
+);
+var token1Tx = null;
+token1 = tokenContract.new("Token 1 Decimals", "TOKEN1", 1, {from: tokenOwnerAccount, data: tokenBin, gas: 4000000},
+  function(e, contract) {
+    if (!e) {
+      if (!contract.address) {
+        token1Tx = contract.transactionHash;
+      } else {
+        token1Address = contract.address;
+        addAccount(token1Address, "TOKEN1");
+        console.log("DATA: token1Address=" + token1Address);
+        printTxData("token1Address=" + token1Address, token1Tx);
       }
     }
   }
@@ -85,6 +105,7 @@ token2 = tokenContract.new("Token 2 Decimals", "TOKEN2", 2, {from: tokenOwnerAcc
       } else {
         token2Address = contract.address;
         addAccount(token2Address, "TOKEN2");
+        console.log("DATA: token2Address=" + token2Address);
         printTxData("token2Address=" + token2Address, token2Tx);
       }
     }
@@ -99,6 +120,7 @@ token8 = tokenContract.new("Token 8 Decimals", "TOKEN8", 8, {from: tokenOwnerAcc
       } else {
         token8Address = contract.address;
         addAccount(token8Address, "TOKEN8");
+        console.log("DATA: token8Address=" + token8Address);
         printTxData("token8Address=" + token8Address, token8Tx);
       }
     }
@@ -113,6 +135,7 @@ token18 = tokenContract.new("Token 18 Decimals", "TOKEN18", 18, {from: tokenOwne
       } else {
         token18Address = contract.address;
         addAccount(token18Address, "TOKEN18");
+        console.log("DATA: token18Address=" + token18Address);
         printTxData("token18Address=" + token18Address, token18Tx);
       }
     }
@@ -127,6 +150,7 @@ tokenTraderFactory = tokenContract.new({from: factoryOwnerAccount, data: tokenBi
       } else {
         tokenTraderFactoryAddress = contract.address;
         addAccount(tokenTraderFactoryAddress, "TokenTraderFactory");
+        console.log("DATA: tokenTraderFactoryAddress=" + tokenTraderFactoryAddress);
         printTxData("tokenTraderFactoryAddress=" + tokenTraderFactoryAddress, tokenTraderFactoryTx);
       }
     }
@@ -141,6 +165,7 @@ tokenSellerFactory = tokenContract.new({from: factoryOwnerAccount, data: tokenBi
       } else {
         tokenSellerFactoryAddress = contract.address;
         addAccount(tokenSellerFactoryAddress, "TokenSellerFactory");
+        console.log("DATA: tokenSellerFactoryAddress=" + tokenSellerFactoryAddress);
         printTxData("tokenSellerFactoryAddress=" + tokenSellerFactoryAddress, tokenSellerFactoryTx);
       }
     }
@@ -402,3 +427,5 @@ console.log("RESULT: ");
 EOF
 grep "RESULT: " $TEST1OUTPUT | sed "s/RESULT: //" > $TEST1RESULTS
 cat $TEST1RESULTS
+grep "DATA: " $TEST1OUTPUT | sed "s/DATA: //" > $DEPLOYMENTDATA
+cat $DEPLOYMENTDATA

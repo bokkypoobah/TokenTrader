@@ -16,7 +16,10 @@ var maker2Account = eth.accounts[4];
 var taker1Account = eth.accounts[5];
 var taker2Account = eth.accounts[6];
 
+var baseBlock = eth.blockNumber;
+
 var token0 = null;
+var token1 = null;
 var token2 = null;
 var token8 = null;
 var token18 = null;
@@ -25,6 +28,7 @@ var tokenTraderFactory = null;
 var tokenSellerFactory = null;
 
 var token0Address = null;
+var token1Address = null;
 var token2Address = null;
 var token8Address = null;
 var token18Address = null;
@@ -48,10 +52,11 @@ function addAccount(account, accountName) {
 
 function printBalances() {
   var i = 0;
-  console.log("RESULT:  # Account                                                   EtherBalance Name");
+  console.log("RESULT:  # Account                                             EtherBalanceChange Name");
   accounts.forEach(function(e) {
     i++;
-    var etherBalance = web3.fromWei(eth.getBalance(e), "ether");
+    var etherBalanceBaseBlock = eth.getBalance(e, baseBlock);
+    var etherBalance = web3.fromWei(eth.getBalance(e).minus(etherBalanceBaseBlock), "ether");
     console.log("RESULT: " + pad2(i) + " " + e  + " " + pad(etherBalance) + " " + accountNames[e]);
   });
 }

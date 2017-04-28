@@ -2,7 +2,7 @@ Welcome to the Geth JavaScript console!
 
 instance: Geth/v1.6.0-stable-facc47cb/darwin-amd64/go1.8.1
 coinbase: 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e
-at block: 781 (Thu, 27 Apr 2017 16:31:12 AEST)
+at block: 0 (Thu, 01 Jan 1970 10:00:00 AEST)
  datadir: /Users/bok/Projects/TokenTrader/test/testchain
  modules: admin:1.0 debug:1.0 eth:1.0 miner:1.0 net:1.0 personal:1.0 rpc:1.0 txpool:1.0 web3:1.0
 
@@ -29,16 +29,26 @@ undefined
 undefined
 > 
 > 
+DATA: tokenABI=[{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_spender","type":"address"},{"name":"_amount","type":"uint256"}],"name":"approve","outputs":[{"name":"success","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"totalSupply","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_from","type":"address"},{"name":"_to","type":"address"},{"name":"_amount","type":"uint256"}],"name":"transferFrom","outputs":[{"name":"success","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"name":"","type":"uint8"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_amount","type":"uint256"}],"name":"transfer","outputs":[{"name":"success","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"},{"name":"_spender","type":"address"}],"name":"allowance","outputs":[{"name":"remaining","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"ethers","type":"uint256"}],"name":"withdrawEthers","outputs":[{"name":"ok","type":"bool"}],"payable":false,"type":"function"},{"inputs":[{"name":"_name","type":"string"},{"name":"_symbol","type":"string"},{"name":"_decimals","type":"uint8"}],"payable":false,"type":"constructor"},{"payable":true,"type":"fallback"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_owner","type":"address"},{"indexed":false,"name":"_amount","type":"uint256"}],"name":"TokensCreated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_owner","type":"address"},{"indexed":true,"name":"_spender","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Approval","type":"event"}]
 undefined
 > 
-RESULT:  # Account                                                   EtherBalance Name
-RESULT:  1 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e   103925.273495320000000000 Account #0 - Miner
-RESULT:  2 0x0014060ff383c9b21c6840a3b14aab06741e5c49    99999.752632000000000000 Account #1 - Token Owner
-RESULT:  3 0x0020017ba4c67f76c76b1af8c41821ee54f37171    99999.973872680000000000 Account #2 - Factory Owner
-RESULT:  4 0x0036f6addb6d64684390f55a92f0f4988266901b   100000.000000000000000000 Account #3 - Maker 1 Account
-RESULT:  5 0x004e64833635cd1056b948b57286b7c91e62731c   100000.000000000000000000 Account #4 - Maker 2 Account
-RESULT:  6 0x0055fbc1ada89056088c75eaf50400af6756ae61   100000.000000000000000000 Account #5 - Taker 1 Account
-RESULT:  7 0x006b2baf3000413d83d257086fd3434a109aa552   100000.000000000000000000 Account #6 - Taker 2 Account
+DATA: tokenTraderFactoryABI="0x60606040525b60008054600160a060020a03191633600160a060020a03161790555b5b6118aa806100316000396000f300606060405236156100515763ffffffff60e060020a6000350416633d6a32bd81146100665780635de01497146100b157806363a9c3d7146100e45780638da5cb5b14610151578063f2fde38b1461017d575b341561005957fe5b6100645b610000565b565b005b341561006e57fe5b610095600160a060020a0360043516602435604435606435608435151560a435151561019b565b60408051600160a060020a039092168252519081900360200190f35b34156100b957fe5b6100d0600160a060020a03600435166024356103cb565b604080519115158252519081900360200190f35b34156100ec57fe5b610100600160a060020a03600435166104b7565b604080519815158952600160a060020a0397881660208a015295909616878601526060870193909352608086019190915260a0850152151560c084015290151560e083015251908190036101000190f35b341561015957fe5b610095610788565b60408051600160a060020a039092168252519081900360200190f35b341561018557fe5b610064600160a060020a0360043516610797565b005b600080600160a060020a03881615156101b357610000565b87600160a060020a031663dd62ed3e33306000604051602001526040518363ffffffff1660e060020a0281526004018083600160a060020a0316600160a060020a0316815260200182600160a060020a0316600160a060020a0316815260200192505050602060405180830381600087803b151561022d57fe5b60325a03f1151561023a57fe5b505060405151915050600087111580610254575060008611155b1561025e57610000565b85871061026a57610000565b6000851161027757610000565b878787878787610285610818565b600160a060020a039096168652602086019490945260408086019390935260608501919091521515608084015290151560a0830152519081900360c001906000f08015156102cf57fe5b600160a060020a038082166000818152600160208190526040808320805460ff191690921790915580517ff2fde38b00000000000000000000000000000000000000000000000000000000815233909416600485015251939550909263f2fde38b92602480820193929182900301818387803b151561034a57fe5b60325a03f1151561035757fe5b50506040805189815260208101899052808201889052861515606082015285151560808201529051600160a060020a03808c1693508581169233909116917f65ff0f5aef2091ad3616436792adf51be3068c631b081ac0f30f77e3a0e6502d9181900360a00190a45b509695505050505050565b6000805433600160a060020a039081169116146103e757610000565b604080518381529051600160a060020a038516917f168656e1968a1165ef7fd3f1006847fcfba4cac97672bc70ccbcffb66bc080ba919081900360200190a26000805460408051602090810184905281517fa9059cbb000000000000000000000000000000000000000000000000000000008152600160a060020a0393841660048201526024810187905291519287169363a9059cbb936044808501949192918390030190829087803b151561049957fe5b60325a03f115156104a657fe5b5050604051519150505b5b92915050565b600160a060020a03811660009081526001602052604081205460ff169080808080808080881561077b5789905080600160a060020a0316638da5cb5b6000604051602001526040518163ffffffff1660e060020a028152600401809050602060405180830381600087803b151561052a57fe5b60325a03f1151561053757fe5b50505060405180519050975080600160a060020a03166338d52e0f6000604051602001526040518163ffffffff1660e060020a028152600401809050602060405180830381600087803b151561058957fe5b60325a03f1151561059657fe5b50505060405180519050965080600160a060020a0316638620410b6000604051602001526040518163ffffffff1660e060020a028152600401809050602060405180830381600087803b15156105e857fe5b60325a03f115156105f557fe5b50505060405180519050955080600160a060020a0316634b7503346000604051602001526040518163ffffffff1660e060020a028152600401809050602060405180830381600087803b151561064757fe5b60325a03f1151561065457fe5b50505060405180519050945080600160a060020a031663976a84356000604051602001526040518163ffffffff1660e060020a028152600401809050602060405180830381600087803b15156106a657fe5b60325a03f115156106b357fe5b50505060405180519050935080600160a060020a031663b10993476000604051602001526040518163ffffffff1660e060020a028152600401809050602060405180830381600087803b151561070557fe5b60325a03f1151561071257fe5b50505060405180519050925080600160a060020a0316634ca50f596000604051602001526040518163ffffffff1660e060020a028152600401809050602060405180830381600087803b151561076457fe5b60325a03f1151561077157fe5b5050604051519250505b5b50919395975091939597565b600054600160a060020a031681565b60005433600160a060020a039081169116146107b257610000565b60008054604051600160a060020a03808516939216917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e091a36000805473ffffffffffffffffffffffffffffffffffffffff1916600160a060020a0383161790555b5b50565b604051611056806108298339019056006060604052341561000c57fe5b60405160c08061105683398101604090815281516020830151918301516060840151608085015160a090950151929491929091905b5b60008054600160a060020a03191633600160a060020a03161790555b60018054600160a060020a031916600160a060020a0388161790556002859055600384905560048390556005805460ff19168315151761ff001916610100831515810291909117918290556040805160ff80851615158252929093049091161515602083015280517ffa4f96c42c616d6fbda491095977a6af7c76ebd387177b72299180502cbeaa999281900390910190a15b5050505050505b610f4f806101076000396000f300606060405236156100d55763ffffffff60e060020a6000350416632170ebf781146100e657806338d52e0f1461010d5780634b750334146101395780634ca50f591461015b57806352954e5a1461017f5780638620410b146101b25780638da5cb5b146101d4578063919f8cfc14610200578063976a84351461020a578063a7abc1241461022c578063b109934714610248578063be86d5a71461026c578063c34764cf1461029f578063c60ccb0e146102d2578063cd53a3b7146102dc578063eff883bd14610303578063f2fde38b14610318575b6100e45b6100e1610336565b5b565b005b34156100ee57fe5b6100f960043561059f565b604080519115158252519081900360200190f35b341561011557fe5b61011d610631565b60408051600160a060020a039092168252519081900360200190f35b341561014157fe5b610149610640565b60408051918252519081900360200190f35b341561016357fe5b6100f9610646565b604080519115158252519081900360200190f35b341561018757fe5b6100f9600160a060020a0360043516602435610654565b604080519115158252519081900360200190f35b34156101ba57fe5b61014961081c565b60408051918252519081900360200190f35b34156101dc57fe5b61011d610822565b60408051600160a060020a039092168252519081900360200190f35b6100e4610831565b005b341561021257fe5b610149610914565b60408051918252519081900360200190f35b341561023457fe5b6100e46004351515602435151561091a565b005b341561025057fe5b6100f96109a3565b604080519115158252519081900360200190f35b341561027457fe5b6100f9600160a060020a03600435166024356109ac565b604080519115158252519081900360200190f35b34156102a757fe5b6100f9600160a060020a0360043516602435610b61565b604080519115158252519081900360200190f35b6100e4610336565b005b34156102e457fe5b6100f9600435610c3c565b604080519115158252519081900360200190f35b341561030b57fe5b6100e4600435610d08565b005b341561032057fe5b6100e4600160a060020a0360043516610ea2565b005b600060006000600560019054906101000a900460ff1680610365575060005433600160a060020a039081169116145b15610569576003543481151561037757fe5b049250600454600160009054906101000a9004600160a060020a0316600160a060020a03166370a08231306000604051602001526040518263ffffffff1660e060020a0281526004018082600160a060020a0316600160a060020a03168152602001915050602060405180830381600087803b15156103f257fe5b60325a03f115156103ff57fe5b505060405151905081151561041057fe5b049150600090506003548202341115610430576003548202340390508192505b600081111561046957604051600160a060020a0333169082156108fc029083906000818181858888f19350505050151561046957610000565b5b600083111561051457600160009054906101000a9004600160a060020a0316600160a060020a031663a9059cbb3360045486026000604051602001526040518363ffffffff1660e060020a0281526004018083600160a060020a0316600160a060020a0316815260200182815260200192505050602060405180830381600087803b15156104f457fe5b60325a03f1151561050157fe5b5050604051511515905061051457610000565b5b60045460408051348152602081018490529185028282015251600160a060020a033316917f37e948531341be0a8ce95c3833827c6f3559825cb6421e6ff1fe21c3a8b71217919081900360600190a2610598565b604051600160a060020a033316903480156108fc02916000818181858888f19350505050151561059857610000565b5b5b505050565b6000805433600160a060020a039081169116146105bb57610000565b600160a060020a0330163182901061062a576040805183815290517f8a93d70d792b644d97d7da8a5798e03bbee85be4537a860a331dbe3ee50eb9829181900360200190a160008054604051600160a060020a039091169184156108fc02918591818181858888f19450505050505b5b5b919050565b600154600160a060020a031681565b60035481565b600554610100900460ff1681565b6000805433600160a060020a0390811691161461067057610000565b82600160a060020a0316638da5cb5b6000604051602001526040518163ffffffff1660e060020a028152600401809050602060405180830381600087803b15156106b657fe5b60325a03f115156106c357fe5b505060405151600054600160a060020a0390811691161415905080610751575082600160a060020a03166338d52e0f6000604051602001526040518163ffffffff1660e060020a028152600401809050602060405180830381600087803b151561072957fe5b60325a03f1151561073657fe5b505060405151600154600160a060020a039081169116141590505b1561075b57610000565b60408051600160a060020a03851681526020810184905281517f127afec6b0ab48f803536010148b79615f4a518f9b574de5b45bc74991c46d51929181900390910190a16001546040805160006020918201819052825160e060020a63a9059cbb028152600160a060020a038881166004830152602482018890529351939094169363a9059cbb936044808301949391928390030190829087803b15156107fe57fe5b60325a03f1151561080b57fe5b5050604051519150505b5b92915050565b60025481565b600054600160a060020a031681565b60005433600160a060020a039081169116148015906108d35750600060009054906101000a9004600160a060020a0316600160a060020a031633600160a060020a0316638da5cb5b6000604051602001526040518163ffffffff1660e060020a028152600401809050602060405180830381600087803b15156108b057fe5b60325a03f115156108bd57fe5b50505060405180519050600160a060020a031614155b156108dd57610000565b6040805134815290517fc745dab9c51cefa79677191ed7af7b0ccbb8360b8b39ed79f257f6895882980f9181900360200190a15b5b565b60045481565b60005433600160a060020a0390811691161461093557610000565b6005805460ff19168315151761ff001916610100831515810291909117918290556040805160ff80851615158252929093049091161515602083015280517ffa4f96c42c616d6fbda491095977a6af7c76ebd387177b72299180502cbeaa999281900390910190a15b5b5050565b60055460ff1681565b6000805433600160a060020a039081169116146109c857610000565b82600160a060020a0316638da5cb5b6000604051602001526040518163ffffffff1660e060020a028152600401809050602060405180830381600087803b1515610a0e57fe5b60325a03f11515610a1b57fe5b505060405151600054600160a060020a0390811691161415905080610aa9575082600160a060020a03166338d52e0f6000604051602001526040518163ffffffff1660e060020a028152600401809050602060405180830381600087803b1515610a8157fe5b60325a03f11515610a8e57fe5b505060405151600154600160a060020a039081169116141590505b15610ab357610000565b600160a060020a033016318290106108155760408051600160a060020a03851681526020810184905281517f714b446590efbc5b722abe34b4c0cacf4b1f5607fbf924f957646590ce66c4ad929181900390910190a182600160a060020a031663919f8cfc836040518263ffffffff1660e060020a0281526004018090506000604051808303818588803b1515610b4657fe5b61235a5a03f11515610b5457fe5b505050505b5b5b92915050565b6000805433600160a060020a03908116911614610b7d57610000565b60408051600160a060020a03851681526020810184905281517ffea8ae97829f3801e6ca15928428931c2a4f3cee1fa7c9b83d959efd24666422929181900390910190a160008054604080516020908101849052815160e060020a63a9059cbb028152600160a060020a0393841660048201526024810187905291519287169363a9059cbb936044808501949192918390030190829087803b15156107fe57fe5b60325a03f1151561080b57fe5b5050604051519150505b5b92915050565b6000805433600160a060020a03908116911614610c5857610000565b6040805183815290517f1ebbc515a759c3fe8e048867aac7fe458e3a37ac3dd44ffc73a6238cf30039819181900360200190a160015460008054604080516020908101849052815160e060020a63a9059cbb028152600160a060020a039384166004820152602481018890529151929094169363a9059cbb9360448084019492938390030190829087803b1515610ceb57fe5b60325a03f11515610cf857fe5b5050604051519150505b5b919050565b600554600090819060ff1680610d2c575060005433600160a060020a039081169116145b156105985760025430600160a060020a031631811515610d4857fe5b04915060045483811515610d5857fe5b04905081811115610d665750805b6000811115610e475760015460048054604080516000602091820181905282517f23b872dd000000000000000000000000000000000000000000000000000000008152600160a060020a033381169682019690965230861660248201529387026044850152915193909416936323b872dd93606480850194929391928390030190829087803b1515610df457fe5b60325a03f11515610e0157fe5b50506040515115159050610e1457610000565b600254604051600160a060020a03331691830280156108fc02916000818181858888f193505050501515610e4757610000565b5b6004546002546040805186815292840260208401529083028282015251600160a060020a033316917f0ba0a3a12a9b73413f41468a265bf897ff66171a971e352360753a27d5db7683919081900360600190a25b5b505050565b60005433600160a060020a03908116911614610ebd57610000565b60008054604051600160a060020a03808516939216917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e091a36000805473ffffffffffffffffffffffffffffffffffffffff1916600160a060020a0383161790555b5b505600a165627a7a72305820d77ddde54b2d374b52768fc2629188c2fd9e598af2aba99ee73af0c9d86b4fb90029a165627a7a72305820413e25e85bbceb659b58d8cc8ed2857c449e87de8e4c2afdd2a0062e11ff944a0029"
+undefined
+> 
+DATA: tokenSellerFactoryABI=[{"constant":false,"inputs":[{"name":"tokenAddress","type":"address"},{"name":"tokens","type":"uint256"}],"name":"ownerWithdrawERC20Token","outputs":[{"name":"ok","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"tradeContract","type":"address"}],"name":"verify","outputs":[{"name":"valid","type":"bool"},{"name":"owner","type":"address"},{"name":"asset","type":"address"},{"name":"sellPrice","type":"uint256"},{"name":"units","type":"uint256"},{"name":"sellsTokens","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"asset","type":"address"},{"name":"sellPrice","type":"uint256"},{"name":"units","type":"uint256"},{"name":"sellsTokens","type":"bool"}],"name":"createSaleContract","outputs":[{"name":"seller","type":"address"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"type":"function"},{"payable":false,"type":"fallback"},{"anonymous":false,"inputs":[{"indexed":true,"name":"ownerAddress","type":"address"},{"indexed":true,"name":"tokenSellerAddress","type":"address"},{"indexed":true,"name":"asset","type":"address"},{"indexed":false,"name":"sellPrice","type":"uint256"},{"indexed":false,"name":"units","type":"uint256"},{"indexed":false,"name":"sellsTokens","type":"bool"}],"name":"TradeListing","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"tokenAddress","type":"address"},{"indexed":false,"name":"tokens","type":"uint256"}],"name":"OwnerWithdrewERC20Token","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"}],"name":"OwnershipTransferred","type":"event"}]
+undefined
+> 
+> 
+undefined
+> 
+RESULT:  # Account                                             EtherBalanceChange Name
+RESULT:  1 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e       25.000000000000000000 Account #0 - Miner
+RESULT:  2 0x0014060ff383c9b21c6840a3b14aab06741e5c49        0.000000000000000000 Account #1 - Token Owner
+RESULT:  3 0x0020017ba4c67f76c76b1af8c41821ee54f37171        0.000000000000000000 Account #2 - Factory Owner
+RESULT:  4 0x0036f6addb6d64684390f55a92f0f4988266901b        0.000000000000000000 Account #3 - Maker 1 Account
+RESULT:  5 0x004e64833635cd1056b948b57286b7c91e62731c        0.000000000000000000 Account #4 - Maker 2 Account
+RESULT:  6 0x0055fbc1ada89056088c75eaf50400af6756ae61        0.000000000000000000 Account #5 - Taker 1 Account
+RESULT:  7 0x006b2baf3000413d83d257086fd3434a109aa552        0.000000000000000000 Account #6 - Taker 2 Account
 undefined
 > 
 > 
@@ -68,124 +78,6 @@ undefined
 ............ 
 ............ 
 ............ 
-......... 
-...... 
-... 
-{
-  abi: [{
-      constant: true,
-      inputs: [],
-      name: "name",
-      outputs: [{...}],
-      payable: false,
-      type: "function"
-  }, {
-      constant: false,
-      inputs: [{...}, {...}],
-      name: "approve",
-      outputs: [{...}],
-      payable: false,
-      type: "function"
-  }, {
-      constant: true,
-      inputs: [],
-      name: "totalSupply",
-      outputs: [{...}],
-      payable: false,
-      type: "function"
-  }, {
-      constant: false,
-      inputs: [{...}, {...}, {...}],
-      name: "transferFrom",
-      outputs: [{...}],
-      payable: false,
-      type: "function"
-  }, {
-      constant: true,
-      inputs: [],
-      name: "decimals",
-      outputs: [{...}],
-      payable: false,
-      type: "function"
-  }, {
-      constant: true,
-      inputs: [{...}],
-      name: "balanceOf",
-      outputs: [{...}],
-      payable: false,
-      type: "function"
-  }, {
-      constant: true,
-      inputs: [],
-      name: "owner",
-      outputs: [{...}],
-      payable: false,
-      type: "function"
-  }, {
-      constant: true,
-      inputs: [],
-      name: "symbol",
-      outputs: [{...}],
-      payable: false,
-      type: "function"
-  }, {
-      constant: false,
-      inputs: [{...}, {...}],
-      name: "transfer",
-      outputs: [{...}],
-      payable: false,
-      type: "function"
-  }, {
-      constant: true,
-      inputs: [{...}, {...}],
-      name: "allowance",
-      outputs: [{...}],
-      payable: false,
-      type: "function"
-  }, {
-      constant: false,
-      inputs: [{...}],
-      name: "withdrawEthers",
-      outputs: [{...}],
-      payable: false,
-      type: "function"
-  }, {
-      inputs: [{...}, {...}, {...}],
-      payable: false,
-      type: "constructor"
-  }, {
-      payable: true,
-      type: "fallback"
-  }, {
-      anonymous: false,
-      inputs: [{...}, {...}],
-      name: "TokensCreated",
-      type: "event"
-  }, {
-      anonymous: false,
-      inputs: [{...}, {...}, {...}],
-      name: "Transfer",
-      type: "event"
-  }, {
-      anonymous: false,
-      inputs: [{...}, {...}, {...}],
-      name: "Approval",
-      type: "event"
-  }],
-  address: undefined,
-  transactionHash: "0xf7eac000a42d2ed8761041cbf52af478650695fa84a6ddc2f29c9c1e37b00acf"
-}
-> 
-undefined
-> 
-... 
-...... 
-......... 
-............ 
-............ 
-............ 
-............ 
-............ 
 ............ 
 ......... 
 ...... 
@@ -292,7 +184,7 @@ undefined
       type: "event"
   }],
   address: undefined,
-  transactionHash: "0xd2b0f129e96de00500c92e609a633432b91e067be718b4482ac39f1dddfa9ef9"
+  transactionHash: "0x72d33d0cb83e5550ef1f885114bc0aa3414e76d29cd407eeeb89c2952acec402"
 }
 > 
 undefined
@@ -300,6 +192,7 @@ undefined
 ... 
 ...... 
 ......... 
+............ 
 ............ 
 ............ 
 ............ 
@@ -411,7 +304,7 @@ undefined
       type: "event"
   }],
   address: undefined,
-  transactionHash: "0xdac244d1700d44f387ccfb37ff13a04dd88925d69ea5c8cb51a3048656bc748a"
+  transactionHash: "0x2b74ef90ecf3043df87677b62cba2fd352c48fdc8bf72c837ff91bfcff36194e"
 }
 > 
 undefined
@@ -419,6 +312,7 @@ undefined
 ... 
 ...... 
 ......... 
+............ 
 ............ 
 ............ 
 ............ 
@@ -530,7 +424,7 @@ undefined
       type: "event"
   }],
   address: undefined,
-  transactionHash: "0xb79b6f1f8d0d10cfd4c9e929c17bafb91e07594d2b863271aa70b8d2db3defe5"
+  transactionHash: "0xf3f7bd8b9b141d321f4cec39d93f39c0bfeef8122c4eeb2b891fe6d769a84e33"
 }
 > 
 undefined
@@ -538,6 +432,7 @@ undefined
 ... 
 ...... 
 ......... 
+............ 
 ............ 
 ............ 
 ............ 
@@ -649,7 +544,7 @@ undefined
       type: "event"
   }],
   address: undefined,
-  transactionHash: "0x477a278c5896bb1bb721de61484e4976a02227d18de565c42bc2c330f1c64f8c"
+  transactionHash: "0x7ef21fa29d053f56f4945dcf031780a9e31076183612fb78905a0a955d375f66"
 }
 > 
 undefined
@@ -657,6 +552,7 @@ undefined
 ... 
 ...... 
 ......... 
+............ 
 ............ 
 ............ 
 ............ 
@@ -768,32 +664,281 @@ undefined
       type: "event"
   }],
   address: undefined,
-  transactionHash: "0xb1c7f1a76cfb92837d7dea017b8b61c3012236f0d1cbf4aeb268c610bd199cfa"
+  transactionHash: "0xed367b095791df00523741c74e557b508830a5adc21b7dcd71503d019d65296d"
+}
+> 
+undefined
+> 
+... 
+...... 
+......... 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+......... 
+...... 
+... 
+{
+  abi: [{
+      constant: true,
+      inputs: [],
+      name: "name",
+      outputs: [{...}],
+      payable: false,
+      type: "function"
+  }, {
+      constant: false,
+      inputs: [{...}, {...}],
+      name: "approve",
+      outputs: [{...}],
+      payable: false,
+      type: "function"
+  }, {
+      constant: true,
+      inputs: [],
+      name: "totalSupply",
+      outputs: [{...}],
+      payable: false,
+      type: "function"
+  }, {
+      constant: false,
+      inputs: [{...}, {...}, {...}],
+      name: "transferFrom",
+      outputs: [{...}],
+      payable: false,
+      type: "function"
+  }, {
+      constant: true,
+      inputs: [],
+      name: "decimals",
+      outputs: [{...}],
+      payable: false,
+      type: "function"
+  }, {
+      constant: true,
+      inputs: [{...}],
+      name: "balanceOf",
+      outputs: [{...}],
+      payable: false,
+      type: "function"
+  }, {
+      constant: true,
+      inputs: [],
+      name: "owner",
+      outputs: [{...}],
+      payable: false,
+      type: "function"
+  }, {
+      constant: true,
+      inputs: [],
+      name: "symbol",
+      outputs: [{...}],
+      payable: false,
+      type: "function"
+  }, {
+      constant: false,
+      inputs: [{...}, {...}],
+      name: "transfer",
+      outputs: [{...}],
+      payable: false,
+      type: "function"
+  }, {
+      constant: true,
+      inputs: [{...}, {...}],
+      name: "allowance",
+      outputs: [{...}],
+      payable: false,
+      type: "function"
+  }, {
+      constant: false,
+      inputs: [{...}],
+      name: "withdrawEthers",
+      outputs: [{...}],
+      payable: false,
+      type: "function"
+  }, {
+      inputs: [{...}, {...}, {...}],
+      payable: false,
+      type: "constructor"
+  }, {
+      payable: true,
+      type: "fallback"
+  }, {
+      anonymous: false,
+      inputs: [{...}, {...}],
+      name: "TokensCreated",
+      type: "event"
+  }, {
+      anonymous: false,
+      inputs: [{...}, {...}, {...}],
+      name: "Transfer",
+      type: "event"
+  }, {
+      anonymous: false,
+      inputs: [{...}, {...}, {...}],
+      name: "Approval",
+      type: "event"
+  }],
+  address: undefined,
+  transactionHash: "0xe59752cd3e0c033912509cdf223ff40799f90b33cf7913d63be11de3ad1c0a60"
+}
+> 
+undefined
+> 
+... 
+...... 
+......... 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+......... 
+...... 
+... 
+{
+  abi: [{
+      constant: true,
+      inputs: [],
+      name: "name",
+      outputs: [{...}],
+      payable: false,
+      type: "function"
+  }, {
+      constant: false,
+      inputs: [{...}, {...}],
+      name: "approve",
+      outputs: [{...}],
+      payable: false,
+      type: "function"
+  }, {
+      constant: true,
+      inputs: [],
+      name: "totalSupply",
+      outputs: [{...}],
+      payable: false,
+      type: "function"
+  }, {
+      constant: false,
+      inputs: [{...}, {...}, {...}],
+      name: "transferFrom",
+      outputs: [{...}],
+      payable: false,
+      type: "function"
+  }, {
+      constant: true,
+      inputs: [],
+      name: "decimals",
+      outputs: [{...}],
+      payable: false,
+      type: "function"
+  }, {
+      constant: true,
+      inputs: [{...}],
+      name: "balanceOf",
+      outputs: [{...}],
+      payable: false,
+      type: "function"
+  }, {
+      constant: true,
+      inputs: [],
+      name: "owner",
+      outputs: [{...}],
+      payable: false,
+      type: "function"
+  }, {
+      constant: true,
+      inputs: [],
+      name: "symbol",
+      outputs: [{...}],
+      payable: false,
+      type: "function"
+  }, {
+      constant: false,
+      inputs: [{...}, {...}],
+      name: "transfer",
+      outputs: [{...}],
+      payable: false,
+      type: "function"
+  }, {
+      constant: true,
+      inputs: [{...}, {...}],
+      name: "allowance",
+      outputs: [{...}],
+      payable: false,
+      type: "function"
+  }, {
+      constant: false,
+      inputs: [{...}],
+      name: "withdrawEthers",
+      outputs: [{...}],
+      payable: false,
+      type: "function"
+  }, {
+      inputs: [{...}, {...}, {...}],
+      payable: false,
+      type: "constructor"
+  }, {
+      payable: true,
+      type: "fallback"
+  }, {
+      anonymous: false,
+      inputs: [{...}, {...}],
+      name: "TokensCreated",
+      type: "event"
+  }, {
+      anonymous: false,
+      inputs: [{...}, {...}, {...}],
+      name: "Transfer",
+      type: "event"
+  }, {
+      anonymous: false,
+      inputs: [{...}, {...}, {...}],
+      name: "Approval",
+      type: "event"
+  }],
+  address: undefined,
+  transactionHash: "0x021ca51599938720804794c8f6db7928a9c8c9e8c16e58f0e63e12348b7947ce"
 }
 > 
 ... 
 undefined
 > 
 > 
-RESULT: token0Address=0x1a8eb360fa7b7a8d4d211c437ded8adda48fa523 gas=4000000 gasUsed=685764 cost=0.01371528 block=787 txId=0xf7eac000a42d2ed8761041cbf52af478650695fa84a6ddc2f29c9c1e37b00acf
-RESULT: token2Address=0xc6f12d72fe5e776cd82c809cb0b4b55b9f60ca32 gas=4000000 gasUsed=685828 cost=0.01371656 block=787 txId=0xd2b0f129e96de00500c92e609a633432b91e067be718b4482ac39f1dddfa9ef9
-RESULT: token8Address=0x57d1b931b9fb62df551210d61dcb7e823f852190 gas=4000000 gasUsed=685828 cost=0.01371656 block=787 txId=0xdac244d1700d44f387ccfb37ff13a04dd88925d69ea5c8cb51a3048656bc748a
-RESULT: token18Address=0x7d0e6cd8214b56511ae80ca1503d93f940c8dc9e gas=4000000 gasUsed=685956 cost=0.01371912 block=787 txId=0xb79b6f1f8d0d10cfd4c9e929c17bafb91e07594d2b863271aa70b8d2db3defe5
-RESULT: tokenTraderFactoryAddress=0xe86ff84c7647d746799e6824855facc43c8df23a gas=4000000 gasUsed=653183 cost=0.01306366 block=787 txId=0x477a278c5896bb1bb721de61484e4976a02227d18de565c42bc2c330f1c64f8c
-RESULT: tokenSellerFactoryAddress=0xb5fb5e9294bdfc6036992d1fe345828a46a639d7 gas=4000000 gasUsed=653183 cost=0.01306366 block=787 txId=0xb1c7f1a76cfb92837d7dea017b8b61c3012236f0d1cbf4aeb268c610bd199cfa
-RESULT:  # Account                                                   EtherBalance Name
-RESULT:  1 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e   103935.354490160000000000 Account #0 - Miner
-RESULT:  2 0x0014060ff383c9b21c6840a3b14aab06741e5c49    99999.697764480000000000 Account #1 - Token Owner
-RESULT:  3 0x0020017ba4c67f76c76b1af8c41821ee54f37171    99999.947745360000000000 Account #2 - Factory Owner
-RESULT:  4 0x0036f6addb6d64684390f55a92f0f4988266901b   100000.000000000000000000 Account #3 - Maker 1 Account
-RESULT:  5 0x004e64833635cd1056b948b57286b7c91e62731c   100000.000000000000000000 Account #4 - Maker 2 Account
-RESULT:  6 0x0055fbc1ada89056088c75eaf50400af6756ae61   100000.000000000000000000 Account #5 - Taker 1 Account
-RESULT:  7 0x006b2baf3000413d83d257086fd3434a109aa552   100000.000000000000000000 Account #6 - Taker 2 Account
-RESULT:  8 0x1a8eb360fa7b7a8d4d211c437ded8adda48fa523        0.000000000000000000 TOKEN0
-RESULT:  9 0xc6f12d72fe5e776cd82c809cb0b4b55b9f60ca32        0.000000000000000000 TOKEN2
-RESULT: 10 0x57d1b931b9fb62df551210d61dcb7e823f852190        0.000000000000000000 TOKEN8
-RESULT: 11 0x7d0e6cd8214b56511ae80ca1503d93f940c8dc9e        0.000000000000000000 TOKEN18
-RESULT: 12 0xe86ff84c7647d746799e6824855facc43c8df23a        0.000000000000000000 TokenTraderFactory
-RESULT: 13 0xb5fb5e9294bdfc6036992d1fe345828a46a639d7        0.000000000000000000 TokenSellerFactory
+DATA: token0Address=0xebb2634dd3194ba6d75eeb049cd0f73bf9801d95
+RESULT: token0Address=0xebb2634dd3194ba6d75eeb049cd0f73bf9801d95 gas=4000000 gasUsed=685764 cost=0.01371528 block=7 txId=0x72d33d0cb83e5550ef1f885114bc0aa3414e76d29cd407eeeb89c2952acec402
+DATA: token1Address=0xe9ba90b474ef72aa062d89a319c3e15b31e8fe65
+RESULT: token1Address=0xe9ba90b474ef72aa062d89a319c3e15b31e8fe65 gas=4000000 gasUsed=685828 cost=0.01371656 block=7 txId=0x2b74ef90ecf3043df87677b62cba2fd352c48fdc8bf72c837ff91bfcff36194e
+DATA: token2Address=0x30da52ef30bdaec61b43317cc045e4f267eaf779
+RESULT: token2Address=0x30da52ef30bdaec61b43317cc045e4f267eaf779 gas=4000000 gasUsed=685828 cost=0.01371656 block=7 txId=0xf3f7bd8b9b141d321f4cec39d93f39c0bfeef8122c4eeb2b891fe6d769a84e33
+DATA: token8Address=0x93204a0388c0331bd950324e804e542f23888ec6
+RESULT: token8Address=0x93204a0388c0331bd950324e804e542f23888ec6 gas=4000000 gasUsed=685828 cost=0.01371656 block=7 txId=0x7ef21fa29d053f56f4945dcf031780a9e31076183612fb78905a0a955d375f66
+DATA: token18Address=0xd423486d8fe33d3a64b8daa5f1e7c17e6e924c3e
+RESULT: token18Address=0xd423486d8fe33d3a64b8daa5f1e7c17e6e924c3e gas=4000000 gasUsed=685956 cost=0.01371912 block=7 txId=0xed367b095791df00523741c74e557b508830a5adc21b7dcd71503d019d65296d
+DATA: tokenTraderFactoryAddress=0x47cf83c31bf82642aadda00ca599820f17900d10
+RESULT: tokenTraderFactoryAddress=0x47cf83c31bf82642aadda00ca599820f17900d10 gas=4000000 gasUsed=653183 cost=0.01306366 block=7 txId=0xe59752cd3e0c033912509cdf223ff40799f90b33cf7913d63be11de3ad1c0a60
+DATA: tokenSellerFactoryAddress=0x15b380e4be48dafc6d9321113d6e38753524cc7a
+RESULT: tokenSellerFactoryAddress=0x15b380e4be48dafc6d9321113d6e38753524cc7a gas=4000000 gasUsed=653183 cost=0.01306366 block=7 txId=0x021ca51599938720804794c8f6db7928a9c8c9e8c16e58f0e63e12348b7947ce
+RESULT:  # Account                                             EtherBalanceChange Name
+RESULT:  1 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e       35.094711400000000000 Account #0 - Miner
+RESULT:  2 0x0014060ff383c9b21c6840a3b14aab06741e5c49       -0.068584080000000000 Account #1 - Token Owner
+RESULT:  3 0x0020017ba4c67f76c76b1af8c41821ee54f37171       -0.026127320000000000 Account #2 - Factory Owner
+RESULT:  4 0x0036f6addb6d64684390f55a92f0f4988266901b        0.000000000000000000 Account #3 - Maker 1 Account
+RESULT:  5 0x004e64833635cd1056b948b57286b7c91e62731c        0.000000000000000000 Account #4 - Maker 2 Account
+RESULT:  6 0x0055fbc1ada89056088c75eaf50400af6756ae61        0.000000000000000000 Account #5 - Taker 1 Account
+RESULT:  7 0x006b2baf3000413d83d257086fd3434a109aa552        0.000000000000000000 Account #6 - Taker 2 Account
+RESULT:  8 0xebb2634dd3194ba6d75eeb049cd0f73bf9801d95        0.000000000000000000 TOKEN0
+RESULT:  9 0xe9ba90b474ef72aa062d89a319c3e15b31e8fe65        0.000000000000000000 TOKEN1
+RESULT: 10 0x30da52ef30bdaec61b43317cc045e4f267eaf779        0.000000000000000000 TOKEN2
+RESULT: 11 0x93204a0388c0331bd950324e804e542f23888ec6        0.000000000000000000 TOKEN8
+RESULT: 12 0xd423486d8fe33d3a64b8daa5f1e7c17e6e924c3e        0.000000000000000000 TOKEN18
+RESULT: 13 0x47cf83c31bf82642aadda00ca599820f17900d10        0.000000000000000000 TokenTraderFactory
+RESULT: 14 0x15b380e4be48dafc6d9321113d6e38753524cc7a        0.000000000000000000 TokenSellerFactory
 undefined
 > 
