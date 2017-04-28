@@ -17,6 +17,7 @@ var taker1Account = eth.accounts[5];
 var taker2Account = eth.accounts[6];
 
 var baseBlock = eth.blockNumber;
+var tokenABIFragment=[{"constant":true,"inputs":[{"name":"_owner","type":"address"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"type":"function"}];
 
 var token0 = null;
 var token1 = null;
@@ -51,13 +52,35 @@ function addAccount(account, accountName) {
 }
 
 function printBalances() {
+  if (token0 == null) {
+    token0 = token0Address == null ? null : web3.eth.contract(tokenABIFragment).at(token0Address);
+  }
+  if (token1 == null) {
+    token1 = token1Address == null ? null : web3.eth.contract(tokenABIFragment).at(token1Address);
+  }
+  if (token2 == null) {
+    token2 = token2Address == null ? null : web3.eth.contract(tokenABIFragment).at(token2Address);
+  }
+  if (token8 == null) {
+    token8 = token8Address == null ? null : web3.eth.contract(tokenABIFragment).at(token8Address);
+  }
+  if (token18 == null) {
+    token18 = token18Address == null ? null : web3.eth.contract(tokenABIFragment).at(token18Address);
+  }
   var i = 0;
-  console.log("RESULT:  # Account                                             EtherBalanceChange Name");
+  console.log("RESULT:  # Account                                             EtherBalanceChange   Token0    Token1     Token2           Token8                    Token18 Name");
   accounts.forEach(function(e) {
     i++;
     var etherBalanceBaseBlock = eth.getBalance(e, baseBlock);
     var etherBalance = web3.fromWei(eth.getBalance(e).minus(etherBalanceBaseBlock), "ether");
-    console.log("RESULT: " + pad2(i) + " " + e  + " " + pad(etherBalance) + " " + accountNames[e]);
+    var token0Balance = token0 == null ? new BigNumber(0) : token0.balanceOf(e);
+    var token1Balance = token1 == null ? new BigNumber(0) : token1.balanceOf(e).div(1e1);
+    var token2Balance = token2 == null ? new BigNumber(0) : token2.balanceOf(e).div(1e2);
+    var token8Balance = token8 == null ? new BigNumber(0) : token8.balanceOf(e).div(1e8);
+    var token18Balance = token18 == null ? new BigNumber(0) : token18.balanceOf(e).div(1e18);
+    console.log("RESULT: " + pad2(i) + " " + e  + " " + pad(etherBalance) + " " + padToken(token0Balance, 0) + " " + 
+      padToken(token1Balance, 1) + " " + padToken(token2Balance, 2) + " " + padToken(token8Balance, 8) + " " + 
+      padToken(token18Balance, 18) + " " + accountNames[e]);
   });
 }
 
@@ -72,6 +95,15 @@ function pad2(s) {
 function pad(s) {
   var o = s.toFixed(18);
   while (o.length < 27) {
+    o = " " + o;
+  }
+  return o;
+}
+
+function padToken(s, decimals) {
+  var o = s.toFixed(decimals);
+  var l = parseInt(decimals)+8;
+  while (o.length < l) {
     o = " " + o;
   }
   return o;

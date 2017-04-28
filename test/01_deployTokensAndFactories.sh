@@ -51,9 +51,9 @@ var tokenTraderFactoryBin = "0x" + tokenTraderFactoryOutput.contracts["../contra
 var tokenSellerFactoryAbi = JSON.parse(tokenSellerFactoryOutput.contracts["../contracts/TokenSellerFactory.sol:TokenSellerFactory"].abi);
 var tokenSellerFactoryBin = "0x" + tokenSellerFactoryOutput.contracts["../contracts/TokenSellerFactory.sol:TokenSellerFactory"].bin;
 
-console.log("DATA: tokenABI=" + JSON.stringify(tokenAbi));
-console.log("DATA: tokenTraderFactoryABI=" + JSON.stringify(tokenTraderFactoryBin));
-console.log("DATA: tokenSellerFactoryABI=" + JSON.stringify(tokenSellerFactoryAbi));
+// console.log("DATA: tokenABI=" + JSON.stringify(tokenAbi));
+// console.log("DATA: tokenTraderFactoryABI=" + JSON.stringify(tokenTraderFactoryBin));
+// console.log("DATA: tokenSellerFactoryABI=" + JSON.stringify(tokenSellerFactoryAbi));
 
 unlockAccounts("$PASSWORD");
 printBalances();
@@ -175,6 +175,26 @@ while (txpool.status.pending > 0) {
 }
 
 printBalances();
+
+
+// -----------------------------------------------------------------------------
+var testMessage = "Setup 1.2 Issue Tokens";
+console.log("RESULT: " + testMessage);
+
+var tx12_0 = eth.sendTransaction({from: maker1Account, to: token0Address, gas: 400000, value: "1000"});
+var tx12_1 = eth.sendTransaction({from: maker1Account, to: token1Address, gas: 400000, value: "10000"});
+var tx12_2 = eth.sendTransaction({from: maker1Account, to: token2Address, gas: 400000, value: "100000"});
+var tx12_8 = eth.sendTransaction({from: maker1Account, to: token8Address, gas: 400000, value: "100000000000"});
+var tx12_18 = eth.sendTransaction({from: maker1Account, to: token18Address, gas: 400000, value: "1000000000000000000000"});
+while (txpool.status.pending > 0) {
+}
+printBalances();
+printTxData("tx12_0", tx12_0);
+failIfGasEqualsGasUsed(tx12_0, testMessage);
+console.log("RESULT: ");
+
+
+
 exit;
 
 printContractStaticDetails();
