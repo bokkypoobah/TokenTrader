@@ -2,7 +2,7 @@ Welcome to the Geth JavaScript console!
 
 instance: Geth/v1.6.0-stable-facc47cb/darwin-amd64/go1.8.1
 coinbase: 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e
-at block: 1 (Sat, 29 Apr 2017 03:37:35 AEST)
+at block: 0 (Thu, 01 Jan 1970 10:00:00 AEST)
  datadir: /Users/bok/Projects/TokenTrader/test/testchain
  modules: admin:1.0 debug:1.0 eth:1.0 miner:1.0 net:1.0 personal:1.0 rpc:1.0 txpool:1.0 web3:1.0
 
@@ -52,7 +52,7 @@ undefined
 undefined
 > 
 RESULT:  # Account                                             EtherBalanceChange   Token0    Token1     Token2           Token8                    Token18 Name
-RESULT:  1 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e       15.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #0 - Miner
+RESULT:  1 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #0 - Miner
 RESULT:  2 0x0014060ff383c9b21c6840a3b14aab06741e5c49        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #1 - Token Owner
 RESULT:  3 0x0020017ba4c67f76c76b1af8c41821ee54f37171        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #2 - Factory Owner
 RESULT:  4 0x0036f6addb6d64684390f55a92f0f4988266901b        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #3 - Maker 1 Account
@@ -829,21 +829,21 @@ undefined
 undefined
 > 
 DATA: token0Address=0xebb2634dd3194ba6d75eeb049cd0f73bf9801d95
-RESULT: token0Address=0xebb2634dd3194ba6d75eeb049cd0f73bf9801d95 gas=4000000 gasUsed=685764 cost=0.01371528 block=7 txId=0x72d33d0cb83e5550ef1f885114bc0aa3414e76d29cd407eeeb89c2952acec402
+RESULT: token0Address=0xebb2634dd3194ba6d75eeb049cd0f73bf9801d95 gas=4000000 gasUsed=685764 cost=0.01371528 block=2 txId=0x72d33d0cb83e5550ef1f885114bc0aa3414e76d29cd407eeeb89c2952acec402
 DATA: token1Address=0xe9ba90b474ef72aa062d89a319c3e15b31e8fe65
-RESULT: token1Address=0xe9ba90b474ef72aa062d89a319c3e15b31e8fe65 gas=4000000 gasUsed=685828 cost=0.01371656 block=7 txId=0x2b74ef90ecf3043df87677b62cba2fd352c48fdc8bf72c837ff91bfcff36194e
+RESULT: token1Address=0xe9ba90b474ef72aa062d89a319c3e15b31e8fe65 gas=4000000 gasUsed=685828 cost=0.01371656 block=2 txId=0x2b74ef90ecf3043df87677b62cba2fd352c48fdc8bf72c837ff91bfcff36194e
 DATA: token2Address=0x30da52ef30bdaec61b43317cc045e4f267eaf779
-RESULT: token2Address=0x30da52ef30bdaec61b43317cc045e4f267eaf779 gas=4000000 gasUsed=685828 cost=0.01371656 block=7 txId=0xf3f7bd8b9b141d321f4cec39d93f39c0bfeef8122c4eeb2b891fe6d769a84e33
+RESULT: token2Address=0x30da52ef30bdaec61b43317cc045e4f267eaf779 gas=4000000 gasUsed=685828 cost=0.01371656 block=2 txId=0xf3f7bd8b9b141d321f4cec39d93f39c0bfeef8122c4eeb2b891fe6d769a84e33
 DATA: token8Address=0x93204a0388c0331bd950324e804e542f23888ec6
-RESULT: token8Address=0x93204a0388c0331bd950324e804e542f23888ec6 gas=4000000 gasUsed=685828 cost=0.01371656 block=7 txId=0x7ef21fa29d053f56f4945dcf031780a9e31076183612fb78905a0a955d375f66
+RESULT: token8Address=0x93204a0388c0331bd950324e804e542f23888ec6 gas=4000000 gasUsed=685828 cost=0.01371656 block=2 txId=0x7ef21fa29d053f56f4945dcf031780a9e31076183612fb78905a0a955d375f66
 DATA: token18Address=0xd423486d8fe33d3a64b8daa5f1e7c17e6e924c3e
-RESULT: token18Address=0xd423486d8fe33d3a64b8daa5f1e7c17e6e924c3e gas=4000000 gasUsed=685956 cost=0.01371912 block=7 txId=0xed367b095791df00523741c74e557b508830a5adc21b7dcd71503d019d65296d
+RESULT: token18Address=0xd423486d8fe33d3a64b8daa5f1e7c17e6e924c3e gas=4000000 gasUsed=685956 cost=0.01371912 block=2 txId=0xed367b095791df00523741c74e557b508830a5adc21b7dcd71503d019d65296d
 DATA: tokenTraderFactoryAddress=0x47cf83c31bf82642aadda00ca599820f17900d10
-RESULT: tokenTraderFactoryAddress=0x47cf83c31bf82642aadda00ca599820f17900d10 gas=4000000 gasUsed=1752315 cost=0.0350463 block=7 txId=0x9c99ce84e9421bfcb21edae19611028b166f81f9c8658feb8ef57c3a0a838c2e
+RESULT: tokenTraderFactoryAddress=0x47cf83c31bf82642aadda00ca599820f17900d10 gas=4000000 gasUsed=1752315 cost=0.0350463 block=2 txId=0x9c99ce84e9421bfcb21edae19611028b166f81f9c8658feb8ef57c3a0a838c2e
 DATA: tokenSellerFactoryAddress=0x15b380e4be48dafc6d9321113d6e38753524cc7a
-RESULT: tokenSellerFactoryAddress=0x15b380e4be48dafc6d9321113d6e38753524cc7a gas=4000000 gasUsed=1260445 cost=0.0252089 block=7 txId=0x37102c1d26f911c6e501985fadf95d0611e2b032b0e49344552f8c16cfd607ca
+RESULT: tokenSellerFactoryAddress=0x15b380e4be48dafc6d9321113d6e38753524cc7a gas=4000000 gasUsed=1260445 cost=0.0252089 block=2 txId=0x37102c1d26f911c6e501985fadf95d0611e2b032b0e49344552f8c16cfd607ca
 RESULT:  # Account                                             EtherBalanceChange   Token0    Token1     Token2           Token8                    Token18 Name
-RESULT:  1 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e       30.128839280000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #0 - Miner
+RESULT:  1 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e       10.128839280000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #0 - Miner
 RESULT:  2 0x0014060ff383c9b21c6840a3b14aab06741e5c49       -0.068584080000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #1 - Token Owner
 RESULT:  3 0x0020017ba4c67f76c76b1af8c41821ee54f37171       -0.060255200000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #2 - Factory Owner
 RESULT:  4 0x0036f6addb6d64684390f55a92f0f4988266901b        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #3 - Maker 1 Account
@@ -881,23 +881,23 @@ undefined
 ... 
 undefined
 > 
-RESULT: tx12_0 gas=400000 gasUsed=61320 cost=0.0012264 block=11 txId=0xe3a5b72fa814333cc18e9d86d62156a78a3ba73ac9b2bf22e85862a6767b504a
+RESULT: tx12_0 gas=400000 gasUsed=61320 cost=0.0012264 block=6 txId=0xe3a5b72fa814333cc18e9d86d62156a78a3ba73ac9b2bf22e85862a6767b504a
 undefined
 > 
-RESULT: tx12_1 gas=400000 gasUsed=61320 cost=0.0012264 block=11 txId=0xd9c1e1140994908825ce5aa743c61cfa6944fe46b5237f743f87d1e7c55cf466
+RESULT: tx12_1 gas=400000 gasUsed=61320 cost=0.0012264 block=6 txId=0xd9c1e1140994908825ce5aa743c61cfa6944fe46b5237f743f87d1e7c55cf466
 undefined
 > 
-RESULT: tx12_2 gas=400000 gasUsed=61320 cost=0.0012264 block=11 txId=0x4028b348527108ac0289c001fe11c7391c29ea691de6b6ea951458de626c385d
+RESULT: tx12_2 gas=400000 gasUsed=61320 cost=0.0012264 block=6 txId=0x4028b348527108ac0289c001fe11c7391c29ea691de6b6ea951458de626c385d
 undefined
 > 
-RESULT: tx12_8 gas=400000 gasUsed=61320 cost=0.0012264 block=11 txId=0x1614287ccfa28ed279f7d4b984f8e5b8d75759d38a5bd1be5943b6fd92326e2a
+RESULT: tx12_8 gas=400000 gasUsed=61320 cost=0.0012264 block=6 txId=0x1614287ccfa28ed279f7d4b984f8e5b8d75759d38a5bd1be5943b6fd92326e2a
 undefined
 > 
-RESULT: tx12_18 gas=400000 gasUsed=61320 cost=0.0012264 block=11 txId=0xdb0762a97f7fe212793728ce53602bffb15b2def9abae997b678c84a9d3c567c
+RESULT: tx12_18 gas=400000 gasUsed=61320 cost=0.0012264 block=6 txId=0xdb0762a97f7fe212793728ce53602bffb15b2def9abae997b678c84a9d3c567c
 undefined
 > 
 RESULT:  # Account                                             EtherBalanceChange   Token0    Token1     Token2           Token8                    Token18 Name
-RESULT:  1 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e       50.134971280000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #0 - Miner
+RESULT:  1 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e       30.134971280000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #0 - Miner
 RESULT:  2 0x0014060ff383c9b21c6840a3b14aab06741e5c49       -0.068584080000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #1 - Token Owner
 RESULT:  3 0x0020017ba4c67f76c76b1af8c41821ee54f37171       -0.060255200000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #2 - Factory Owner
 RESULT:  4 0x0036f6addb6d64684390f55a92f0f4988266901b    -1000.006132100000111000     1000    1000.0    1000.00    1000.00000000    1000.000000000000000000 Account #3 - Maker 1 Account
@@ -957,26 +957,26 @@ undefined
 ... 
 undefined
 > 
-RESULT: tx13_0 gas=1000000 gasUsed=996328 cost=0.01992656 block=13 txId=0x495e1232e98e86ae9ca484ee763141cfaba5e779e2f93a318633028f88ce9d08
+RESULT: tx13_0 gas=1000000 gasUsed=997096 cost=0.01994192 block=9 txId=0x71c00a56d3da86c5a827cae9b554f2b7efdb34c4dbe608be42d6273247e6a0c5
 undefined
 > 
-RESULT: tx13_1 gas=1000000 gasUsed=996456 cost=0.01992912 block=13 txId=0x4a3fc3ce37984891c35421cdf8276b32a3bb59674cdd8355a1695e28f1235b81
+RESULT: tx13_1 gas=1000000 gasUsed=996968 cost=0.01993936 block=9 txId=0x483d8abde0e7bddcb5703cb8206f82ba7cfde0965d3f634aa778c9c611f81d93
 undefined
 > 
-RESULT: tx13_2 gas=1000000 gasUsed=996456 cost=0.01992912 block=13 txId=0xc1f3fb9461007267f79d8cd2bcc046f323106774cff8bba6d194e8c02128105f
+RESULT: tx13_2 gas=1000000 gasUsed=996968 cost=0.01993936 block=9 txId=0x0604e32cdb6aa09e411fcf180c889495923203e249e9b743bde6b85947b9b8b2
 undefined
 > 
-RESULT: tx13_8 gas=1000000 gasUsed=996712 cost=0.01993424 block=13 txId=0xf54c5b06203d3fb296cc65b1466708da507862a0c87b600178a19533531afd01
+RESULT: tx13_8 gas=1000000 gasUsed=996712 cost=0.01993424 block=9 txId=0x14d898eaca4b32d2db2c8927363556e82c1afdc5636ff0cca3425aab69052989
 undefined
 > 
-RESULT: tx13_18 gas=1000000 gasUsed=996392 cost=0.01992784 block=13 txId=0x9f8abf24e9c2c7292df4f348a101af2530c3a09d74d7e87d8db50fd7b791efa5
+RESULT: tx13_18 gas=1000000 gasUsed=996328 cost=0.01992656 block=9 txId=0x51cfc90e33bd8acec9802683e4184aa294b67b3c936b8372ef7da02bf1276896
 undefined
 > 
 RESULT:  # Account                                             EtherBalanceChange   Token0    Token1     Token2           Token8                    Token18 Name
-RESULT:  1 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e       60.234618160000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #0 - Miner
+RESULT:  1 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e       45.234652720000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #0 - Miner
 RESULT:  2 0x0014060ff383c9b21c6840a3b14aab06741e5c49       -0.068584080000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #1 - Token Owner
 RESULT:  3 0x0020017ba4c67f76c76b1af8c41821ee54f37171       -0.060255200000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #2 - Factory Owner
-RESULT:  4 0x0036f6addb6d64684390f55a92f0f4988266901b    -1000.105778980000111000     1000    1000.0    1000.00    1000.00000000    1000.000000000000000000 Account #3 - Maker 1 Account
+RESULT:  4 0x0036f6addb6d64684390f55a92f0f4988266901b    -1000.105813540000111000     1000    1000.0    1000.00    1000.00000000    1000.000000000000000000 Account #3 - Maker 1 Account
 RESULT:  5 0x004e64833635cd1056b948b57286b7c91e62731c        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #4 - Maker 2 Account
 RESULT:  6 0x0055fbc1ada89056088c75eaf50400af6756ae61        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #5 - Taker 1 Account
 RESULT:  7 0x006b2baf3000413d83d257086fd3434a109aa552        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #6 - Taker 2 Account
@@ -1059,18 +1059,18 @@ undefined
 ...... 
 ...... 
 DATA: tokenTrader0Address=0x50b33c656d118fe452aa5646ceec38ff1ab2fff0
-0: {"address":"0x47cf83c31bf82642aadda00ca599820f17900d10","args":{"asset":"0xebb2634dd3194ba6d75eeb049cd0f73bf9801d95","buyPrice":"11111","buysTokens":true,"ownerAddress":"0x0036f6addb6d64684390f55a92f0f4988266901b","sellPrice":"22222","sellsTokens":true,"tokenTraderAddress":"0x50b33c656d118fe452aa5646ceec38ff1ab2fff0","units":"10000"},"blockHash":"0x73cbb0e36491876feeebca7817a3e8e87775c274ee03ee1bbd8187813f9a89cd","blockNumber":13,"event":"TradeListing","logIndex":2,"removed":false,"transactionHash":"0x495e1232e98e86ae9ca484ee763141cfaba5e779e2f93a318633028f88ce9d08","transactionIndex":0}
+0: {"address":"0x47cf83c31bf82642aadda00ca599820f17900d10","args":{"asset":"0xebb2634dd3194ba6d75eeb049cd0f73bf9801d95","buyPrice":"1.1111e+22","buysTokens":true,"ownerAddress":"0x0036f6addb6d64684390f55a92f0f4988266901b","sellPrice":"2.2222e+22","sellsTokens":true,"tokenTraderAddress":"0x50b33c656d118fe452aa5646ceec38ff1ab2fff0","units":"10000"},"blockHash":"0x2ad0671777a02c58d6174b2ad9528b11f1a59621957e41333715433d4487b769","blockNumber":9,"event":"TradeListing","logIndex":2,"removed":false,"transactionHash":"0x71c00a56d3da86c5a827cae9b554f2b7efdb34c4dbe608be42d6273247e6a0c5","transactionIndex":0}
 DATA: tokenTrader1Address=0x0e9ec9562db6e49fa92c5c49c17455c21e5149aa
-1: {"address":"0x47cf83c31bf82642aadda00ca599820f17900d10","args":{"asset":"0xe9ba90b474ef72aa062d89a319c3e15b31e8fe65","buyPrice":"111110","buysTokens":true,"ownerAddress":"0x0036f6addb6d64684390f55a92f0f4988266901b","sellPrice":"222220","sellsTokens":true,"tokenTraderAddress":"0x0e9ec9562db6e49fa92c5c49c17455c21e5149aa","units":"10000"},"blockHash":"0x73cbb0e36491876feeebca7817a3e8e87775c274ee03ee1bbd8187813f9a89cd","blockNumber":13,"event":"TradeListing","logIndex":5,"removed":false,"transactionHash":"0x4a3fc3ce37984891c35421cdf8276b32a3bb59674cdd8355a1695e28f1235b81","transactionIndex":1}
+1: {"address":"0x47cf83c31bf82642aadda00ca599820f17900d10","args":{"asset":"0xe9ba90b474ef72aa062d89a319c3e15b31e8fe65","buyPrice":"1.1111e+21","buysTokens":true,"ownerAddress":"0x0036f6addb6d64684390f55a92f0f4988266901b","sellPrice":"2.2222e+21","sellsTokens":true,"tokenTraderAddress":"0x0e9ec9562db6e49fa92c5c49c17455c21e5149aa","units":"10000"},"blockHash":"0x2ad0671777a02c58d6174b2ad9528b11f1a59621957e41333715433d4487b769","blockNumber":9,"event":"TradeListing","logIndex":5,"removed":false,"transactionHash":"0x483d8abde0e7bddcb5703cb8206f82ba7cfde0965d3f634aa778c9c611f81d93","transactionIndex":1}
 DATA: tokenTrader2Address=0x2606e52577930af646e8a8515a9d9243b6de2980
-2: {"address":"0x47cf83c31bf82642aadda00ca599820f17900d10","args":{"asset":"0x30da52ef30bdaec61b43317cc045e4f267eaf779","buyPrice":"1111100","buysTokens":true,"ownerAddress":"0x0036f6addb6d64684390f55a92f0f4988266901b","sellPrice":"2222200","sellsTokens":true,"tokenTraderAddress":"0x2606e52577930af646e8a8515a9d9243b6de2980","units":"10000"},"blockHash":"0x73cbb0e36491876feeebca7817a3e8e87775c274ee03ee1bbd8187813f9a89cd","blockNumber":13,"event":"TradeListing","logIndex":8,"removed":false,"transactionHash":"0xc1f3fb9461007267f79d8cd2bcc046f323106774cff8bba6d194e8c02128105f","transactionIndex":2}
+2: {"address":"0x47cf83c31bf82642aadda00ca599820f17900d10","args":{"asset":"0x30da52ef30bdaec61b43317cc045e4f267eaf779","buyPrice":"111110000000000000000","buysTokens":true,"ownerAddress":"0x0036f6addb6d64684390f55a92f0f4988266901b","sellPrice":"222220000000000000000","sellsTokens":true,"tokenTraderAddress":"0x2606e52577930af646e8a8515a9d9243b6de2980","units":"10000"},"blockHash":"0x2ad0671777a02c58d6174b2ad9528b11f1a59621957e41333715433d4487b769","blockNumber":9,"event":"TradeListing","logIndex":8,"removed":false,"transactionHash":"0x0604e32cdb6aa09e411fcf180c889495923203e249e9b743bde6b85947b9b8b2","transactionIndex":2}
 DATA: tokenTrader8Address=0x1bdee4fd136da0246e13ae3823d418470a1aaffe
-3: {"address":"0x47cf83c31bf82642aadda00ca599820f17900d10","args":{"asset":"0x93204a0388c0331bd950324e804e542f23888ec6","buyPrice":"1111100000000","buysTokens":true,"ownerAddress":"0x0036f6addb6d64684390f55a92f0f4988266901b","sellPrice":"22222000000000","sellsTokens":true,"tokenTraderAddress":"0x1bdee4fd136da0246e13ae3823d418470a1aaffe","units":"10000"},"blockHash":"0x73cbb0e36491876feeebca7817a3e8e87775c274ee03ee1bbd8187813f9a89cd","blockNumber":13,"event":"TradeListing","logIndex":11,"removed":false,"transactionHash":"0xf54c5b06203d3fb296cc65b1466708da507862a0c87b600178a19533531afd01","transactionIndex":3}
+3: {"address":"0x47cf83c31bf82642aadda00ca599820f17900d10","args":{"asset":"0x93204a0388c0331bd950324e804e542f23888ec6","buyPrice":"111110000000000","buysTokens":true,"ownerAddress":"0x0036f6addb6d64684390f55a92f0f4988266901b","sellPrice":"222220000000000","sellsTokens":true,"tokenTraderAddress":"0x1bdee4fd136da0246e13ae3823d418470a1aaffe","units":"10000"},"blockHash":"0x2ad0671777a02c58d6174b2ad9528b11f1a59621957e41333715433d4487b769","blockNumber":9,"event":"TradeListing","logIndex":11,"removed":false,"transactionHash":"0x14d898eaca4b32d2db2c8927363556e82c1afdc5636ff0cca3425aab69052989","transactionIndex":3}
 DATA: tokenTrader18Address=0x6931994ad91e9d566447f42e6c560bfcd8698ce8
-4: {"address":"0x47cf83c31bf82642aadda00ca599820f17900d10","args":{"asset":"0xd423486d8fe33d3a64b8daa5f1e7c17e6e924c3e","buyPrice":"2555","buysTokens":true,"ownerAddress":"0x0036f6addb6d64684390f55a92f0f4988266901b","sellPrice":"2666","sellsTokens":true,"tokenTraderAddress":"0x6931994ad91e9d566447f42e6c560bfcd8698ce8","units":"1000000"},"blockHash":"0x73cbb0e36491876feeebca7817a3e8e87775c274ee03ee1bbd8187813f9a89cd","blockNumber":13,"event":"TradeListing","logIndex":14,"removed":false,"transactionHash":"0x9f8abf24e9c2c7292df4f348a101af2530c3a09d74d7e87d8db50fd7b791efa5","transactionIndex":4}
+4: {"address":"0x47cf83c31bf82642aadda00ca599820f17900d10","args":{"asset":"0xd423486d8fe33d3a64b8daa5f1e7c17e6e924c3e","buyPrice":"11111","buysTokens":true,"ownerAddress":"0x0036f6addb6d64684390f55a92f0f4988266901b","sellPrice":"22222","sellsTokens":true,"tokenTraderAddress":"0x6931994ad91e9d566447f42e6c560bfcd8698ce8","units":"10000"},"blockHash":"0x2ad0671777a02c58d6174b2ad9528b11f1a59621957e41333715433d4487b769","blockNumber":9,"event":"TradeListing","logIndex":14,"removed":false,"transactionHash":"0x51cfc90e33bd8acec9802683e4184aa294b67b3c936b8372ef7da02bf1276896","transactionIndex":4}
 {
   callbacks: [function(error, result)],
-  filterId: "0x6c2bf8d54cc5642dafb205ed704e284f",
+  filterId: "0x374edb767e599f5bdd5bb9074fd36d5a",
   getLogsCallbacks: [],
   implementation: {
     getLogs: function(),
@@ -1089,9 +1089,9 @@ DATA: tokenTrader18Address=0x6931994ad91e9d566447f42e6c560bfcd8698ce8
   pollFilters: [],
   requestManager: {
     polls: {
-      0x6c2bf8d54cc5642dafb205ed704e284f: {
+      0x374edb767e599f5bdd5bb9074fd36d5a: {
         data: {...},
-        id: "0x6c2bf8d54cc5642dafb205ed704e284f",
+        id: "0x374edb767e599f5bdd5bb9074fd36d5a",
         callback: function(error, messages),
         uninstall: function()
       }
@@ -1122,10 +1122,10 @@ DATA: tokenTrader18Address=0x6931994ad91e9d566447f42e6c560bfcd8698ce8
 true
 > 
 RESULT:  # Account                                             EtherBalanceChange   Token0    Token1     Token2           Token8                    Token18 Name
-RESULT:  1 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e       70.234618160000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #0 - Miner
+RESULT:  1 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e       65.234652720000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #0 - Miner
 RESULT:  2 0x0014060ff383c9b21c6840a3b14aab06741e5c49       -0.068584080000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #1 - Token Owner
 RESULT:  3 0x0020017ba4c67f76c76b1af8c41821ee54f37171       -0.060255200000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #2 - Factory Owner
-RESULT:  4 0x0036f6addb6d64684390f55a92f0f4988266901b    -1000.105778980000111000     1000    1000.0    1000.00    1000.00000000    1000.000000000000000000 Account #3 - Maker 1 Account
+RESULT:  4 0x0036f6addb6d64684390f55a92f0f4988266901b    -1000.105813540000111000     1000    1000.0    1000.00    1000.00000000    1000.000000000000000000 Account #3 - Maker 1 Account
 RESULT:  5 0x004e64833635cd1056b948b57286b7c91e62731c        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #4 - Maker 2 Account
 RESULT:  6 0x0055fbc1ada89056088c75eaf50400af6756ae61        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #5 - Taker 1 Account
 RESULT:  7 0x006b2baf3000413d83d257086fd3434a109aa552        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #6 - Taker 2 Account
@@ -1165,26 +1165,26 @@ undefined
 ... 
 undefined
 > 
-RESULT: tx14_0 gas=100000 gasUsed=50851 cost=0.00101702 block=18 txId=0x10239ed2e8de59626d467a9e1b07e42cf95f06e2eb2863a572b3845a01f0f512
+RESULT: tx14_0 gas=100000 gasUsed=50851 cost=0.00101702 block=17 txId=0x10239ed2e8de59626d467a9e1b07e42cf95f06e2eb2863a572b3845a01f0f512
 undefined
 > 
-RESULT: tx14_1 gas=100000 gasUsed=50915 cost=0.0010183 block=18 txId=0x064eb6bbc077e41b305dfef601a96912ab5d4bb4fc21066ab55847c9a5b46a2e
+RESULT: tx14_1 gas=100000 gasUsed=50915 cost=0.0010183 block=17 txId=0x064eb6bbc077e41b305dfef601a96912ab5d4bb4fc21066ab55847c9a5b46a2e
 undefined
 > 
-RESULT: tx14_2 gas=100000 gasUsed=50915 cost=0.0010183 block=18 txId=0x5fa93a8576efe1f71762cb425c0161702951c63e7dc82f67ae84807a5bc572c0
+RESULT: tx14_2 gas=100000 gasUsed=50915 cost=0.0010183 block=17 txId=0x5fa93a8576efe1f71762cb425c0161702951c63e7dc82f67ae84807a5bc572c0
 undefined
 > 
-RESULT: tx14_8 gas=100000 gasUsed=51043 cost=0.00102086 block=18 txId=0xe80b0fab37804bf6c4865d09b5197dfc028556edb2a6ce58f0150816cda1610f
+RESULT: tx14_8 gas=100000 gasUsed=51043 cost=0.00102086 block=17 txId=0xe80b0fab37804bf6c4865d09b5197dfc028556edb2a6ce58f0150816cda1610f
 undefined
 > 
-RESULT: tx14_18 gas=100000 gasUsed=51235 cost=0.0010247 block=18 txId=0x16bbeecb2f437360caf2d97e61e6423eb400abb4388a5758f2e2e311626d52dd
+RESULT: tx14_18 gas=100000 gasUsed=51235 cost=0.0010247 block=17 txId=0x16bbeecb2f437360caf2d97e61e6423eb400abb4388a5758f2e2e311626d52dd
 undefined
 > 
 RESULT:  # Account                                             EtherBalanceChange   Token0    Token1     Token2           Token8                    Token18 Name
-RESULT:  1 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e       85.239717340000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #0 - Miner
+RESULT:  1 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e       85.239751900000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #0 - Miner
 RESULT:  2 0x0014060ff383c9b21c6840a3b14aab06741e5c49       -0.068584080000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #1 - Token Owner
 RESULT:  3 0x0020017ba4c67f76c76b1af8c41821ee54f37171       -0.060255200000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #2 - Factory Owner
-RESULT:  4 0x0036f6addb6d64684390f55a92f0f4988266901b    -1000.110878160000111000      900     900.0     900.00     900.00000000     900.000000000000000000 Account #3 - Maker 1 Account
+RESULT:  4 0x0036f6addb6d64684390f55a92f0f4988266901b    -1000.110912720000111000      900     900.0     900.00     900.00000000     900.000000000000000000 Account #3 - Maker 1 Account
 RESULT:  5 0x004e64833635cd1056b948b57286b7c91e62731c        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #4 - Maker 2 Account
 RESULT:  6 0x0055fbc1ada89056088c75eaf50400af6756ae61        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #5 - Taker 1 Account
 RESULT:  7 0x006b2baf3000413d83d257086fd3434a109aa552        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #6 - Taker 2 Account
@@ -1242,28 +1242,28 @@ undefined
 ... 
 undefined
 > 
-RESULT: tx15_0 gas=400000 gasUsed=31569 cost=0.00063138 block=21 txId=0x61308dc97ca4564d6bb1aa3e59cf446745a912d18a6df34bdbaae8ede154e925
+RESULT: tx15_0 gas=400000 gasUsed=31569 cost=0.00063138 block=20 txId=0xb74c33b6e4cb512195442f4ba15789bb9632b3b9e52f7918de68a88da5be889f
 undefined
 > 
-RESULT: tx15_1 gas=400000 gasUsed=31569 cost=0.00063138 block=21 txId=0xbdd045dc5678b07258198a3de22c6880f1f2d7428b7d044af9e32b3ba7380532
+RESULT: tx15_1 gas=400000 gasUsed=31569 cost=0.00063138 block=20 txId=0xe9d5654d4430e283d0fced505acfac2dfdf12f19bacc4391add088d55bc5ec17
 undefined
 > 
-RESULT: tx15_2 gas=400000 gasUsed=24630 cost=0.0004926 block=21 txId=0xd8f2817b2c000816523d9185d281250186d09273489369ce815c8ab95e383661
+RESULT: tx15_2 gas=400000 gasUsed=24630 cost=0.0004926 block=20 txId=0x62749b0a833c3b24e17ccb0e5d288bf5bf69058bbb0dbd0f2d45a19338e2edf0
 undefined
 > 
-RESULT: tx15_8 gas=400000 gasUsed=24630 cost=0.0004926 block=21 txId=0x26b0cb982253f7376cba54a1b61a0aee4d5ed2a8a71174ae7bf790d7b9c8b5b3
+RESULT: tx15_8 gas=400000 gasUsed=53191 cost=0.00106382 block=20 txId=0xa150bb53548e7316e88b3fdc87576794dbf70f06d44facfa4b80370237f4ec22
 undefined
 > 
-RESULT: tx15_18 gas=400000 gasUsed=24630 cost=0.0004926 block=21 txId=0xc2ff73544c5bb86719ccaf2b3a0eea1e3ca1f9e9d17768c6582dc6b2ffcb4560
+RESULT: tx15_18 gas=400000 gasUsed=53191 cost=0.00106382 block=20 txId=0x46a2f31049111cbf818d2d478fb0269e8a99c2231451539b8347dd6ff5d40d7e
 undefined
 > 
 RESULT:  # Account                                             EtherBalanceChange   Token0    Token1     Token2           Token8                    Token18 Name
-RESULT:  1 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e      100.242457900000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #0 - Miner
+RESULT:  1 0x000d1009bd8f0b1301cc5edc28ed1222a3ce671e      100.243634900000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #0 - Miner
 RESULT:  2 0x0014060ff383c9b21c6840a3b14aab06741e5c49       -0.068584080000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #1 - Token Owner
 RESULT:  3 0x0020017ba4c67f76c76b1af8c41821ee54f37171       -0.060255200000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #2 - Factory Owner
-RESULT:  4 0x0036f6addb6d64684390f55a92f0f4988266901b    -1000.110878160000111000      900     900.0     900.00     900.00000000     900.000000000000000000 Account #3 - Maker 1 Account
+RESULT:  4 0x0036f6addb6d64684390f55a92f0f4988266901b    -1000.110912720000111000      900     900.0     900.00     900.00000000     900.000000000000000000 Account #3 - Maker 1 Account
 RESULT:  5 0x004e64833635cd1056b948b57286b7c91e62731c        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #4 - Maker 2 Account
-RESULT:  6 0x0055fbc1ada89056088c75eaf50400af6756ae61       -0.002740560000000300        0       0.0       0.00       0.00000000       0.000000000000000000 Account #5 - Taker 1 Account
+RESULT:  6 0x0055fbc1ada89056088c75eaf50400af6756ae61     -300.003883000000000000        0       0.0       0.00      45.00040000      45.000450004500040000 Account #5 - Taker 1 Account
 RESULT:  7 0x006b2baf3000413d83d257086fd3434a109aa552        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 Account #6 - Taker 2 Account
 RESULT:  8 0xebb2634dd3194ba6d75eeb049cd0f73bf9801d95        0.000000000000001000        0       0.0       0.00       0.00000000       0.000000000000000000 TOKEN0
 RESULT:  9 0xe9ba90b474ef72aa062d89a319c3e15b31e8fe65        0.000000000000010000        0       0.0       0.00       0.00000000       0.000000000000000000 TOKEN1
@@ -1274,9 +1274,9 @@ RESULT: 13 0x47cf83c31bf82642aadda00ca599820f17900d10        0.00000000000000000
 RESULT: 14 0x15b380e4be48dafc6d9321113d6e38753524cc7a        0.000000000000000000        0       0.0       0.00       0.00000000       0.000000000000000000 TokenSellerFactory
 RESULT: 15 0x50b33c656d118fe452aa5646ceec38ff1ab2fff0        0.000000000000000000      100       0.0       0.00       0.00000000       0.000000000000000000 TokenTrader0
 RESULT: 16 0x0e9ec9562db6e49fa92c5c49c17455c21e5149aa        0.000000000000000000        0     100.0       0.00       0.00000000       0.000000000000000000 TokenTrader1
-RESULT: 17 0x2606e52577930af646e8a8515a9d9243b6de2980        0.000000000000000100        0       0.0     100.00       0.00000000       0.000000000000000000 TokenTrader2
-RESULT: 18 0x1bdee4fd136da0246e13ae3823d418470a1aaffe        0.000000000000000100        0       0.0       0.00     100.00000000       0.000000000000000000 TokenTrader8
-RESULT: 19 0x6931994ad91e9d566447f42e6c560bfcd8698ce8        0.000000000000000100        0       0.0       0.00       0.00000000     100.000000000000000000 TokenTrader18
+RESULT: 17 0x2606e52577930af646e8a8515a9d9243b6de2980      100.000000000000000000        0       0.0     100.00       0.00000000       0.000000000000000000 TokenTrader2
+RESULT: 18 0x1bdee4fd136da0246e13ae3823d418470a1aaffe      100.000000000000000000        0       0.0       0.00      54.99960000       0.000000000000000000 TokenTrader8
+RESULT: 19 0x6931994ad91e9d566447f42e6c560bfcd8698ce8      100.000000000000000000        0       0.0       0.00       0.00000000      54.999549995499960000 TokenTrader18
 undefined
 > 
 RESULT: PASS Test 1.5 Buy Tokens from TokenTrader Token0

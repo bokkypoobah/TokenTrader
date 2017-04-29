@@ -44,14 +44,14 @@ loadScript("$TOKENTRADERFACTORYJS");
 loadScript("$TOKENSELLERFACTORYJS");
 loadScript("functions.js");
 
-var tokenAbi = JSON.parse(tokenOutput.contracts["../contracts/TestERC20Token.sol:TestERC20Token"].abi);
-var tokenBin = "0x" + tokenOutput.contracts["../contracts/TestERC20Token.sol:TestERC20Token"].bin;
-var tokenTraderAbi = JSON.parse(tokenTraderFactoryOutput.contracts["../contracts/TokenTraderFactory.sol:TokenTrader"].abi);
-var tokenTraderFactoryAbi = JSON.parse(tokenTraderFactoryOutput.contracts["../contracts/TokenTraderFactory.sol:TokenTraderFactory"].abi);
-var tokenTraderFactoryBin = "0x" + tokenTraderFactoryOutput.contracts["../contracts/TokenTraderFactory.sol:TokenTraderFactory"].bin;
-var tokenSellerAbi = JSON.parse(tokenSellerFactoryOutput.contracts["../contracts/TokenSellerFactory.sol:TokenSeller"].abi);
-var tokenSellerFactoryAbi = JSON.parse(tokenSellerFactoryOutput.contracts["../contracts/TokenSellerFactory.sol:TokenSellerFactory"].abi);
-var tokenSellerFactoryBin = "0x" + tokenSellerFactoryOutput.contracts["../contracts/TokenSellerFactory.sol:TokenSellerFactory"].bin;
+var tokenAbi = JSON.parse(tokenOutput.contracts["$TESTERC20SOL:TestERC20Token"].abi);
+var tokenBin = "0x" + tokenOutput.contracts["$TESTERC20SOL:TestERC20Token"].bin;
+var tokenTraderAbi = JSON.parse(tokenTraderFactoryOutput.contracts["$TOKENTRADERFACTORYSOL:TokenTrader"].abi);
+var tokenTraderFactoryAbi = JSON.parse(tokenTraderFactoryOutput.contracts["$TOKENTRADERFACTORYSOL:TokenTraderFactory"].abi);
+var tokenTraderFactoryBin = "0x" + tokenTraderFactoryOutput.contracts["$TOKENTRADERFACTORYSOL:TokenTraderFactory"].bin;
+var tokenSellerAbi = JSON.parse(tokenSellerFactoryOutput.contracts["$TOKENSELLERFACTORYSOL:TokenSeller"].abi);
+var tokenSellerFactoryAbi = JSON.parse(tokenSellerFactoryOutput.contracts["$TOKENSELLERFACTORYSOL:TokenSellerFactory"].abi);
+var tokenSellerFactoryBin = "0x" + tokenSellerFactoryOutput.contracts["$TOKENSELLERFACTORYSOL:TokenSellerFactory"].bin;
 
 console.log("DATA: tokenABI=" + JSON.stringify(tokenAbi));
 console.log("DATA: tokenTraderABI=" + JSON.stringify(tokenTraderAbi));
@@ -208,12 +208,12 @@ console.log("RESULT: ");
 var testMessage = "Setup 1.3 Trader Contracts";
 console.log("RESULT: " + testMessage);
 var startBlock = eth.blockNumber;
-var tx13_0 = tokenTraderFactory.createTradeContract(token0Address, "11111", "22222", "10000", true, true, {from: maker1Account, gas: 1000000});
-var tx13_1 = tokenTraderFactory.createTradeContract(token1Address, "111110", "222220", "10000", true, true, {from: maker1Account, gas: 1000000});
-var tx13_2 = tokenTraderFactory.createTradeContract(token2Address, "1111100", "2222200", "10000", true, true, {from: maker1Account, gas: 1000000});
-var tx13_8 = tokenTraderFactory.createTradeContract(token8Address, "1111100000000", "22222000000000", "10000", true, true, {from: maker1Account, gas: 1000000});
+var tx13_0 = tokenTraderFactory.createTradeContract(token0Address, "11111000000000000000000", "22222000000000000000000", "10000", true, true, {from: maker1Account, gas: 1000000});
+var tx13_1 = tokenTraderFactory.createTradeContract(token1Address, "1111100000000000000000", "2222200000000000000000", "10000", true, true, {from: maker1Account, gas: 1000000});
+var tx13_2 = tokenTraderFactory.createTradeContract(token2Address, "111110000000000000000", "222220000000000000000", "10000", true, true, {from: maker1Account, gas: 1000000});
+var tx13_8 = tokenTraderFactory.createTradeContract(token8Address, "111110000000000", "222220000000000", "10000", true, true, {from: maker1Account, gas: 1000000});
 // var tx13_18 = tokenTraderFactory.createTradeContract(token18Address, "11111", "22222", "10000", true, true, {from: maker1Account, gas: 1000000});
-var tx13_18 = tokenTraderFactory.createTradeContract(token18Address, "2555", "2666", "1000000", true, true, {from: maker1Account, gas: 1000000});
+var tx13_18 = tokenTraderFactory.createTradeContract(token18Address, "11111", "22222", "10000", true, true, {from: maker1Account, gas: 1000000});
 while (txpool.status.pending > 0) {
 }
 printTxData("tx13_0", tx13_0);
@@ -301,11 +301,11 @@ console.log("RESULT: ");
 // -----------------------------------------------------------------------------
 var testMessage = "Test 1.5 Buy Tokens from TokenTrader";
 console.log("RESULT: " + testMessage);
-var tx15_0 = eth.sendTransaction({from: taker1Account, to: tokenTrader0Address, gas: 400000, value: "100"});
-var tx15_1 = eth.sendTransaction({from: taker1Account, to: tokenTrader1Address, gas: 400000, value: "100"});
-var tx15_2 = eth.sendTransaction({from: taker1Account, to: tokenTrader2Address, gas: 400000, value: "100"});
-var tx15_8 = eth.sendTransaction({from: taker1Account, to: tokenTrader8Address, gas: 400000, value: "100"});
-var tx15_18 = eth.sendTransaction({from: taker1Account, to: tokenTrader18Address, gas: 400000, value: "100"});
+var tx15_0 = eth.sendTransaction({from: taker1Account, to: tokenTrader0Address, gas: 400000, value: web3.toWei("100", "ether")});
+var tx15_1 = eth.sendTransaction({from: taker1Account, to: tokenTrader1Address, gas: 400000, value: web3.toWei("100", "ether")});
+var tx15_2 = eth.sendTransaction({from: taker1Account, to: tokenTrader2Address, gas: 400000, value: web3.toWei("100", "ether")});
+var tx15_8 = eth.sendTransaction({from: taker1Account, to: tokenTrader8Address, gas: 400000, value: web3.toWei("100", "ether")});
+var tx15_18 = eth.sendTransaction({from: taker1Account, to: tokenTrader18Address, gas: 400000, value: web3.toWei("100", "ether")});
 while (txpool.status.pending > 0) {
 }
 printTxData("tx15_0", tx15_0);
